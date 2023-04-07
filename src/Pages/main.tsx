@@ -1,10 +1,15 @@
+import { useState } from "react";
 import {
   ContainerWrapper,
   HeaderWrapper,
   MainBody,
+  PageMakeButton,
 } from "../Styles/HomePageStyle";
 
 function HomePage() {
+  const [test, setTest] = useState([
+    1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14,
+  ]);
   return (
     <MainBody>
       <div className="setting-part">설정</div>
@@ -16,12 +21,17 @@ function HomePage() {
         <div>친구 목록</div>
       </HeaderWrapper>
       <ContainerWrapper>
-        <div>1</div>
-        <div>2</div>
-        <div>3</div>
-        <div>4</div>
+        {test.map((e) => {
+          return <div>{e}</div>;
+        })}
       </ContainerWrapper>
-      <button>페이지 생성</button>
+      <div>
+        <PageMakeButton>
+          페이지
+          <br />
+          생성
+        </PageMakeButton>
+      </div>
     </MainBody>
   );
 }
