@@ -1,22 +1,27 @@
 import { useState } from "react";
 import { Outlet, useLocation } from "react-router-dom";
 import {
+  EditButton,
   ExportButton,
   MainBody,
   PageMakeButton,
+  PlayMusic,
+  ShareButton,
 } from "../Styles/HomePageStyle";
 
 function MusicPage() {
   const location = useLocation();
   const [userId, setUserId] = useState(location.state?.userId);
+  const pageName = location.state?.pageName;
   return (
     <MainBody>
-      <div>이름(닉네임)</div>
-      <div style={{ display: "flex" }}>
-        <button>수정</button>
-        <div>{userId} page</div>
-        <button>share</button>
+      <div className="nickname-part">{userId}</div>
+      <div style={{ display: "flex", margin: "20px" }}>
+        <EditButton>수정</EditButton>
+        <div style={{ marginLeft: "10px" }}>{pageName} page</div>
+        <ShareButton>share</ShareButton>
       </div>
+      <PlayMusic>재생중인 음악</PlayMusic>
       <Outlet />
       <PageMakeButton>
         스티커 <br />

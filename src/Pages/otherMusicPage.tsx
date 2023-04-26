@@ -1,8 +1,9 @@
 import { useState } from "react";
+import StickerShow from "../Components/StickerShow";
 function OthermusicPage() {
   return (
     <div>
-      <div>남은 아직 없다.</div>
+      <StickerShow />
     </div>
   );
 }
