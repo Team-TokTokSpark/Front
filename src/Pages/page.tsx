@@ -4,9 +4,9 @@ import {
   EditButton,
   ExportButton,
   MainBody,
-  PageMakeButton,
   PlayMusic,
   ShareButton,
+  StickerMakeButton,
 } from "../Styles/HomePageStyle";
 
 function MusicPage() {
@@ -23,10 +23,10 @@ function MusicPage() {
       </div>
       <PlayMusic>재생중인 음악</PlayMusic>
       <Outlet />
-      <PageMakeButton>
+      <StickerMakeButton>
         스티커 <br />
         추가
-      </PageMakeButton>
+      </StickerMakeButton>
       <ExportButton>
         내보 <br />
         내기

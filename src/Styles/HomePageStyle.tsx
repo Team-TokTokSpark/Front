@@ -41,23 +41,9 @@ export const PlayMusic = styled.div`
 `;
 
 export const ContainerWrapper = styled.div`
-  margin: 0px 20px 10px 20px;
-  height: 60%;
-  display: grid;
-  grid-auto-rows: 33%;
-  grid-template-columns: repeat(auto-fill, minmax(30%, auto));
-  /* gap: 10px 10px; */
-  border-radius: 20px;
-  background-color: gray;
-  place-items: center;
-  overflow: scroll;
-  scrollbar-width: none;
-  scrollbar-color: transparent transparent;
-`;
-
-export const LongContainerWrapper = styled.div`
-  margin: 0px 20px 10px 20px;
-  height: 80%;
+  margin: 0px 30px 10px 5%;
+  width: 329px;
+  height: 418px;
   display: grid;
   grid-auto-rows: 33%;
   grid-template-columns: repeat(auto-fill, minmax(30%, auto));
@@ -70,8 +56,56 @@ export const LongContainerWrapper = styled.div`
   scrollbar-color: transparent transparent;
 
   .sticker-select {
-    border: 7px solid lightpink;
+    border: 3px solid lightpink;
   }
+`;
+
+export const LongContainerWrapper = styled.div`
+  margin: 0px 20px 10px 5%;
+  width: 329px;
+  height: 550px;
+  display: grid;
+  grid-auto-rows: 25%;
+  grid-template-columns: repeat(auto-fill, minmax(27%, auto));
+  /* gap: 10px 10px; */
+  border-radius: 20px;
+  background-color: gray;
+  place-items: center;
+  overflow: scroll;
+  scrollbar-width: none;
+  scrollbar-color: transparent transparent;
+
+  .sticker-select {
+    border: 3px solid lightpink;
+  }
+`;
+
+export const MessageBox = styled.div`
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: -100px 0px 0px -100px;
+  width: 99px;
+  height: 39px;
+  z-index: 999;
+  background: rgba(0, 0, 0, 0.4);
+  color: white;
+  border-radius: 25px;
+`;
+
+export const SpecialMessageBox = styled.div`
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: -100px -100px 0px 0px;
+  width: 99px;
+  height: 39px;
+  z-index: 999;
+  background: rgba(0, 0, 0, 0.4);
+  color: white;
+  border-radius: 25px;
 `;
 
 export const ContainerPage = styled.button`
@@ -83,8 +117,8 @@ export const ContainerPage = styled.button`
   text-align: center;
   box-sizing: content-box;
   border-radius: 10%;
-  width: 75%;
-  height: 65%;
+  width: 90px;
+  height: 90px;
 `;
 
 export const EditButton = styled.button`
@@ -115,35 +149,46 @@ export const FriendButton = styled.button`
 `;
 
 export const PageMakeButton = styled.button`
-  width: 65px;
-  height: 65px;
+  width: 69px;
+  height: 69px;
   border-radius: 50%;
-  background-color: #99aae4;
+  background-color: #a5ff85;
   border-color: transparent;
   position: absolute;
-  top: 70%;
-  left: 82%;
+  top: 537px;
+  left: 282px;
+`;
+
+export const StickerMakeButton = styled.button`
+  width: 69px;
+  height: 69px;
+  border-radius: 50%;
+  background-color: #a5ff85;
+  border-color: transparent;
+  position: absolute;
+  top: 483px;
+  left: 287px;
 `;
 
 export const ExportButton = styled.button`
-  width: 65px;
-  height: 65px;
+  width: 69px;
+  height: 69px;
   border-radius: 50%;
   position: absolute;
   border-color: transparent;
-  background-color: #a5ff85;
-  top: 80%;
-  left: 82%;
+  background-color: #99aae4;
+  top: 567px;
+  left: 287px;
 `;
 
 export const EditStickerButton = styled.button`
-  width: 65px;
-  height: 65px;
+  width: 69px;
+  height: 69px;
   border-radius: 50%;
   position: absolute;
   border-color: transparent;
   background-color: #ff958e;
   color: white;
-  top: 90%;
-  left: 82%;
+  top: 649px;
+  left: 287px;
 `;
