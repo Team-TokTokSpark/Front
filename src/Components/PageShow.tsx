@@ -4,52 +4,54 @@ import { ContainerPage, ContainerWrapper } from "../Styles/HomePageStyle";
 
 function PageShow() {
   const [test, setTest] = useState([
-    "my1",
-    "my2",
-    "other3",
-    "my4",
-    "other3",
-    "other5",
-    "other7",
-    "my8",
-    "other9",
-    "my10",
-    "other11",
-    "my12",
-    "my13",
-    "my14",
+    ["hello", "mingle"],
+    ["niceTo", "my"],
+    ["music", "nina"],
+    ["music", "emily"],
+    ["music1", "emily"],
+    ["music", "brandon"],
+    ["great", "hailey"],
+    ["music", "my"],
+    ["wow", "sandy"],
+    ["music", "nina"],
+    ["Happy", "mike"],
+    ["music", "my"],
+    ["music", "mike"],
+    ["music", "brandon"],
   ]);
   const navigate = useNavigate();
   return (
     <>
       <ContainerWrapper>
         {test.map((e) => {
-          if (e.includes("my")) {
+          if (e[1].includes("my")) {
             return (
               <ContainerPage
                 onClick={() => {
-                  navigate(`page/myMusic/${e}`, {
+                  navigate(`page/myMusic/${e[0]}`, {
                     state: {
-                      userId: e,
+                      userId: e[1],
+                      pageName: e[0],
                     },
                   });
                 }}
               >
-                {e}
+                {e[0]}
               </ContainerPage>
             );
           } else {
             return (
               <ContainerPage
                 onClick={() => {
-                  navigate(`page/otherMusic/${e}`, {
+                  navigate(`page/otherMusic/${e[0]}`, {
                     state: {
-                      userId: e,
+                      userId: e[1],
+                      pageName: e[0],
                     },
                   });
                 }}
               >
-                {e}
+                {e[0]}
               </ContainerPage>
             );
           }

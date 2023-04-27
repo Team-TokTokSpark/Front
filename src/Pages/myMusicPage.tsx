@@ -1,10 +1,10 @@
-import { useState } from "react";
-import { useLocation } from "react-router-dom";
+import StickerShow from "../Components/StickerShow";
 import { EditStickerButton } from "../Styles/HomePageStyle";
 
 function MymusicPage() {
   return (
     <div>
+      <StickerShow />
       <EditStickerButton>
         스티커
         <br />

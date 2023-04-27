@@ -1,9 +1,9 @@
 import PageShow from "../Components/PageShow";
 import {
+  ExportButton,
   FriendButton,
   HeaderWrapper,
   MainBody,
-  PageMakeButton,
 } from "../Styles/HomePageStyle";
 
 function HomePage() {
@@ -26,11 +26,11 @@ function HomePage() {
       </HeaderWrapper>
       <PageShow />
       <div>
-        <PageMakeButton>
+        <ExportButton>
           페이지
           <br />
           생성
-        </PageMakeButton>
+        </ExportButton>
       </div>
     </MainBody>
   );
