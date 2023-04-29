@@ -8,11 +8,21 @@ import {
   ShareButton,
   StickerMakeButton,
 } from "../Styles/HomePageStyle";
+import { useRecoilState } from "recoil";
+import { popUpModal } from "../atom";
+import StickerModal from "../Components/ModalPage";
 
 function MusicPage() {
   const location = useLocation();
   const [userId, setUserId] = useState(location.state?.userId);
+  const [modalOpen, setModalOpen] = useRecoilState(popUpModal);
   const pageName = location.state?.pageName;
+  const StickerAdd = () => {
+    setModalOpen(!modalOpen);
+  };
+  const closeModal = () => {
+    setModalOpen(!modalOpen);
+  };
   return (
     <MainBody>
       <div className="nickname-part">{userId}</div>
@@ -23,10 +33,11 @@ function MusicPage() {
       </div>
       <PlayMusic>재생중인 음악</PlayMusic>
       <Outlet />
-      <StickerMakeButton>
+      <StickerMakeButton onClick={StickerAdd}>
         스티커 <br />
         추가
       </StickerMakeButton>
+      {modalOpen && <StickerModal modalClose={closeModal} />}
       <ExportButton>
         내보 <br />
         내기
