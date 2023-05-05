@@ -1,16 +1,15 @@
 import { useState } from "react";
 import { Outlet, useLocation } from "react-router-dom";
 import {
-  EditButton,
   ExportButton,
   MainBody,
-  PlayMusic,
   ShareButton,
   StickerMakeButton,
 } from "../Styles/HomePageStyle";
 import { useRecoilState } from "recoil";
 import { popUpModal } from "../atom";
 import StickerModal from "../Components/ModalPage";
+import icons from "../Css/icons";
 
 function MusicPage() {
   const location = useLocation();
@@ -25,23 +24,22 @@ function MusicPage() {
   };
   return (
     <MainBody>
-      <div className="nickname-part">{userId}</div>
-      <div style={{ display: "flex", margin: "20px" }}>
-        <EditButton>수정</EditButton>
-        <div style={{ marginLeft: "10px" }}>{pageName} page</div>
-        <ShareButton>share</ShareButton>
+      <div className="setting-part">
+        <img src="/img/Setting_5.png" alt="setting" />
       </div>
-      <PlayMusic>재생중인 음악</PlayMusic>
+      <div className="nickname-part">
+        <img src="/img/Arrow_Left_5.png" alt="backbutton" />
+        <div className="user_name">{userId}</div>
+        님의 보관함
+      </div>
+      <div className="title-part">
+        {pageName} page
+        <ShareButton>링크 공유</ShareButton>
+      </div>
       <Outlet />
-      <StickerMakeButton onClick={StickerAdd}>
-        스티커 <br />
-        추가
-      </StickerMakeButton>
+      <StickerMakeButton onClick={StickerAdd}>{icons.plus}</StickerMakeButton>
       {modalOpen && <StickerModal modalClose={closeModal} />}
-      <ExportButton>
-        내보 <br />
-        내기
-      </ExportButton>
+      <ExportButton>{icons.spotify}</ExportButton>
     </MainBody>
   );
 }
