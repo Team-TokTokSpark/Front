@@ -1,7 +1,12 @@
 import * as S from "../Styles/LoginPageStyle";
+import { REST_API_KEY, REDIRECT_URI } from "../Constants/kakaoLoginData";
 import icons from "../Css/icons";
 
 const LoginPage = () => {
+  const KAKAO_AUTH_URL = `https://kauth.kakao.com/oauth/authorize?client_id=${REST_API_KEY}&redirect_uri=${REDIRECT_URI}&response_type=code`;
+  const handleLogin = () => {
+    window.location.href = KAKAO_AUTH_URL;
+  };
   return (
     <S.LoginContainer>
       <S.NoticeButton>{icons.notice}</S.NoticeButton>
@@ -11,6 +16,7 @@ const LoginPage = () => {
         <img
           src="img/kakao_login/kakao_login_medium_wide.png"
           alt="kakao_login"
+          onClick={handleLogin}
         />
       </S.MainContainer>
     </S.LoginContainer>
