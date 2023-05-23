@@ -1,6 +1,7 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import LoginPage from "./Pages/LoginPage";
 import KakaoLoginPage from "./Pages/KakaoLoginPage";
+import SignUpPage from "./Pages/SignUpPage";
 import NotFoundPage from "./Pages/NotFound";
 import HomePage from "./Pages/main";
 import MusicPage from "./Pages/page";
@@ -16,6 +17,7 @@ const Router = () => {
         <Route path="/" element={<HomePage />} />
         <Route path="/login" element={<LoginPage />}></Route>
         <Route path="/kakaoLogin" element={<KakaoLoginPage />}></Route>
+        <Route path="/signup" element={<SignUpPage />} />
         <Route path="/setting" element={<SettingPage />}></Route>
         <Route path="/friendsList" element={<FriendsListPage />}></Route>
         <Route path="/page/*" element={<MusicPage />}>
