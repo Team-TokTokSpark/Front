@@ -1,10 +1,10 @@
 import styled from "styled-components";
-import { colors } from "../Css/variables";
+import { linearBackGroundColors } from "../Css/variables";
 
 export const LoginContainer = styled.div`
   width: 100vw;
   height: 100vh;
-  background-color: ${colors.background};
+  background: ${linearBackGroundColors.blue_orange};
   color: white;
   align-items: center;
   justify-content: center;
@@ -14,7 +14,7 @@ export const NoticeButton = styled.div`
   font-size: 32px;
   padding: 15px 15px 0 0;
   svg {
-    fill: ${colors.defaultGold};
+    fill: ${linearBackGroundColors.pink_green};
   }
 `;
 
@@ -24,6 +24,9 @@ export const MainContainer = styled.div`
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  button {
+    all: unset;
+  }
 `;
 
 export const Logo = styled.h1`
