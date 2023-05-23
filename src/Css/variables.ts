@@ -1,27 +1,30 @@
 export const colors = {
   //  PRIMARY COLOR
-  deepGold: "#FFBD13",
-  darkGold: "#FFD058",
-  defaultGold: "#FFF49B",
-  lightGold: "#FFFBDE",
-  //  SECONDARY COLOR
-  deepPurple: "#5326D5",
-  darkPurple: "#5734BA",
-  defaultPurple: "#6B50B9",
-  lightPurple: "#937CD4",
-  //  EMPHASIZE COLOR
-  deepPink: "#D3008C",
-  darkPink: "#EA28C5",
-  defaultPink: "#FF66E2",
-  lightPink: "#FF94CE",
-  //  GRAY COLOR
-  deepGray: "#585858",
-  darkGray: "#787878",
-  defaultGray: "#BABABA",
-  lightGray: "#EAEAEA",
+  primary_light: "#364680",
+  primary_medium: "#6B7CB7",
+  primary_dark: "#99AAE4",
+
+  //EMPHASIZE COLOR
+  emphasize_light: "#FF9E89",
+  emphasize_medium: "#FF8181",
+  emphasize_dark: "#FF2727",
+
+  //SUPPLEMENTARY
+  supplementary_blue: "#85AEFF",
+  supplementary_orange: "#FFE1B5",
+  supplementary_purple: "#5734BA",
+  supplementary_yellow: "#FFF49B",
+  supplementary_pink: "#FAC1DB",
+  supplementary_green: "#F1FFDB",
   // SPOTIFY
   spotifyGreen: "#1DB954",
   spotifyLightGreen: "#1ED760",
-  //Background
-  background: "#252525",
+};
+
+export const linearBackGroundColors = {
+  blue_blue: `linear-gradient(${colors.primary_light},${colors.primary_dark})`,
+  purple_yellow: `linear-gradient(${colors.supplementary_purple},${colors.supplementary_yellow})`,
+  blue_orange: `linear-gradient(${colors.supplementary_blue},${colors.supplementary_orange})`,
+  pink_green: `linear-gradient(${colors.supplementary_pink},${colors.supplementary_green})`,
+  medium_supple_blue: `linear-gradient(${colors.primary_dark},${colors.supplementary_blue})`,
 };
