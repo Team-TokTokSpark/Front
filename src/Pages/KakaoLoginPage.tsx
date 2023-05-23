@@ -1,13 +1,17 @@
 import { useEffect } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
-import { REDIRECT_URI, REST_API_KEY } from "../Constants/kakaoLoginData";
+import { useSetRecoilState } from "recoil";
 import axios from "axios";
+
+import { REDIRECT_URI, REST_API_KEY } from "../Constants/kakaoLoginData";
+import { authTokenState } from "../atom";
 
 const KakaoLoginPage = () => {
   const location = useLocation();
   const navigate = useNavigate();
   const KAKAO_CODE = location.search.split("=")[1];
-  console.log("몇번실행");
+  const setAuthToken = useSetRecoilState(authTokenState);
+
   const getKakaoToken = async () => {
     try {
       const response = await axios.post(
@@ -23,16 +27,19 @@ const KakaoLoginPage = () => {
         }
       );
       const data = response.data;
-      localStorage.setItem("token", data.access_token);
-      navigate("/");
+      setAuthToken(data.access_token);
+
+      navigate("/signup");
     } catch (error) {
       console.error(error);
       navigate("/login");
     }
   };
+
   useEffect(() => {
     getKakaoToken();
   });
+
   return <></>;
 };
 
