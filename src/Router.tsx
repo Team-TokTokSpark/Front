@@ -52,15 +52,12 @@ const router = createBrowserRouter([
       {
         path: "myMusic/:idx",
         element: <MymusicPage />,
-        children: [
-          {
-            path: "edit",
-            element: <EditPage />,
-          },
-        ],
+      },
+      {
+        path: "myMusic/:idx/edit",
+        element: <EditPage />,
       },
       { path: "otherMusic/:idx", element: <OthermusicPage /> },
-      { path: "edit", element: <EditPage /> },
     ],
   },
   { path: "*", element: <NotFoundPage /> },
