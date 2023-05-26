@@ -1,36 +1,45 @@
+import { useNavigate } from "react-router-dom";
 import PageShow from "../Components/PageShow";
+import icons from "../Css/icons";
 import {
-  ExportButton,
-  FriendButton,
-  HeaderWrapper,
+  EditStickerButton,
   MainBody,
+  ShareButton,
 } from "../Styles/HomePageStyle";
 
 function HomePage() {
+  const navigate = useNavigate();
   return (
     <MainBody>
-      <div className="setting-part">설정</div>
-      <HeaderWrapper>
-        <div>
-          <div
-            style={{
-              fontSize: "24px",
-              marginBottom: "10px",
-            }}
-          >
-            이름(닉네임)
-          </div>
-          <div style={{ fontSize: "15px" }}>자기소개 한줄~</div>
-        </div>
-        <FriendButton>친구 목록</FriendButton>
-      </HeaderWrapper>
+      <div className="setting-part">
+        <img
+          src="/img/Setting_5.png"
+          alt="editing"
+          onClick={() => {
+            navigate("/setting");
+          }}
+        />
+      </div>
+      <div
+        className="nickname-part"
+        style={{ fontSize: "14px", fontWeight: "300" }}
+      >
+        <div className="music_note"> {icons.musicnote}</div>
+        자기소개 한줄~
+      </div>
+      <div className="title-part">
+        이름(닉네임)
+        <ShareButton
+          onClick={() => {
+            navigate("/friendsList");
+          }}
+        >
+          친구 목록
+        </ShareButton>
+      </div>
       <PageShow />
       <div>
-        <ExportButton>
-          페이지
-          <br />
-          생성
-        </ExportButton>
+        <EditStickerButton>{icons.plus}</EditStickerButton>
       </div>
     </MainBody>
   );

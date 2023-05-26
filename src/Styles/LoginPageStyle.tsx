@@ -1,10 +1,10 @@
 import styled from "styled-components";
-import { colors } from "../Css/variables";
+import { colors, linearBackGroundColors } from "../Css/variables";
 
 export const LoginContainer = styled.div`
   width: 100vw;
   height: 100vh;
-  background-color: ${colors.background};
+  background-color: (${linearBackGroundColors.blue_blue});
   color: white;
   align-items: center;
   justify-content: center;
@@ -14,7 +14,7 @@ export const NoticeButton = styled.div`
   font-size: 32px;
   padding: 15px 15px 0 0;
   svg {
-    fill: ${colors.defaultGold};
+    fill: ${colors.supplementary_yellow};
   }
 `;
 

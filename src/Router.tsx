@@ -8,6 +8,7 @@ import MymusicPage from "./Pages/myMusicPage";
 import OthermusicPage from "./Pages/otherMusicPage";
 import FriendsListPage from "./Pages/FrinedsListPage";
 import SettingPage from "./Pages/SettingPage";
+import EditPage from "./Pages/Edit";
 
 const Router = () => {
   return (
@@ -19,9 +20,10 @@ const Router = () => {
         <Route path="/setting" element={<SettingPage />}></Route>
         <Route path="/friendsList" element={<FriendsListPage />}></Route>
         <Route path="/page/*" element={<MusicPage />}>
-          <Route path={"myMusic/:idx"} element={<MymusicPage />} />
+          <Route path={"myMusic/:idx"} element={<MymusicPage />}></Route>
           <Route path={"otherMusic/:idx"} element={<OthermusicPage />} />
         </Route>
+        <Route path={"edit"} element={<EditPage />} />
         <Route path="*" element={<NotFoundPage />}></Route>
       </Routes>
     </BrowserRouter>

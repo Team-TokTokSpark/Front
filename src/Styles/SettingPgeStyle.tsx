@@ -1,10 +1,10 @@
 import styled from "styled-components";
-import { colors } from "../Css/variables";
+import { colors, linearBackGroundColors } from "../Css/variables";
 
 export const PageContainer = styled.div`
   width: 100vw;
   height: 100vh;
-  background: linear-gradient(${colors.darkPurple}, ${colors.defaultGold});
+  background: ${linearBackGroundColors.purple_yellow};
 `;
 export const BackButton = styled.div`
   display: flex;
