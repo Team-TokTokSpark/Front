@@ -9,6 +9,7 @@ import MymusicPage from "./Pages/myMusicPage";
 import OthermusicPage from "./Pages/otherMusicPage";
 import FriendsListPage from "./Pages/FrinedsListPage";
 import SettingPage from "./Pages/SettingPage";
+import EditPage from "./Pages/Edit";
 
 // const Router = () => {
 //   return (
@@ -33,6 +34,7 @@ import SettingPage from "./Pages/SettingPage";
 //     </BrowserRouter>
 //   );
 // };
+
 
 const router = createBrowserRouter([
   {

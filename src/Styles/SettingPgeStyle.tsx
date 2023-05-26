@@ -1,10 +1,14 @@
 import styled from "styled-components";
-import { linearBackGroundColors } from "../Css/variables";
+
+import { colors, linearBackGroundColors } from "../Css/variables";
+
 
 export const PageContainer = styled.div`
   width: 100vw;
   height: 100vh;
-  background: ${linearBackGroundColors.blue_orange};
+
+  background: ${linearBackGroundColors.purple_yellow};
+
 `;
 export const BackButton = styled.div`
   display: flex;

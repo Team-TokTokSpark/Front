@@ -1,4 +1,5 @@
 import styled from "styled-components";
+
 import { linearBackGroundColors } from "../Css/variables";
 
 export const PageContainer = styled.div`
@@ -7,6 +8,7 @@ export const PageContainer = styled.div`
   min-height: 100vh;
   background: ${linearBackGroundColors.medium_supple_blue};
   color: white;
+
 `;
 
 export const FriendsListHeader = styled.div`

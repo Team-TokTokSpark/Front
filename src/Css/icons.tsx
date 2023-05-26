@@ -5,6 +5,8 @@ import { BsPlusLg, BsSpotify } from "react-icons/bs";
 import { SlUserUnfollow } from "react-icons/sl";
 import { FiSearch } from "react-icons/fi";
 import { IoIosArrowBack } from "react-icons/io";
+import { CiMusicNote1 } from "react-icons/ci";
+
 const icons = {
   notice: <MdError />,
   back: <IoIosArrowBack />,
@@ -12,7 +14,8 @@ const icons = {
   spotify: <BsSpotify />,
   unfollow: <SlUserUnfollow />,
   plus: <BsPlusLg />,
-  search: <FiSearch />,
+  search: <FiSearch />
+  musicnote: <CiMusicNote1 />,
 };
 
 export default icons;
