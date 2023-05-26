@@ -1,10 +1,5 @@
-import StickerShow from "../Components/StickerShow";
 function OthermusicPage() {
-  return (
-    <div>
-      <StickerShow />
-    </div>
-  );
+  return <div className="setting-part"></div>;
 }
 
 export default OthermusicPage;

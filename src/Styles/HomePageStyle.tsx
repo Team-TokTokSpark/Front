@@ -1,13 +1,41 @@
 import styled from "styled-components";
-import { colors } from "../Css/variables";
+import { linearBackGroundColors } from "../Css/variables";
 
 export const MainBody = styled.div`
   width: 100vw;
   height: 100vh;
   position: relative;
-  background: linear-gradient(${colors.darkPurple}, ${colors.defaultGold});
+  background: ${linearBackGroundColors.darkblue_blue};
   top: 0%;
   left: 0%;
+
+  .pageTheme0 {
+    width: 100vw;
+    height: 100vh;
+    position: relative;
+    background: ${linearBackGroundColors.blue_blue};
+  }
+
+  .pageTheme1 {
+    width: 100vw;
+    height: 100vh;
+    position: relative;
+    background: ${linearBackGroundColors.blue_orange};
+  }
+
+  .pageTheme2 {
+    width: 100vw;
+    height: 100vh;
+    position: relative;
+    background: ${linearBackGroundColors.purple_yellow};
+  }
+
+  .pageTheme3 {
+    width: 100vw;
+    height: 100vh;
+    position: relative;
+    background: ${linearBackGroundColors.pink_green};
+  }
 
   .setting-part {
     padding-top: 20px;
@@ -35,6 +63,16 @@ export const MainBody = styled.div`
       line-height: 13px;
       font-weight: 700;
     }
+  }
+
+  .editTitle-part {
+    width: 309px;
+    border-bottom: 2px solid white;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 10px 20px;
   }
 
   .title-part {
@@ -101,7 +139,7 @@ export const ContainerWrapper = styled.div`
 
 export const LongContainerWrapper = styled.div`
   margin: 0px 20px 10px 5%;
-  width: 320px;
+  width: 330px;
   height: 480px;
   display: grid;
   grid-template-rows: 15%;
@@ -138,21 +176,7 @@ export const MessageBox = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: -100px -100px 0px 0px;
-  width: 99px;
-  height: 39px;
-  z-index: 999;
-  background: rgba(0, 0, 0, 0.4);
-  color: white;
-  border-radius: 25px;
-`;
-
-export const SpecialMessageBox = styled.div`
-  position: relative;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin: -100px 0px 0px -100px;
+  margin: -100px -20px 0px 0px;
   width: 99px;
   height: 39px;
   z-index: 999;
@@ -165,12 +189,13 @@ export const ContainerPage = styled.button`
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #f3f3f3;
+  background-color: transparent;
   border-color: transparent;
   text-align: center;
   box-sizing: content-box;
   border-radius: 10%;
-  width: 64px;
+  background-size: 96px 64px; //96px 64px
+  width: 96px; //96px
   height: 64px;
 `;
 
@@ -261,4 +286,9 @@ export const EditStickerButton = styled.button`
   color: white;
   top: 649px;
   left: 287px;
+`;
+
+export const MiniSticker = styled.img`
+  width: 64px;
+  height: 64px;
 `;
