@@ -1,12 +1,16 @@
 import styled from "styled-components";
 import { linearBackGroundColors } from "../Css/variables";
+
 import { colors } from "../Css/variables";
+
 
 export const MainBody = styled.div`
   width: 100vw;
   height: 100vh;
   position: relative;
+
   background: ${linearBackGroundColors.darkblue_blue};
+
   top: 0%;
   left: 0%;
 
