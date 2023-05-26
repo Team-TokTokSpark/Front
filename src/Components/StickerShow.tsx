@@ -1,10 +1,8 @@
 import { useState } from "react";
 import {
   ContainerPage,
-  ContainerWrapper,
   LongContainerWrapper,
   MessageBox,
-  MiniSticker,
   PlayMusic,
 } from "../Styles/HomePageStyle";
 
@@ -35,81 +33,46 @@ function StickerShow() {
   };
   return (
     <div>
-      {sticker.length > 9 ? (
-        <LongContainerWrapper>
-          <div className="playMusic">
-            <PlayMusic>재생중인 음악</PlayMusic>
-          </div>
-          {sticker.map((e, index) => {
-            if (index % 5 === 3 || index % 5 === 4) {
-              return (
-                <>
-                  <ContainerPage
-                    onClick={() => handleClick(e[0])}
-                    style={{
-                      backgroundImage: `url(/img/sticker/sticker${e[2]}.png)`,
-                    }}
-                    className={`${
-                      select === e[0] ? "sticker-select" : ""
-                    } ${"even-item"}`}
-                  >
-                    {select === e[0] ? <MessageBox>{e[1]}</MessageBox> : null}
-                  </ContainerPage>
-                </>
-              );
-            } else {
-              return (
-                <>
-                  <ContainerPage
-                    onClick={() => handleClick(e[0])}
-                    style={{
-                      backgroundImage: `url(/img/sticker/sticker${e[2]}.png)`,
-                    }}
-                    className={`${
-                      select === e[0] ? "sticker-select" : ""
-                    } ${"item"}`}
-                  >
-                    {select === e[0] ? <MessageBox>{e[1]}</MessageBox> : null}
-                  </ContainerPage>
-                </>
-              );
-            }
-          })}
-        </LongContainerWrapper>
-      ) : (
-        <ContainerWrapper>
-          <div className="playMusic">
-            <PlayMusic>재생중인 음악</PlayMusic>
-          </div>
-          {sticker.map((e, index) => {
-            if (index % 3 === 0) {
-              return (
-                <>
-                  <ContainerPage
-                    onClick={() => handleClick(e[0])}
-                    className={`${select === e[0] ? "sticker-select" : ""}`}
-                  >
-                    {e[0]}
-                    {select === e[0] ? <MessageBox>{e[1]}</MessageBox> : null}
-                  </ContainerPage>
-                </>
-              );
-            } else {
-              return (
-                <>
-                  <ContainerPage
-                    onClick={() => handleClick(e[0])}
-                    className={`${select === e[0] ? "sticker-select" : ""}`}
-                  >
-                    {e[0]}
-                    {select === e[0] ? <MessageBox>{e[1]}</MessageBox> : null}
-                  </ContainerPage>
-                </>
-              );
-            }
-          })}
-        </ContainerWrapper>
-      )}
+      <LongContainerWrapper>
+        <div className="playMusic">
+          <PlayMusic>재생중인 음악</PlayMusic>
+        </div>
+        {sticker.map((e, index) => {
+          if (index % 5 === 3 || index % 5 === 4) {
+            return (
+              <>
+                <ContainerPage
+                  onClick={() => handleClick(e[0])}
+                  style={{
+                    backgroundImage: `url(/img/sticker/sticker${e[2]}.png)`,
+                  }}
+                  className={`${
+                    select === e[0] ? "sticker-select" : ""
+                  } ${"even-item"}`}
+                >
+                  {select === e[0] ? <MessageBox>{e[1]}</MessageBox> : null}
+                </ContainerPage>
+              </>
+            );
+          } else {
+            return (
+              <>
+                <ContainerPage
+                  onClick={() => handleClick(e[0])}
+                  style={{
+                    backgroundImage: `url(/img/sticker/sticker${e[2]}.png)`,
+                  }}
+                  className={`${
+                    select === e[0] ? "sticker-select" : ""
+                  } ${"item"}`}
+                >
+                  {select === e[0] ? <MessageBox>{e[1]}</MessageBox> : null}
+                </ContainerPage>
+              </>
+            );
+          }
+        })}
+      </LongContainerWrapper>
     </div>
   );
 }
