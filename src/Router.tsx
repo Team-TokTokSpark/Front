@@ -35,7 +35,6 @@ import EditPage from "./Pages/Edit";
 //   );
 // };
 
-
 const router = createBrowserRouter([
   {
     path: "/",
@@ -50,8 +49,18 @@ const router = createBrowserRouter([
     path: "page",
     element: <MusicPage />,
     children: [
-      { path: "myMusic/:idx", element: <MymusicPage /> },
+      {
+        path: "myMusic/:idx",
+        element: <MymusicPage />,
+        children: [
+          {
+            path: "edit",
+            element: <EditPage />,
+          },
+        ],
+      },
       { path: "otherMusic/:idx", element: <OthermusicPage /> },
+      { path: "edit", element: <EditPage /> },
     ],
   },
   { path: "*", element: <NotFoundPage /> },
