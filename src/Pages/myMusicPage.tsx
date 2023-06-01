@@ -1,17 +1,16 @@
-import { useNavigate, useOutletContext } from "react-router-dom";
+import { Link } from "react-router-dom";
+import MusicPageShow from "../Components/MusicPageShow";
 
 function MymusicPage() {
-  const navigate = useNavigate();
   return (
-    <div className="setting-part">
-      <img
-        src="/img/Pencil_Edit.png"
-        alt="editing"
-        onClick={() => {
-          navigate(`/edit`);
-        }}
-      />
-    </div>
+    <>
+      <div className="setting-part">
+        <Link to="edit">
+          <img src="/img/Pencil_Edit.png" alt="editing" />
+        </Link>
+      </div>
+      <MusicPageShow />
+    </>
   );
 }
 
