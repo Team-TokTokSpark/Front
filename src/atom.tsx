@@ -1,5 +1,6 @@
 import { atom, selector } from "recoil";
 import { jsonURL } from "./Constants/jsonURL";
+import axios from "axios";
 
 export const popUpModal = atom({
   key: "popUpModal",
@@ -20,8 +21,8 @@ export const friendsListSelector = selector({
   key: "friendsListSelector",
   get: async () => {
     try {
-      const response = await fetch(`${jsonURL}/frineds.json`);
-      const data = await response.json();
+      const response = await axios(`${jsonURL}/friends`);
+      const data = await response.data;
 
       return data;
     } catch (error) {
