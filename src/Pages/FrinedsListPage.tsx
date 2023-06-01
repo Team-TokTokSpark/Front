@@ -1,46 +1,37 @@
-import React, { useState, useEffect } from "react";
-import { useRecoilState } from "recoil";
-
+import { useState } from "react";
+import { useRecoilValue } from "recoil";
 import { useNavigate } from "react-router-dom";
-import { friendsListSelector } from "../atom";
-import type { userProps } from "../Constants/interfaces";
+
 import * as S from "../Styles/FriendsListPageStyle";
 import icons from "../Css/icons";
-import FriendsListItem from "../Components/FriendsListItem";
+
+import { friendsListSelector } from "../atom";
+import type { friendsProps } from "../Constants/interfaces";
 import { jsonURL } from "../Constants/jsonURL";
+import FriendsListItem from "../Components/FriendsListItem";
+import axios from "axios";
 
 const FriendsListPage = () => {
   const navigate = useNavigate();
   const [searchTerm, setSearchTerm] = useState("");
-  const [friendsList, setFriendsList] = useRecoilState(friendsListSelector);
+  const friendsList = useRecoilValue(friendsListSelector);
   const [localFriendsList, setLocalFriendsList] = useState(friendsList);
-  const filteredData = localFriendsList.filter((data: userProps) =>
-    data.name?.toLowerCase().includes(searchTerm.toLowerCase())
+  const filteredData = localFriendsList.filter((data: friendsProps) =>
+    data.nickname?.toLowerCase().includes(searchTerm.toLowerCase())
   );
-
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSearchTerm(e.target.value);
   };
 
-  const onToggleFollowHandler = (id: any, follow: boolean) => {
-    const toggledData = localFriendsList.map((data: userProps) =>
+  const onToggleFollowHandler = async (id: any, follow: boolean) => {
+    const toggledData = localFriendsList.map((data: friendsProps) =>
       data.id === id ? { ...data, follow: !follow } : data
     );
     setLocalFriendsList(toggledData);
-  };
-
-  useEffect(() => {
-    return () => {
-      putdata();
-    };
-  });
-
-  const putdata = async () => {
-    await fetch(`${jsonURL}/frineds.json`, {
+    await axios(`${jsonURL}/friends/${id}`, {
       method: "PUT",
-      body: JSON.stringify(localFriendsList),
+      data: toggledData[id],
     });
-    setFriendsList(localFriendsList);
   };
 
   return (
@@ -60,7 +51,7 @@ const FriendsListPage = () => {
           {icons.search}
         </S.InputBox>
         <S.Ul>
-          {filteredData.map((datas: userProps) => (
+          {filteredData.map((datas: friendsProps) => (
             <FriendsListItem
               key={datas.id}
               datas={datas}
