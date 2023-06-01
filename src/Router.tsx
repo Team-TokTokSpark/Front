@@ -11,30 +11,6 @@ import FriendsListPage from "./Pages/FrinedsListPage";
 import SettingPage from "./Pages/SettingPage";
 import EditPage from "./Pages/Edit";
 
-// const Router = () => {
-//   return (
-//     <BrowserRouter>
-//       <Routes>
-//         <Route path="/" element={<HomePage />} />
-//         <Route path="/login" element={<LoginPage />}></Route>
-//         <Route path="/kakaoLogin" element={<KakaoLoginPage />}></Route>
-//         <Route path="/signup" element={<SignUpPage />} />
-//         <Route path="/setting" element={<SettingPage />}></Route>
-//         <Route
-//           path="/friendsList"
-//           element={<FriendsListPage />}
-//           loader={loader}
-//         />
-//         <Route path="/page/*" element={<MusicPage />}>
-//           <Route path={"myMusic/:idx"} element={<MymusicPage />} />
-//           <Route path={"otherMusic/:idx"} element={<OthermusicPage />} />
-//         </Route>
-//         <Route path="*" element={<NotFoundPage />}></Route>
-//       </Routes>
-//     </BrowserRouter>
-//   );
-// };
-
 const router = createBrowserRouter([
   {
     path: "/",
@@ -60,6 +36,7 @@ const router = createBrowserRouter([
       { path: "otherMusic/:idx", element: <OthermusicPage /> },
     ],
   },
+  { path: "edit", element: <EditPage /> },
   { path: "*", element: <NotFoundPage /> },
 ]);
 

@@ -1,0 +1,52 @@
+{
+  "friends": [
+    {
+      "introduce": "zzz",
+      "follow": true,
+      "id": 0,
+      "nickname": "hello"
+    },
+    {
+      "introduce": "hype boy~",
+      "follow": true,
+      "id": 2,
+      "nickname": "꾸꾸까까"
+    },
+    {
+      "introduce": "맞팔 환영",
+      "follow": true,
+      "id": 3,
+      "nickname": "함플리 중독자"
+    },
+    {
+      "introduce": "blah blah blah",
+      "follow": true,
+      "id": 4,
+      "nickname": "post malone"
+    },
+    {
+      "introduce": "blah blah blah",
+      "follow": true,
+      "id": 5,
+      "nickname": "post malone"
+    },
+    {
+      "introduce": "...",
+      "follow": true,
+      "id": 6,
+      "nickname": "spider man"
+    },
+    {
+      "introduce": "...",
+      "follow": true,
+      "id": 7,
+      "nickname": "잇타 노래왕"
+    }
+  ],
+  "users": [
+    {
+      "nickname": "꾸꾸까까",
+      "introduce": "자기소개 입니다!"
+    }
+  ]
+}

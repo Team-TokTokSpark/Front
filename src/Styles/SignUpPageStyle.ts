@@ -9,6 +9,14 @@ export const LoginContainer = styled.div`
   display: flex;
   position: relative;
   justify-content: center;
+  button {
+    all: unset;
+    position: absolute;
+    top: 5%;
+    left: 90%;
+    transform: translate(-90%, -5%);
+    font-size: 14px;
+  }
 `;
 
 export const MainContainer = styled.div`
@@ -20,16 +28,27 @@ export const MainContainer = styled.div`
   flex-direction: column;
 
   h2 {
-    font-size: 28px;
+    font-size: 32px;
     text-shadow: 1px 2px 2px rgba(0, 0, 0, 0.25);
     width: 300px;
-    margin: 0 auto;
+    margin: 0 auto 60px;
     text-align: left;
+  }
+  div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(255, 255, 255, 0.1);
+    box-shadow: 1px 2px 4px rgba(0, 0, 0, 0.1);
+    width: 220px;
+    height: 50px;
+    border-radius: 25px;
+    margin: 150px auto 0;
   }
 `;
 
 export const Form = styled.form`
-  margin: 60px auto 0;
+  margin: 0px auto;
   width: 300px;
   label {
     display: flex;
@@ -56,11 +75,11 @@ export const Form = styled.form`
       color: #525252;
     }
   }
-  button {
+  /* button {
     all: unset;
     position: absolute;
     top: 5%;
     left: 90%;
     transform: translate(-90%, -5%);
-  }
+  } */
 `;

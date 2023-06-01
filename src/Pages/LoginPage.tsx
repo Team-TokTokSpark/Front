@@ -17,8 +17,9 @@ const LoginPage = () => {
     <S.LoginContainer>
       <S.NoticeButton>{icons.notice}</S.NoticeButton>
       <S.MainContainer>
-        <span>함께 만드는 플레이 리스트{a}</span>
-        <S.Logo>함플리</S.Logo>
+        <S.Logo src="img/logo/main_logo.png" alt="" />
+        <span>함께 만드는 플레이 리스트</span>
+
         <button onClick={Loginhandler}>
           <img
             src="img/kakao_login/kakao_login_medium_wide.png"

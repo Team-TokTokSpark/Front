@@ -1,4 +1,4 @@
-import React from "react";
+import { useNavigate } from "react-router-dom";
 import {
   Li,
   ProfileContainer,
@@ -6,7 +6,8 @@ import {
 } from "../Styles/FriendsListPageStyle";
 
 const FriendsListItem = (props: any) => {
-  const { name, comment, id, follow } = props.datas;
+  const navigate = useNavigate();
+  const { nickname, introduce, id, follow } = props.datas;
 
   const toggleFollow = (id: any) => {
     props.onToggleFollow(id, follow);
@@ -15,8 +16,17 @@ const FriendsListItem = (props: any) => {
   return (
     <Li>
       <ProfileContainer>
-        <div>{name}</div>
-        <div>{comment}</div>
+        {/* dummyData 바꿔줘야함 */}
+        <div
+          onClick={() => {
+            navigate(`/page/otherMusic/${nickname}`, {
+              state: { userId: nickname, pageName: nickname },
+            });
+          }}
+        >
+          {nickname}
+        </div>
+        <div>{introduce}</div>
       </ProfileContainer>
       <ButtonContainer>
         {follow ? (
