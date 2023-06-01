@@ -1,6 +1,11 @@
-export interface userProps {
+export interface friendsProps {
   id: number;
-  name: string;
-  comment: string;
+  nickname: string;
+  introduce: string;
   follow: boolean;
+}
+
+export interface userInformationProps {
+  nickname: string;
+  introduce: string;
 }

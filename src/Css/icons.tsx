@@ -14,7 +14,7 @@ const icons = {
   spotify: <BsSpotify />,
   unfollow: <SlUserUnfollow />,
   plus: <BsPlusLg />,
-  search: <FiSearch />
+  search: <FiSearch />,
   musicnote: <CiMusicNote1 />,
 };
 
