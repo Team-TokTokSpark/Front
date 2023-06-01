@@ -8,7 +8,6 @@ export const PageContainer = styled.div`
   min-height: 100vh;
   background: ${linearBackGroundColors.medium_supple_blue};
   color: white;
-
 `;
 
 export const FriendsListHeader = styled.div`
@@ -73,7 +72,7 @@ export const Ul = styled.ul`
   width: 70vw;
   min-width: 320px;
   height: 100%;
-  margin: 20px auto;
+  margin: 20px auto 0;
   padding: 0 0 5px 0;
 `;
 

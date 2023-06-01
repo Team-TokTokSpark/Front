@@ -2,24 +2,42 @@ import styled from "styled-components";
 
 import { colors, linearBackGroundColors } from "../Css/variables";
 
-
 export const PageContainer = styled.div`
   width: 100vw;
   height: 100vh;
-
-  background: ${linearBackGroundColors.purple_yellow};
-
+  background: ${linearBackGroundColors.medium_supple_blue};
+  color: white;
+  h3 {
+    color: ${colors.supplementary_green};
+    font-size: 18px;
+  }
 `;
-export const BackButton = styled.div`
+
+export const FriendsListHeader = styled.div`
   display: flex;
+  position: relative;
   align-items: center;
-  text-align: left;
-  font-size: 32px;
-  padding: 15px 0 0 15px;
+  width: 70vw;
+  min-width: 320px;
+  margin: 0 auto;
+  padding-top: 30px;
+  height: 60px;
+  button {
+    all: unset;
+    cursor: pointer;
+    svg {
+      font-size: 24px;
+    }
+  }
+  div {
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, 0);
+  }
 `;
 
 export const ProfileBox = styled.div`
-  height: 33%;
+  height: 50%;
   width: 60vw;
   margin: 0 auto;
   display: flex;
@@ -29,30 +47,34 @@ export const ProfileBox = styled.div`
 `;
 
 export const ProfileContainer = styled.div`
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
   height: 80vh;
   width: 70vw;
   min-width: 300px;
-  background-color: rgba(211, 211, 211, 0.3);
+  background-color: rgba(0, 0, 0, 0.1);
   border-radius: 30px;
+  margin: 30px auto;
   padding: 5vh 20px;
+  box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.1);
 
   ${ProfileBox}:nth-child(2) {
-    border-bottom: 1px solid black;
-    border-top: 1px solid black;
+    border-top: 1px solid white;
+    font-size: 15px;
+    font-weight: 400;
+
     div {
-      font-size: 16px;
-      font-weight: 700;
+      margin-top: 20px;
     }
-  }
-  ${ProfileBox}:nth-child(3) {
     button {
       all: unset;
       margin: 5px 0;
       cursor: pointer;
+    }
+    .fw700 {
+      font-weight: 700;
+      font-size: 16px;
+    }
+    .left30 {
+      margin-left: 15px;
     }
   }
 `;
@@ -61,21 +83,52 @@ export const ProfileHeader = styled.div`
   display: flex;
   justify-content: space-between;
   margin-bottom: 20px;
-  div {
-    font-weight: 700;
-  }
+
   button {
     all: unset;
+    font-size: 10px;
     cursor: pointer;
+    background-color: rgba(255, 255, 255, 0.2);
+    width: 45px;
+    height: 26px;
+    text-align: center;
+    border-radius: 13px;
   }
 `;
 
 export const ProfileInfo = styled.div`
-  div:nth-child(1) {
-    font-size: 24px;
-    margin-bottom: 4px;
-  }
-  div:nth-child(2) {
-    font-size: 15px;
+  div {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 5px;
+    padding: 0 15px;
+    p {
+      display: flex;
+      align-items: center;
+      width: 20%;
+      font-size: 11px;
+      min-width: 50px;
+    }
+    input {
+      all: unset;
+      background-color: rgba(255, 255, 255, 0.3);
+      border-radius: 20px;
+
+      box-shadow: inset 2px 2px 4px rgba(0, 0, 0, 0.1);
+      text-indent: 10px;
+    }
+    input,
+    span {
+      width: 100%;
+      font-size: 15px;
+      height: 25px;
+    }
+    span {
+      display: block;
+      line-height: 25px;
+      text-align: left;
+      padding-left: 5px;
+    }
   }
 `;
