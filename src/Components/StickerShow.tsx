@@ -1,9 +1,9 @@
 import { useState } from "react";
 import {
-  ContainerPage,
   LongContainerWrapper,
   MessageBox,
   PlayMusic,
+  StickerPage,
 } from "../Styles/HomePageStyle";
 
 function StickerShow() {
@@ -41,7 +41,7 @@ function StickerShow() {
           if (index % 5 === 3 || index % 5 === 4) {
             return (
               <>
-                <ContainerPage
+                <StickerPage
                   onClick={() => handleClick(e[0])}
                   style={{
                     backgroundImage: `url(/img/sticker/sticker${e[2]}.png)`,
@@ -51,13 +51,13 @@ function StickerShow() {
                   } ${"even-item"}`}
                 >
                   {select === e[0] ? <MessageBox>{e[1]}</MessageBox> : null}
-                </ContainerPage>
+                </StickerPage>
               </>
             );
           } else {
             return (
               <>
-                <ContainerPage
+                <StickerPage
                   onClick={() => handleClick(e[0])}
                   style={{
                     backgroundImage: `url(/img/sticker/sticker${e[2]}.png)`,
@@ -67,7 +67,7 @@ function StickerShow() {
                   } ${"item"}`}
                 >
                   {select === e[0] ? <MessageBox>{e[1]}</MessageBox> : null}
-                </ContainerPage>
+                </StickerPage>
               </>
             );
           }

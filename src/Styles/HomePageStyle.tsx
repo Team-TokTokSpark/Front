@@ -1,9 +1,6 @@
 import styled from "styled-components";
 import { linearBackGroundColors } from "../Css/variables";
 
-import { colors } from "../Css/variables";
-
-
 export const MainBody = styled.div`
   width: 100vw;
   height: 100vh;
@@ -124,17 +121,17 @@ export const PlayMusic = styled.div`
 
 export const ContainerWrapper = styled.div`
   margin: 30px 20px;
-  width: 320px;
+  width: 330px;
   height: 480px;
   display: grid;
-  grid-template-rows: 15%;
+  grid-template-rows: 1%;
   grid-auto-rows: 20%;
   grid-template-columns: repeat(auto-fill, minmax(27%, auto));
-  /* gap: 10px 10px; */
+  gap: 20px 10px;
   border: 2px solid transparent;
   border-radius: 20px;
   //콘텐츠 색깔 보더 색깔
-  background-image: ${linearBackGroundColors.darkblue_blue},
+  background-image: ${linearBackGroundColors.light_blue},
     ${linearBackGroundColors.green_purple};
   //어느 영역부터 채울지
   background-origin: border-box;
@@ -145,6 +142,36 @@ export const ContainerWrapper = styled.div`
   overflow: scroll;
   scrollbar-width: none;
   scrollbar-color: transparent transparent;
+  .blackSpace {
+    grid-column: auto / span 3;
+  }
+  .containerTheme0 {
+    width: 70px;
+    height: 70px;
+    background: ${linearBackGroundColors.blue_blue};
+    background-repeat: no-repeat;
+  }
+
+  .containerTheme1 {
+    width: 70px;
+    height: 70px;
+    background: ${linearBackGroundColors.blue_orange};
+    background-repeat: no-repeat;
+  }
+
+  .containerTheme2 {
+    width: 70px;
+    height: 70px;
+    background: ${linearBackGroundColors.purple_yellow};
+    background-repeat: no-repeat;
+  }
+
+  .containerTheme3 {
+    width: 70px;
+    height: 70px;
+    background: ${linearBackGroundColors.pink_green};
+    background-repeat: no-repeat;
+  }
 `;
 
 export const LongContainerWrapper = styled.div`
@@ -197,6 +224,35 @@ export const MessageBox = styled.div`
 
 export const ContainerPage = styled.button`
   display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: end;
+  background-color: transparent;
+  border-color: transparent;
+  word-break: break-all;
+  text-align: right;
+  box-sizing: content-box;
+  border-radius: 15px;
+  background-size: 90px 90px; //96px 64px
+  font-size: 12px;
+  line-height: 14px;
+  font-weight: 700;
+  color: white;
+  padding: 10px;
+  width: 70px; //96px
+  height: 70px;
+  .imgInput {
+    width: 36px;
+    height: 36px;
+    background-size: 36px 36px;
+    background-position: center;
+    margin-top: 10px;
+    align-self: flex-start;
+  }
+`;
+
+export const StickerPage = styled.button`
+  display: flex;
   justify-content: center;
   align-items: center;
   background-color: transparent;
@@ -245,7 +301,6 @@ export const StickerMakeButton = styled.button`
   height: 50px;
   border-radius: 50%;
   background-color: linear-gradient(
-    180deg,
     rgba(255, 220, 220, 0.7) 0%,
     rgba(241, 255, 203, 0.7) 100%
   );
@@ -284,7 +339,8 @@ export const EditStickerButton = styled.button`
   height: 50px;
   border-radius: 50%;
   background: ${linearBackGroundColors.pink_green};
-  border-color: transparent;
+  background-repeat: no-repeat;
+  border-color: rgba(255, 255, 255, 0.8);
   position: absolute;
   top: 90%;
   left: 50%;

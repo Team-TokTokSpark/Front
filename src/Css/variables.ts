@@ -24,6 +24,7 @@ export const colors = {
 export const linearBackGroundColors = {
   darkblue_blue: `linear-gradient(${colors.primary_medium},${colors.primary_light})`,
   blue_blue: `linear-gradient(${colors.primary_light},${colors.primary_dark})`,
+  light_blue: `linear-gradient(${colors.primary_light},${colors.primary_light})`,
   purple_yellow: `linear-gradient(${colors.supplementary_purple},${colors.supplementary_yellow})`,
   blue_orange: `linear-gradient(${colors.supplementary_blue},${colors.supplementary_orange})`,
   pink_green: `linear-gradient(${colors.supplementary_pink},${colors.supplementary_green})`,
