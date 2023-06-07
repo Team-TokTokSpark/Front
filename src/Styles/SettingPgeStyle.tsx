@@ -103,6 +103,7 @@ export const ProfileInfo = styled.div`
     align-items: center;
     margin-bottom: 5px;
     padding: 0 15px;
+
     p {
       display: flex;
       align-items: center;
@@ -130,5 +131,18 @@ export const ProfileInfo = styled.div`
       text-align: left;
       padding-left: 5px;
     }
+    textarea {
+      resize: none;
+      width: 100%;
+      font-size: 15px;
+      height: 75px;
+    }
+  }
+  div:nth-child(1) {
+    height: 25px;
+  }
+
+  div:nth-child(2) {
+    height: 25px;
   }
 `;

@@ -1,6 +1,6 @@
 import React from "react";
 import { Audio } from "react-loader-spinner";
-import { LoadingContainer } from "../Styles/LoadingStyle";
+import { LoadingContainer } from "../../Styles/LoadingStyle";
 
 const Loading = () => {
   return (

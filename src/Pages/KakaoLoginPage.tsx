@@ -29,6 +29,9 @@ const KakaoLoginPage = () => {
       const data = response.data;
       setAuthToken(data.access_token);
 
+      //회원가입 가입시
+      navigate("/");
+      //회원가입 미가입시
       navigate("/signup");
     } catch (error) {
       console.error(error);
