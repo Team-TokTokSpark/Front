@@ -1,11 +1,14 @@
-import * as S from "../Styles/SettingPgeStyle";
-import icons from "../Css/icons";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+
+import KakaoLogoutButton from "../Components/SignUp/KakaoLogoutButton";
+import * as S from "../Styles/SettingPgeStyle";
+import icons from "../Css/icons";
 
 const SettingPage = () => {
   const navigate = useNavigate();
   const [editToggle, setEditToggle] = useState<boolean>(false);
+
   //추후에 바꿔줘야함 임시데이터.
   const [nickname, setNickname] = useState("꾸꾸까까");
   const [introduce, setIntroduce] = useState(
@@ -51,10 +54,10 @@ const SettingPage = () => {
               <div>
                 <p>자기소개</p>
                 {editToggle ? (
-                  <input
+                  <textarea
                     placeholder={introduce}
                     onChange={(e) => setIntroduce(e.target.value)}
-                  />
+                  ></textarea>
                 ) : (
                   <span>{introduce}</span>
                 )}
@@ -66,7 +69,8 @@ const SettingPage = () => {
             <div className="fw700 left30">스포티파이 연동 설정</div>
             <button className="left30">연동 계정 변경</button>
             <button className="left30">연동 계정 삭제</button>
-            <button className="fw700 left30">로그아웃</button>
+
+            <KakaoLogoutButton />
             <button className="fw700 left30">계정 탈퇴</button>
           </S.ProfileBox>
         </S.ProfileContainer>
