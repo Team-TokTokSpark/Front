@@ -28,7 +28,7 @@ export const MainContainer = styled.div`
   left: 50%;
   transform: translate(-50%, -50%);
 
-  span {
+  p {
     color: ${colors.primary_dark};
     font-size: 24px;
   }

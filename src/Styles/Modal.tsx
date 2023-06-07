@@ -11,8 +11,8 @@ export const BackgroundModal = styled.div`
 `;
 
 export const ModalPage = styled.div`
-  width: 210px;
-  height: 330px;
+  width: 80%;
+  height: 80%;
   z-index: 450;
   position: absolute;
   top: 50%;
