@@ -1,6 +1,6 @@
 import { useRecoilState } from "recoil";
 import { nextPopUpModal, popUpModal } from "../atom";
-import { BackgroundModal, ModalPage } from "../Styles/Modal";
+import * as M from "../Styles/Modal";
 
 type Props = {
   modalClose: () => void;
@@ -8,10 +8,10 @@ type Props = {
 
 const ReturnNextModal = ({ modalClose }: Props) => {
   return (
-    <ModalPage>
+    <M.ModalPage>
       <div>The Sticker Add Page</div>
       <button onClick={modalClose}>닫기</button>
-    </ModalPage>
+    </M.ModalPage>
   );
 };
 
@@ -23,8 +23,8 @@ function StickerModal({ modalClose }: Props) {
     setModalOpen(!modalOpen);
   };
   return (
-    <BackgroundModal>
-      <ModalPage>
+    <M.BackgroundModal>
+      <M.ModalPage>
         <div>Search Modal Page</div>
         <button
           onClick={() => {
@@ -35,8 +35,8 @@ function StickerModal({ modalClose }: Props) {
         </button>
         {nextModalOpen && <ReturnNextModal modalClose={nextModalClose} />}
         <button onClick={modalClose}>닫기</button>
-      </ModalPage>
-    </BackgroundModal>
+      </M.ModalPage>
+    </M.BackgroundModal>
   );
 }
 
