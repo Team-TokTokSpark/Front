@@ -5,7 +5,7 @@ import {
   ShareButton,
   StickerMakeButton,
 } from "../Styles/HomePageStyle";
-import StickerShow from "./StickerShow";
+import StickerShow from "./Sticker/StickerShow";
 import icons from "../Css/icons";
 import StickerModal from "./ModalPage";
 import { useRecoilState } from "recoil";

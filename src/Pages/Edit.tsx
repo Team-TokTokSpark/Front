@@ -3,7 +3,7 @@ import { useRecoilState } from "recoil";
 import { MusicColor } from "../atom";
 import { useNavigate } from "react-router-dom";
 import { MainBody } from "../Styles/HomePageStyle";
-import EditStickerShow from "../Components/EditStickerShow";
+import EditStickerShow from "../Components/Sticker/EditStickerShow";
 import {
   ColorChangeDiv,
   EditButtonDiv,

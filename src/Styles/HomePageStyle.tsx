@@ -251,7 +251,7 @@ export const ContainerPage = styled.button`
   }
 `;
 
-export const StickerPage = styled.button`
+export const BigStickerPage = styled.button`
   display: flex;
   justify-content: center;
   align-items: center;
@@ -262,6 +262,20 @@ export const StickerPage = styled.button`
   border-radius: 10%;
   background-size: 96px 64px; //96px 64px
   width: 96px; //96px
+  height: 64px;
+`;
+
+export const StickerPage = styled.button`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: transparent;
+  border-color: transparent;
+  text-align: center;
+  box-sizing: content-box;
+  border-radius: 10%;
+  background-size: 64px 64px; //96px 64px
+  width: 64px; //96px
   height: 64px;
 `;
 
