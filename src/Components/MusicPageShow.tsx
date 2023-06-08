@@ -7,22 +7,18 @@ import {
 } from "../Styles/HomePageStyle";
 import StickerShow from "./Sticker/StickerShow";
 import icons from "../Css/icons";
-import StickerModal from "./ModalPage";
+import StickerModal from "./Modal/ModalPage";
 import { useRecoilState } from "recoil";
-import { popUpModal } from "../atom";
+import { isModalView } from "../atom";
 
 const MusicPageShow = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const [userId, setUserId] = useState(location.state?.userId);
-  const [modalOpen, setModalOpen] = useRecoilState(popUpModal);
+  const [popupModal, setPopupModal] = useRecoilState(isModalView);
+
   const pageName = location.state?.pageName;
-  const StickerAdd = () => {
-    setModalOpen(!modalOpen);
-  };
-  const closeModal = () => {
-    setModalOpen(!modalOpen);
-  };
+
   return (
     <>
       <div className="nickname-part">
@@ -41,9 +37,11 @@ const MusicPageShow = () => {
         <ShareButton>링크 공유</ShareButton>
       </div>
       <StickerShow />
-      <StickerMakeButton onClick={StickerAdd}>{icons.plus}</StickerMakeButton>
-      {modalOpen && <StickerModal modalClose={closeModal} />}
+      <StickerMakeButton onClick={() => setPopupModal(true)}>
+        {icons.plus}
+      </StickerMakeButton>
       <ExportButton>{icons.spotify}</ExportButton>
+      {popupModal && <StickerModal />}
     </>
   );
 };

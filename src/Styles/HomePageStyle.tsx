@@ -216,7 +216,7 @@ export const MessageBox = styled.div`
   margin: -100px -20px 0px 0px;
   width: 99px;
   height: 39px;
-  z-index: 999;
+  z-index: 10;
   background: rgba(0, 0, 0, 0.4);
   color: white;
   border-radius: 25px;
@@ -314,6 +314,7 @@ export const StickerMakeButton = styled.button`
   width: 50px;
   height: 50px;
   border-radius: 50%;
+  z-index: 20;
   background-color: linear-gradient(
     rgba(255, 220, 220, 0.7) 0%,
     rgba(241, 255, 203, 0.7) 100%
@@ -339,6 +340,7 @@ export const ExportButton = styled.button`
   border-color: transparent;
   top: 460px;
   left: 300px;
+  z-index: 20;
   svg {
     width: 50px;
     height: 50px;
