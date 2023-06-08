@@ -2,14 +2,27 @@ import { atom, selector } from "recoil";
 import { jsonURL } from "./Constants/jsonURL";
 import axios from "axios";
 
-export const popUpModal = atom({
-  key: "popUpModal",
+//modal영역
+export const isModalView = atom({
+  key: "modalView",
   default: false,
 });
 
-export const nextPopUpModal = atom({
-  key: "nextPopUpModal",
+export const isNextModalView = atom({
+  key: "nextModalView",
   default: false,
+});
+
+export const modalData = atom({
+  key: "modalData",
+  default: {
+    song: {
+      title: "Hype boy",
+      singer: "newJeans",
+    },
+    sticker: "3번이미지",
+    message: "이거 꼭 들어봐",
+  },
 });
 
 export const authTokenState = atom({
