@@ -13,7 +13,7 @@ export const BackgroundModal = styled.div`
 
 export const ModalPage = styled.div`
   width: 90%;
-  height: 90%;
+  height: 75%;
   z-index: 50;
   position: absolute;
   top: 50%;
@@ -60,17 +60,28 @@ export const SongSearchBox = styled.div`
 `;
 
 export const StickerSelectBox = styled.div`
-  width: 70vw;
-  min-width: 280px;
-  height: 70%;
-  margin: 20px auto 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  p {
+    font-size: 16px;
+    color: white;
+    margin-bottom: 20px;
+    width: 70vw;
+    min-width: 280px;
+    margin: 0px auto 20px;
+  }
   div {
-    width: 100%;
-    height: 100%;
-    div {
-      display: flex;
-      margin: 0 auto;
-      height: 20%;
+    display: flex;
+    justify-content: center;
+    height: 10vh;
+    img {
+    }
+    .selected {
+      border: 3px solid lightpink;
+      border-radius: 10px;
     }
   }
 `;
@@ -81,7 +92,7 @@ export const MessageRecommend = styled.input`
   min-width: 280px;
   display: block;
   height: 40px;
-  margin: 0px auto;
+  margin: 30px auto 40px;
   border: 1px solid ${colors.supplementary_green};
   border-radius: 10px;
   padding-left: 10px;
@@ -107,5 +118,8 @@ export const ButtonBox = styled.div`
   button {
     all: unset;
     color: ${colors.supplementary_green};
+  }
+  button:nth-child(1) {
+    color: #d6d6d6;
   }
 `;

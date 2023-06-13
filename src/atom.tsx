@@ -20,8 +20,8 @@ export const modalData = atom({
       title: "Hype boy",
       singer: "newJeans",
     },
-    sticker: "3번이미지",
-    message: "이거 꼭 들어봐",
+    sticker: "",
+    message: "",
   },
 });
 
