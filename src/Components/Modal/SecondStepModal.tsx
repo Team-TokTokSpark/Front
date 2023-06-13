@@ -1,14 +1,16 @@
 import { useState } from "react";
 import { isNextModalView, isModalView, modalData } from "../../atom";
-import { useSetRecoilState, useRecoilValue } from "recoil";
+import { useSetRecoilState, useRecoilValue, useRecoilState } from "recoil";
 import * as M from "./ModalStyle";
 import ModalStickerList from "./ModalStickerList";
+import Swal from "sweetalert2";
+
 const SecondStepModal = () => {
-  const [m, setM] = useState("");
+  const [recommendMessage, setRecommendMessage] = useState("");
   const setPopupModal = useSetRecoilState(isModalView);
   const setNextPopupModal = useSetRecoilState(isNextModalView);
-  const setMessage = useSetRecoilState(modalData);
-
+  const [modalDataObject, setModalDataObject] = useRecoilState(modalData);
+  const { song, sticker, message } = modalDataObject;
   const modal = useRecoilValue(modalData);
 
   const clearAllPopup = () => {
@@ -17,18 +19,32 @@ const SecondStepModal = () => {
   };
 
   const sendModalData = () => {
-    clearAllPopup();
-    console.log("첫번째+두번째 모달의 데이터:", modal);
+    if (song.title && song.singer && sticker && message) {
+      //전송 데이터
+      console.log("첫번째+두번째 모달의 데이터:", modal);
+      clearAllPopup();
+      setModalDataObject((prevModalData) => ({
+        ...prevModalData,
+        message: "",
+        sticker: "",
+      }));
+    } else {
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: "스티커와 메시지를 올바르게 입력 해주세요!",
+      });
+    }
   };
 
-  const abc = (e: any) => {
-    setM(e.target.value);
+  const messageChangeHandler = (e: any) => {
+    setRecommendMessage(e.target.value);
   };
 
   const save = () => {
-    setMessage((prevModalData) => ({
+    setModalDataObject((prevModalData) => ({
       ...prevModalData,
-      message: m,
+      message: recommendMessage,
     }));
   };
 
@@ -36,16 +52,14 @@ const SecondStepModal = () => {
     <>
       <M.StickerSelectBox>
         <p>스티커 디자인</p>
-        <div>
-          <ModalStickerList />
-        </div>
+        <ModalStickerList />
+        <M.MessageRecommend
+          placeholder="추천 메시지 입력하기"
+          value={recommendMessage}
+          onChange={messageChangeHandler}
+          onBlur={save}
+        />
       </M.StickerSelectBox>
-      <M.MessageRecommend
-        placeholder="추천 메시지 입력하기"
-        value={m}
-        onChange={abc}
-        onBlur={save}
-      />
       <M.ButtonBox>
         <button onClick={clearAllPopup}>취소</button>
         <button onClick={sendModalData}>붙이기</button>

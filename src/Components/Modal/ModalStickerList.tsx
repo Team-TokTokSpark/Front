@@ -1,29 +1,40 @@
-import React from "react";
+import React, { useState } from "react";
+import Sticker from "./ModalStickerItem";
+import { modalData } from "../../atom";
+import { useSetRecoilState } from "recoil";
 
 const ModalStickerList = () => {
-  //어떻게고쳐야 좋을꼬
+  const [selectedSticker, setSelectedSticker] = useState<string>("");
+  const setStickerModal = useSetRecoilState(modalData);
+  const handleStickerSelection = (sticker: string) => {
+    setSelectedSticker(sticker);
+    setStickerModal((prevModalData) => ({
+      ...prevModalData,
+      sticker: sticker,
+    }));
+  };
+
+  const stickerGroups = [
+    ["sticker1", "sticker3", "sticker2"],
+    ["sticker4", "sticker5", "sticker7"],
+    ["sticker9", "sticker11", "sticker6"],
+    ["sticker8", "sticker10", "sticker12"],
+  ];
+
   return (
     <>
-      <div>
-        <img src="/img/sticker/sticker1.png" alt="sticker1" />
-        <img src="/img/sticker/sticker3.png" alt="sticker3" />
-      </div>
-      <div>
-        <img src="/img/sticker/sticker2.png" alt="sticker2" />
-        <img src="/img/sticker/sticker4.png" alt="sticker4" />
-        {/* <img src="/img/sticker/sticker5.png" alt="sticker5" />
-        <img src="/img/sticker/sticker7.png" alt="sticker7" /> */}
-        <img src="/img/sticker/sticker6.png" alt="sticker6" />
-      </div>
-      <div>
-        <img src="/img/sticker/sticker9.png" alt="sticker9" />
-        <img src="/img/sticker/sticker11.png" alt="sticker11" />
-      </div>
-      <div>
-        <img src="/img/sticker/sticker8.png" alt="sticker8" />
-        <img src="/img/sticker/sticker10.png" alt="sticker10" />
-        <img src="/img/sticker/sticker12.png" alt="sticker12" />
-      </div>
+      {stickerGroups.map((stickerGroup, index) => (
+        <div key={index}>
+          {stickerGroup.map((sticker) => (
+            <Sticker
+              key={sticker}
+              alt={sticker}
+              isSelected={selectedSticker === sticker}
+              onClick={() => handleStickerSelection(sticker)}
+            />
+          ))}
+        </div>
+      ))}
     </>
   );
 };
