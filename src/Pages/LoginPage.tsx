@@ -1,34 +1,26 @@
-import { useRecoilValue } from "recoil";
-
-// import { REST_API_KEY, REDIRECT_URI } from "../Constants/kakaoLoginData";
-import { authTokenState } from "../atom";
+import KakaoLoginButton from "../Components/KakaoLogin/KakaoLoginButton";
 import * as S from "../Styles/LoginPageStyle";
-import icons from "../Css/icons";
 
 const LoginPage = () => {
-  const REST_API_KEY = `${process.env.REACT_APP_REST_API_KEY}`;
-
-  const REDIRECT_URI = `${process.env.REACT_APP_REDIRECT_URI}`;
-  const KAKAO_AUTH_URL = `https://kauth.kakao.com/oauth/authorize?client_id=${REST_API_KEY}&redirect_uri=${REDIRECT_URI}&response_type=code`;
-  const a = useRecoilValue(authTokenState);
-  console.log(REDIRECT_URI);
-  const Loginhandler = () => {
-    window.location.href = KAKAO_AUTH_URL;
-  };
-  console.log("토큰값", a);
   return (
     <S.LoginContainer>
-      <S.NoticeButton>{icons.notice}</S.NoticeButton>
       <S.MainContainer>
         <S.Logo src="img/logo/main_logo.png" alt="main_logo" />
-        <p>함께 만드는 플레이 리스트</p>
+        <p>
+          <strong>함</strong>께 만드는
+          <strong>플</strong>
+          레이
+          <strong>리</strong>
+          스트
+        </p>
+        <S.CD src="img/logo/main_cd.png" />
 
-        <button onClick={Loginhandler}>
-          <img
-            src="img/kakao_login/kakao_login_medium_wide.png"
-            alt="kakao_login"
-          />
-        </button>
+        <S.ArrowBox>
+          <S.ArrowItem></S.ArrowItem>
+          <S.ArrowItem></S.ArrowItem>
+          <S.ArrowItem></S.ArrowItem>
+        </S.ArrowBox>
+        <KakaoLoginButton />
       </S.MainContainer>
     </S.LoginContainer>
   );
