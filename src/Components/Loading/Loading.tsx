@@ -1,20 +1,15 @@
 import React from "react";
-import { Audio } from "react-loader-spinner";
-import { LoadingContainer } from "../../Styles/LoadingStyle";
+import * as S from "../../Styles/LoadingStyle";
 
 const Loading = () => {
   return (
-    <LoadingContainer>
-      <Audio
-        height="60"
-        width="60"
-        color="#FFF"
-        ariaLabel="audio-loading"
-        wrapperStyle={{}}
-        wrapperClass="wrapper-class"
-        visible={true}
-      />
-    </LoadingContainer>
+    <S.LoadingContainer>
+      <div>
+        <S.Logo src="img/logo/loading_cd.png" alt="loading_cd" />
+
+        <S.LoadingText>Loading...</S.LoadingText>
+      </div>
+    </S.LoadingContainer>
   );
 };
 export default Loading;

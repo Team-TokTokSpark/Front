@@ -5,7 +5,7 @@ import { colors, linearBackGroundColors } from "../Css/variables";
 export const PageContainer = styled.div`
   width: 100vw;
   height: 100vh;
-  background: ${linearBackGroundColors.medium_supple_blue};
+  background: ${linearBackGroundColors.blue_medium_light};
   color: white;
   h3 {
     color: ${colors.supplementary_green};
@@ -17,10 +17,10 @@ export const FriendsListHeader = styled.div`
   display: flex;
   position: relative;
   align-items: center;
-  width: 70vw;
+  width: 70%;
   min-width: 320px;
   margin: 0 auto;
-  padding-top: 30px;
+  padding-top: 50px;
   height: 60px;
   button {
     all: unset;
@@ -38,45 +38,23 @@ export const FriendsListHeader = styled.div`
 
 export const ProfileBox = styled.div`
   height: 50%;
-  width: 60vw;
+  width: 90%;
   margin: 0 auto;
-  display: flex;
+  /* display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: center; */
   font-size: 15px;
 `;
 
 export const ProfileContainer = styled.div`
-  height: 80vh;
-  width: 70vw;
+  height: 80%;
+  width: 90%;
   min-width: 300px;
   background-color: rgba(0, 0, 0, 0.1);
   border-radius: 30px;
   margin: 30px auto;
   padding: 5vh 20px;
   box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.1);
-
-  ${ProfileBox}:nth-child(2) {
-    border-top: 1px solid white;
-    font-size: 15px;
-    font-weight: 400;
-
-    div {
-      margin-top: 20px;
-    }
-    button {
-      all: unset;
-      margin: 5px 0;
-      cursor: pointer;
-    }
-    .fw700 {
-      font-weight: 700;
-      font-size: 16px;
-    }
-    .left30 {
-      margin-left: 15px;
-    }
-  }
 `;
 
 export const ProfileHeader = styled.div`
@@ -97,52 +75,73 @@ export const ProfileHeader = styled.div`
 `;
 
 export const ProfileInfo = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 50%;
   div {
+    width: 100%;
+    margin: 10px auto;
+    margin-left: 15px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 5px;
-    padding: 0 15px;
 
     p {
-      display: flex;
-      align-items: center;
       width: 20%;
       font-size: 11px;
       min-width: 50px;
     }
-    input {
-      all: unset;
-      background-color: rgba(255, 255, 255, 0.3);
-      border-radius: 20px;
-
-      box-shadow: inset 2px 2px 4px rgba(0, 0, 0, 0.1);
-      text-indent: 10px;
+    input,
+    span,
+    textarea {
+      width: 80%;
+      font-size: 14px;
     }
     input,
-    span {
-      width: 100%;
-      font-size: 15px;
-      height: 25px;
-    }
-    span {
-      display: block;
-      line-height: 25px;
-      text-align: left;
-      padding-left: 5px;
-    }
     textarea {
+      color: white;
+      background-color: rgba(255, 255, 255, 0.3);
+      border: none;
+      border-radius: 3px;
       resize: none;
-      width: 100%;
-      font-size: 15px;
-      height: 75px;
+      text-indent: 1px;
+      ::placeholder {
+        color: white;
+        opacity: 0.7;
+        font-size: 14px;
+      }
+      :hover {
+        border: 1px solid white;
+      }
+      :focus {
+        outline: none;
+        border: 1px solid white;
+      }
     }
   }
-  div:nth-child(1) {
-    height: 25px;
-  }
+`;
 
-  div:nth-child(2) {
-    height: 25px;
+export const AccountBox = styled.div`
+  height: 50%;
+  width: 90%;
+  padding-top: 30px;
+  margin: 0 auto;
+  border-top: 1px solid white;
+  font-size: 15px;
+  font-weight: 400;
+
+  button {
+    all: unset;
+    margin: 20px 0;
+    cursor: pointer;
+    display: block;
+    margin-left: 15px;
+
+    font-weight: 700;
+    font-size: 16px;
+    position: relative;
+    top: 20%;
+    transform: translateY(-20%);
   }
 `;
