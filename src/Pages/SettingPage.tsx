@@ -1,25 +1,44 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
-import KakaoLogoutButton from "../Components/SignUp/KakaoLogoutButton";
+import KakaoLogoutButton from "../Components/KakaoLogin/KakaoLogoutButton";
 import * as S from "../Styles/SettingPgeStyle";
 import icons from "../Css/icons";
+import { getUserProfile, patchUserProfile } from "../Services/Profile/api";
 
 const SettingPage = () => {
   const navigate = useNavigate();
   const [editToggle, setEditToggle] = useState<boolean>(false);
 
   //추후에 바꿔줘야함 임시데이터.
-  const [nickname, setNickname] = useState("꾸꾸까까");
-  const [introduce, setIntroduce] = useState(
-    "자기소개입니다. 가나다라마바사아자차카"
-  );
+  const [nickname, setNickname] = useState<string>("");
+  const [introduce, setIntroduce] = useState<string>("");
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const result = await getUserProfile();
+        setNickname(result[0].nickname);
+        setIntroduce(result[0].introduce);
+      } catch (error) {
+        console.error("유저정보 가져오기 실패", error);
+      }
+    };
+
+    fetchData();
+  }, []);
 
   const editToggleHandler = () => {
     setEditToggle((state) => !state);
   };
-  const profileChangeHandler = () => {
-    setEditToggle((state) => !state);
+
+  const profileChangeHandler = async () => {
+    try {
+      await patchUserProfile(nickname, introduce);
+      setEditToggle((state) => !state);
+    } catch (error) {
+      console.error("프로필 업데이트 실패:", error);
+    }
   };
 
   return (
@@ -64,15 +83,12 @@ const SettingPage = () => {
               </div>
             </S.ProfileInfo>
           </S.ProfileBox>
-          <S.ProfileBox>
+          <S.AccountBox>
             <h3>계정 설정</h3>
-            <div className="fw700 left30">스포티파이 연동 설정</div>
-            <button className="left30">연동 계정 변경</button>
-            <button className="left30">연동 계정 삭제</button>
 
             <KakaoLogoutButton />
-            <button className="fw700 left30">계정 탈퇴</button>
-          </S.ProfileBox>
+            <button>계정 탈퇴</button>
+          </S.AccountBox>
         </S.ProfileContainer>
       </S.PageContainer>
     </>
