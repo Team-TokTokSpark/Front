@@ -35,7 +35,7 @@ function PageShow() {
             return (
               <ContainerPage
                 onClick={() => {
-                  navigate(`page/myMusic/${e[0]}`, {
+                  navigate(`/page/myMusic/${e[0]}`, {
                     state: {
                       userId: e[1],
                       pageName: e[0],
@@ -58,7 +58,7 @@ function PageShow() {
             return (
               <ContainerPage
                 onClick={() => {
-                  navigate(`page/otherMusic/${e[0]}`, {
+                  navigate(`/page/otherMusic/${e[0]}`, {
                     state: {
                       userId: e[1],
                       pageName: e[0],

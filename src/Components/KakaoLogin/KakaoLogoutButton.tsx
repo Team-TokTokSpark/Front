@@ -4,7 +4,7 @@ import { authTokenState } from "../../atom";
 import { useNavigate } from "react-router-dom";
 
 const KakaoLogoutButton = () => {
-  const [s, setA] = useRecoilState(authTokenState);
+  const [token, setToken] = useRecoilState(authTokenState);
   const navigate = useNavigate();
 
   const handleKakaoLogout = async () => {
@@ -14,14 +14,13 @@ const KakaoLogoutButton = () => {
         {},
         {
           headers: {
-            Authorization: `Bearer ${s}`,
+            Authorization: `Bearer ${token}`,
           },
         }
       );
       console.log(response.data); // 성공적으로 로그아웃된 사용자의 정보
-      setA(null);
-      navigate("/login");
-      // 로그아웃 후 필요한 작업 수행
+      setToken(null);
+      navigate("/");
     } catch (error) {
       console.error(error);
       // 로그아웃 실패 처리
@@ -31,7 +30,7 @@ const KakaoLogoutButton = () => {
     }
   };
 
-  return <button onClick={handleKakaoLogout}>카카오 로그아웃</button>;
+  return <button onClick={handleKakaoLogout}>로그아웃</button>;
 };
 
 export default KakaoLogoutButton;

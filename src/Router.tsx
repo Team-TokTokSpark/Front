@@ -1,6 +1,6 @@
 import { createBrowserRouter } from "react-router-dom";
 import LoginPage from "./Pages/LoginPage";
-import KakaoLoginPage from "./Pages/KakaoLoginPage";
+import KakaoLoginRedirect from "./Pages/KakaoLoginRedirect";
 import SignUpPage from "./Pages/SignUpPage";
 import NotFoundPage from "./Pages/NotFound";
 import HomePage from "./Pages/main";
@@ -14,10 +14,10 @@ import EditPage from "./Pages/Edit";
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <HomePage />,
+    element: <LoginPage />,
   },
-  { path: "login", element: <LoginPage /> },
-  { path: "kakaoLogin", element: <KakaoLoginPage /> },
+  { path: "main", element: <HomePage /> },
+  { path: "/oauth2/redirect/:token", element: <KakaoLoginRedirect /> },
   { path: "signup", element: <SignUpPage /> },
   { path: "setting", element: <SettingPage /> },
   { path: "friendsList", element: <FriendsListPage /> },

@@ -31,4 +31,6 @@ export const linearBackGroundColors = {
 
   green_purple: `linear-gradient(${colors.supplementary_green},${colors.supplementary_purple})`,
   medium_supple_blue: `linear-gradient(${colors.primary_dark},${colors.supplementary_blue})`,
+  login_bg: `linear-gradient(${colors.supplementary_blue},${colors.primary_medium})`,
+  blue_medium_light: `linear-gradient(${colors.primary_medium},${colors.primary_light})`,
 };
