@@ -1,16 +1,16 @@
 import { useEffect } from "react";
-import { useParams, useNavigate } from "react-router-dom";
+import { useNavigate, useSearchParams } from "react-router-dom";
 
 import { useSetRecoilState } from "recoil";
 import { authTokenState } from "../atom";
 
 const KakaoLoginRedirect = () => {
-  const params: any = useParams();
+  const [searchParams] = useSearchParams();
   const navigate = useNavigate();
   const setToken = useSetRecoilState(authTokenState);
-
+  const token: any = searchParams.get("Token");
   useEffect(() => {
-    setToken(params.token);
+    setToken(token);
     navigate("/signup");
   });
 

@@ -1,6 +1,6 @@
 import { atom, selector } from "recoil";
-import { jsonURL } from "./Constants/jsonURL";
-import axios from "axios";
+
+import { getFriendsList } from "./Services/FriendsList/api";
 
 //modal영역
 export const isModalView = atom({
@@ -24,6 +24,7 @@ export const modalData = atom({
     message: "",
   },
 });
+//modal 영역 종료
 
 export const authTokenState = atom({
   key: "authTokenState",
@@ -32,12 +33,10 @@ export const authTokenState = atom({
 
 export const friendsListSelector = selector({
   key: "friendsListSelector",
-  get: async () => {
+  get: async ({ get }) => {
     try {
-      const response = await axios(`${jsonURL}/friends`);
-      const data = await response.data;
-
-      return data;
+      const friendsList = await getFriendsList();
+      return friendsList;
     } catch (error) {
       throw error;
     }

@@ -7,8 +7,13 @@ import {
   ShareButton,
 } from "../Styles/HomePageStyle";
 
+import { useRecoilValue } from "recoil";
+import { authTokenState } from "../atom";
+
 function HomePage() {
   const navigate = useNavigate();
+  const ss = useRecoilValue(authTokenState);
+  console.log("토큰값:", ss);
   return (
     <MainBody>
       <div className="setting-part">

@@ -1,4 +1,5 @@
 import { useForm, SubmitHandler } from "react-hook-form";
+import { useNavigate } from "react-router-dom";
 
 import formRequirements from "../../Constants/formRequirements";
 import type { userInformationProps } from "../../Constants/interfaces";
@@ -14,12 +15,13 @@ const SignupForm = (props: any) => {
     watch,
     formState: { errors },
   } = useForm<userInformationProps>({});
+  const navigate = useNavigate();
 
   const { nickname, introduce } = watch();
 
   const onSubmitHandler: SubmitHandler<userInformationProps> = async (data) => {
     await patchUserProfile(data.nickname, data.introduce);
-    props.onStepHandler();
+    navigate("/main");
   };
 
   return (
