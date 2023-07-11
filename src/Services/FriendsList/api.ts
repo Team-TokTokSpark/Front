@@ -1,9 +1,14 @@
 import axios from "axios";
-import { jsonURL } from "../../Constants/jsonURL";
+import { SERVER_URL } from "../../Constants/jsonURL";
 
-export const getFriendsList = async () => {
+export const getFriendsList = async (userId: string, token: string) => {
   try {
-    const response = await axios(`${jsonURL}/friends`);
+    const response = await axios.get(
+      `${SERVER_URL}/users/myfriends/${userId}`,
+      {
+        headers: { Authorization: `Bearer ${token}` },
+      }
+    );
     const data = await response.data;
 
     return data;
@@ -23,11 +28,21 @@ export const getFriendsList = async () => {
 //   }
 // };
 
-export const FollowToggle = async (userId: number, followerId: number) => {
+export const FollowToggle = async (
+  userId: number,
+  token: string,
+  followerId: number
+) => {
   try {
-    const response = await axios.post(`/users/follow/${userId}`, {
-      followerId: followerId,
-    });
+    const response = await axios.post(
+      `${SERVER_URL}/users/follow/${userId}`,
+      {
+        followerId: followerId,
+      },
+      {
+        headers: { Authorization: `Bearer ${token}` },
+      }
+    );
     const data = await response.data;
     console.log(data);
   } catch (error) {
