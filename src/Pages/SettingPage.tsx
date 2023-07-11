@@ -1,32 +1,23 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 import KakaoLogoutButton from "../Components/KakaoLogin/KakaoLogoutButton";
 import * as S from "../Styles/SettingPgeStyle";
 import icons from "../Css/icons";
-import { getUserProfile, patchUserProfile } from "../Services/Profile/api";
+import { WithdrawalUser, putUserProfile } from "../Services/Profile/api";
+
+import { useRecoilValue, useRecoilState } from "recoil";
+import { userInformationState, authTokenState } from "../atom";
 
 const SettingPage = () => {
   const navigate = useNavigate();
+  const [abc, setAbc] = useRecoilState(userInformationState);
+  const token = useRecoilValue(authTokenState);
   const [editToggle, setEditToggle] = useState<boolean>(false);
 
   //추후에 바꿔줘야함 임시데이터.
-  const [nickname, setNickname] = useState<string>("");
-  const [introduce, setIntroduce] = useState<string>("");
-
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const result = await getUserProfile();
-        setNickname(result[0].nickname);
-        setIntroduce(result[0].introduce);
-      } catch (error) {
-        console.error("유저정보 가져오기 실패", error);
-      }
-    };
-
-    fetchData();
-  }, []);
+  const [nickname, setNickname] = useState<string>(abc.nickname);
+  const [introduce, setIntroduce] = useState<string>(abc.introduce);
 
   const editToggleHandler = () => {
     setEditToggle((state) => !state);
@@ -34,10 +25,27 @@ const SettingPage = () => {
 
   const profileChangeHandler = async () => {
     try {
-      await patchUserProfile(nickname, introduce);
+      await putUserProfile(token, nickname, introduce, abc.userId);
+      setNickname(nickname);
+      setIntroduce(introduce);
+      setAbc({
+        userId: abc.userId,
+        nickname: nickname,
+        introduce: introduce,
+      });
       setEditToggle((state) => !state);
     } catch (error) {
       console.error("프로필 업데이트 실패:", error);
+    }
+  };
+
+  const onWithdrawlUser = async () => {
+    try {
+      //정말 계정을 탈퇴하시겠습니까? 추가?
+      await WithdrawalUser(token, abc.userId);
+      navigate("/");
+    } catch (error) {
+      console.error("계정탈퇴 실패");
     }
   };
 
@@ -45,7 +53,7 @@ const SettingPage = () => {
     <>
       <S.PageContainer>
         <S.FriendsListHeader>
-          <button onClick={() => navigate("/")}>{icons.back}</button>
+          <button onClick={() => navigate("/main")}>{icons.back}</button>
           <div>설정</div>
         </S.FriendsListHeader>
         <S.ProfileContainer>
@@ -87,7 +95,7 @@ const SettingPage = () => {
             <h3>계정 설정</h3>
 
             <KakaoLogoutButton />
-            <button>계정 탈퇴</button>
+            <button onClick={onWithdrawlUser}>계정 탈퇴</button>
           </S.AccountBox>
         </S.ProfileContainer>
       </S.PageContainer>

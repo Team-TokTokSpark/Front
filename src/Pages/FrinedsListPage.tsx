@@ -1,21 +1,21 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useRecoilValue } from "recoil";
 import { useNavigate } from "react-router-dom";
 
 import * as S from "../Styles/FriendsListPageStyle";
 import icons from "../Css/icons";
 
-import { friendsListSelector } from "../atom";
 import type { friendsProps } from "../Constants/interfaces";
-import { jsonURL } from "../Constants/jsonURL";
+import { getFriendsList } from "../Services/FriendsList/api";
+import { authTokenState, userInformationState } from "../atom";
 import FriendsListItem from "../Components/FriendsListItem";
-import axios from "axios";
 
 const FriendsListPage = () => {
   const navigate = useNavigate();
   const [searchTerm, setSearchTerm] = useState("");
-  const friendsList = useRecoilValue(friendsListSelector);
-  const [localFriendsList, setLocalFriendsList] = useState(friendsList);
+  const token = useRecoilValue(authTokenState);
+  const userInformation = useRecoilValue(userInformationState);
+  const [localFriendsList, setLocalFriendsList] = useState([]);
   const filteredData = localFriendsList.filter((data: friendsProps) =>
     data.nickname?.toLowerCase().includes(searchTerm.toLowerCase())
   );
@@ -23,22 +23,20 @@ const FriendsListPage = () => {
     setSearchTerm(e.target.value);
   };
 
-  const onToggleFollowHandler = async (id: any, follow: boolean) => {
-    const toggledData = localFriendsList.map((data: friendsProps) =>
-      data.id === id ? { ...data, follow: !follow } : data
-    );
-    setLocalFriendsList(toggledData);
-    await axios(`${jsonURL}/friends/${id}`, {
-      method: "PUT",
-      data: toggledData[id],
-    });
+  const fetchFriendsList = async () => {
+    const FriendsLists = await getFriendsList(userInformation.userId, token);
+    setLocalFriendsList(FriendsLists);
+    console.log(FriendsLists);
   };
+  useEffect(() => {
+    fetchFriendsList();
+  }, []);
 
   return (
     <>
       <S.PageContainer>
         <S.FriendsListHeader>
-          <button onClick={() => navigate("/")}>{icons.back}</button>
+          <button onClick={() => navigate("/main")}>{icons.back}</button>
           <div>친구 목록</div>
         </S.FriendsListHeader>
         <S.InputBox>
@@ -55,7 +53,8 @@ const FriendsListPage = () => {
             <FriendsListItem
               key={datas.id}
               datas={datas}
-              onToggleFollow={onToggleFollowHandler}
+              userId={userInformation.userId}
+              token={token}
             />
           ))}
         </S.Ul>

@@ -1,16 +1,23 @@
 import { useNavigate } from "react-router-dom";
+import { useState } from "react";
+
 import {
   Li,
   ProfileContainer,
   ButtonContainer,
 } from "../Styles/FriendsListPageStyle";
+import { FollowToggle } from "../Services/FriendsList/api";
 
 const FriendsListItem = (props: any) => {
+  const [clicked, setClicked] = useState(false);
   const navigate = useNavigate();
-  const { nickname, introduce, id, follow } = props.datas;
+  const token = props.token;
+  const userId = props.userId;
+  const { nickname, introduce, id } = props.datas;
 
-  const toggleFollow = (id: any) => {
-    props.onToggleFollow(id, follow);
+  const toggleFollow = async (followerId: any) => {
+    setClicked((state) => !state);
+    await FollowToggle(userId, token, followerId);
   };
 
   return (
@@ -19,9 +26,7 @@ const FriendsListItem = (props: any) => {
         {/* dummyData 바꿔줘야함 */}
         <div
           onClick={() => {
-            navigate(`/page/otherMusic/${nickname}`, {
-              state: { userId: nickname, pageName: nickname },
-            });
+            navigate(`/page/otherMusic/${nickname}`);
           }}
         >
           {nickname}
@@ -29,7 +34,7 @@ const FriendsListItem = (props: any) => {
         <div>{introduce}</div>
       </ProfileContainer>
       <ButtonContainer>
-        {follow ? (
+        {!clicked ? (
           <button onClick={() => toggleFollow(id)}>언팔로우</button>
         ) : (
           <button onClick={() => toggleFollow(id)}>팔로우</button>

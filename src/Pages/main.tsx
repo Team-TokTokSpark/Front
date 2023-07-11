@@ -1,4 +1,5 @@
 import { useNavigate } from "react-router-dom";
+
 import PageShow from "../Components/PageShow";
 import icons from "../Css/icons";
 import {
@@ -6,9 +7,16 @@ import {
   MainBody,
   ShareButton,
 } from "../Styles/HomePageStyle";
+import { userInformationState } from "../atom";
+import { useRecoilValue } from "recoil";
 
 function HomePage() {
   const navigate = useNavigate();
+
+  const information = useRecoilValue(userInformationState);
+
+  console.log(information);
+
   return (
     <MainBody>
       <div className="setting-part">

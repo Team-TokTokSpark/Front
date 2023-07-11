@@ -1,6 +1,8 @@
 import { atom, selector } from "recoil";
-import { jsonURL } from "./Constants/jsonURL";
-import axios from "axios";
+import { recoilPersist } from "recoil-persist";
+import { getFriendsList } from "./Services/FriendsList/api";
+
+const { persistAtom } = recoilPersist();
 
 //modal영역
 export const isModalView = atom({
@@ -24,27 +26,38 @@ export const modalData = atom({
     message: "",
   },
 });
+//modal 영역 종료
 
 export const authTokenState = atom({
   key: "authTokenState",
-  default: null,
+  default: "",
+  effects_UNSTABLE: [persistAtom],
 });
 
-export const friendsListSelector = selector({
-  key: "friendsListSelector",
-  get: async () => {
-    try {
-      const response = await axios(`${jsonURL}/friends`);
-      const data = await response.data;
+// export const friendsListSelector = selector({
+//   key: "friendsListSelector",
+//   get: async ({ get }) => {
+//     try {
+//       const friendsList = await getFriendsList();
+//       return friendsList;
+//     } catch (error) {
+//       throw error;
+//     }
+//   },
+//   set: ({ set }, newValue) => {
+//     set(frinedsListState, newValue);
+//   },
+// });
 
-      return data;
-    } catch (error) {
-      throw error;
-    }
+export const userInformationState = atom({
+  key: "userInformationState",
+  default: {
+    userId: null,
+    nickname: null,
+    introduce: null,
   },
-  set: ({ set }, newValue) => {
-    set(frinedsListState, newValue);
-  },
+
+  effects_UNSTABLE: [persistAtom],
 });
 
 export const frinedsListState = atom<Array<object>>({
