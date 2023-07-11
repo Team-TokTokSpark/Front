@@ -4,11 +4,15 @@ import { useNavigate } from "react-router-dom";
 import formRequirements from "../../Constants/formRequirements";
 import type { userInformationProps } from "../../Constants/interfaces";
 import * as S from "../../Styles/SignUpPageStyle";
-import { patchUserProfile } from "../../Services/Profile/api";
-
+import { postUserProfile } from "../../Services/Profile/api";
+import { useRecoilState, useRecoilValue } from "recoil";
+import { userInformationState, authTokenState } from "../../atom";
 const { nicknameRequirements, introduceRequirements } = formRequirements;
 
-const SignupForm = (props: any) => {
+const SignupForm = () => {
+  const [userInformation, setUserInformation] =
+    useRecoilState(userInformationState);
+  const token = useRecoilValue(authTokenState);
   const {
     register,
     handleSubmit,
@@ -20,7 +24,17 @@ const SignupForm = (props: any) => {
   const { nickname, introduce } = watch();
 
   const onSubmitHandler: SubmitHandler<userInformationProps> = async (data) => {
-    await patchUserProfile(data.nickname, data.introduce);
+    await postUserProfile(
+      userInformation.userId,
+      data.nickname,
+      data.introduce,
+      token
+    );
+    setUserInformation({
+      userId: userInformation.userId,
+      nickname: data.nickname,
+      introduce: data.introduce,
+    });
     navigate("/main");
   };
 
