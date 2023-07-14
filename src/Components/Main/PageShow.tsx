@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { ContainerPage, ContainerWrapper } from "../Styles/HomePageStyle";
-import { MusicColor } from "../atom";
+import { ContainerPage, ContainerWrapper } from "../../Styles/HomePageStyle";
+import { MusicColor } from "../../atom";
 import { useSetRecoilState } from "recoil";
 
 function PageShow() {

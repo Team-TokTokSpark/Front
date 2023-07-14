@@ -8,6 +8,7 @@ import {
 } from "../Styles/HomePageMakeStyle";
 import CancleComplete from "../Components/Utils/CancleComplete";
 import ColorChange from "../Components/Utils/ColorChange";
+import ToggleButton from "../Components/Main/ToggleButton";
 
 const MakePage = () => {
   const [text, setText] = useState("Hi");
@@ -20,10 +21,9 @@ const MakePage = () => {
   return (
     <MakeBodyWrapper>
       <CancleComplete colorNum={-1} />
-      {/* <div className="editTitle-part"></div> */}
+      <ToggleButton />
       <TitleMakeWrapper>
         <Title>{text}</Title>
-        {/* <InputTitle type="text" value={text} onChange={displayText} /> */}
         <TitleInput
           placeholder="제목을 입력하세요"
           type="text"
@@ -40,7 +40,6 @@ const MakePage = () => {
         </RemoveTextButton>
       </TitleMakeWrapper>
       <Title>페이지 배경 색상</Title>
-      {/* 색깔 바꾸는 부분도 리팩토링을 해야하는 부분! */}
       <ColorChange colorNumber={0} />
     </MakeBodyWrapper>
   );
