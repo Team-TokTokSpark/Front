@@ -1,14 +1,11 @@
 import { useNavigate } from "react-router-dom";
 
-import PageShow from "../Components/PageShow";
+import PageShow from "../Components/Main/PageShow";
 import icons from "../Css/icons";
-import {
-  EditStickerButton,
-  MainBody,
-  ShareButton,
-} from "../Styles/HomePageStyle";
+import { EditStickerButton, ShareButton } from "../Styles/HomePageStyle";
 import { userInformationState } from "../atom";
 import { useRecoilValue } from "recoil";
+import { Link } from "react-router-dom";
 
 function HomePage() {
   const navigate = useNavigate();
@@ -18,7 +15,7 @@ function HomePage() {
   console.log(information);
 
   return (
-    <MainBody>
+    <>
       <div className="setting-part">
         <img
           src="/img/Setting_5.png"
@@ -47,9 +44,14 @@ function HomePage() {
       </div>
       <PageShow />
       <div>
-        <EditStickerButton>{icons.plus}</EditStickerButton>
+        {/* 여기가 변경 될 부분! 현재 userId가 안나와있기 때문! */}
+        {information.userId === null ? (
+          <Link to="makePage">
+            <EditStickerButton>{icons.plus}</EditStickerButton>
+          </Link>
+        ) : null}
       </div>
-    </MainBody>
+    </>
   );
 }
 
