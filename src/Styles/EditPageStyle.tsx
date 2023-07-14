@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { colors, linearBackGroundColors } from "../Css/variables";
+import { linearBackGroundColors } from "../Css/variables";
 
 export const RemoveButton = styled.button`
   width: 20px;
@@ -48,7 +48,7 @@ export const ColorChangeDiv = styled.div`
   position: relative;
   align-items: center;
   justify-content: space-between;
-  margin: 20px 20px;
+  margin: 20px auto;
   width: 257px;
   height: 35px;
 
