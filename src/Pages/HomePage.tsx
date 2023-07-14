@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
 
-import PageShow from "../Components/PageShow";
+import PageShow from "../Components/Main/PageShow";
 import icons from "../Css/icons";
 import { EditStickerButton, ShareButton } from "../Styles/HomePageStyle";
 import { userInformationState } from "../atom";
