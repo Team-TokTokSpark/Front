@@ -1,22 +1,16 @@
 import React, { useState } from "react";
-import {
-  ColorChangeDiv,
-  EditButtonDiv,
-  RemoveTextButton,
-} from "../Styles/EditPageStyle";
-import { useNavigate } from "react-router-dom";
+import { RemoveTextButton } from "../Styles/EditPageStyle";
 import {
   MakeBodyWrapper,
   Title,
   TitleInput,
   TitleMakeWrapper,
 } from "../Styles/HomePageMakeStyle";
+import CancleComplete from "../Components/Utils/CancleComplete";
+import ColorChange from "../Components/Utils/ColorChange";
 
 const MakePage = () => {
-  const navigate = useNavigate();
   const [text, setText] = useState("Hi");
-  const [colorNum, setColorNum] = useState(0);
-  const colorArray = ["color0", "color1", "color2", "color3"];
   const displayText = (e: React.ChangeEvent<HTMLInputElement>) => {
     setText(e.target.value);
   };
@@ -25,23 +19,7 @@ const MakePage = () => {
   };
   return (
     <MakeBodyWrapper>
-      {/* 해당 파트는 리팩토링이 필요한 부분 취소 완료 부분!*/}
-      <EditButtonDiv>
-        <div
-          onClick={() => {
-            navigate(-1);
-          }}
-        >
-          취소
-        </div>
-        <div
-          onClick={() => {
-            navigate(-1);
-          }}
-        >
-          완료
-        </div>
-      </EditButtonDiv>
+      <CancleComplete colorNum={-1} />
       {/* <div className="editTitle-part"></div> */}
       <TitleMakeWrapper>
         <Title>{text}</Title>
@@ -63,29 +41,7 @@ const MakePage = () => {
       </TitleMakeWrapper>
       <Title>페이지 배경 색상</Title>
       {/* 색깔 바꾸는 부분도 리팩토링을 해야하는 부분! */}
-      <ColorChangeDiv>
-        {colorArray.map((e, index) => {
-          if (colorNum === index) {
-            return (
-              <button
-                className={`${"checkcolor"} ${e}`}
-                onClick={() => {
-                  setColorNum(index);
-                }}
-              />
-            );
-          } else {
-            return (
-              <button
-                className={` ${e}`}
-                onClick={() => {
-                  setColorNum(index);
-                }}
-              />
-            );
-          }
-        })}
-      </ColorChangeDiv>
+      <ColorChange colorNumber={0} />
     </MakeBodyWrapper>
   );
 };

@@ -70,3 +70,8 @@ export const MusicColor = atom<number>({
   key: "musicPageBackground",
   default: 1,
 });
+
+export const ChangeMusicColor = atom<number>({
+  key: "ChangeOrMakeMusicPageBackground",
+  default: 1,
+});

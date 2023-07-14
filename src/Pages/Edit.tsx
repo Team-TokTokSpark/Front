@@ -1,23 +1,17 @@
 import React, { useState } from "react";
-import { useRecoilState } from "recoil";
-import { MusicColor } from "../atom";
-import { useNavigate } from "react-router-dom";
+import { useRecoilValue } from "recoil";
+import { ChangeMusicColor, MusicColor } from "../atom";
 import { MainBody } from "../Styles/HomePageStyle";
 import EditStickerShow from "../Components/Sticker/EditStickerShow";
-import {
-  ColorChangeDiv,
-  EditButtonDiv,
-  InputTitle,
-  RemoveTextButton,
-} from "../Styles/EditPageStyle";
+import { InputTitle, RemoveTextButton } from "../Styles/EditPageStyle";
+import CancleComplete from "../Components/Utils/CancleComplete";
+import ColorChange from "../Components/Utils/ColorChange";
 
 const EditPage = () => {
-  const [backGroundColorNum, setBackGroundColorNum] =
-    useRecoilState(MusicColor);
+  const backGroundColorNum = useRecoilValue(MusicColor);
+  const changeBackGroundColorNum = useRecoilValue(ChangeMusicColor);
   const [colorNum, setColorNum] = useState(backGroundColorNum);
-  const navigate = useNavigate();
   const [text, setText] = useState("일단은 이렇게라도 하자");
-  const colorArray = ["color0", "color1", "color2", "color3"];
   const displayText = (e: React.ChangeEvent<HTMLInputElement>) => {
     setText(e.target.value);
   };
@@ -27,50 +21,12 @@ const EditPage = () => {
   return (
     <MainBody>
       <div className={`pageTheme${backGroundColorNum}`}>
-        <EditButtonDiv>
-          <div
-            onClick={() => {
-              navigate(-1);
-            }}
-          >
-            취소
-          </div>
-          <div
-            onClick={() => {
-              setBackGroundColorNum(colorNum);
-              navigate(-1);
-            }}
-          >
-            완료
-          </div>
-        </EditButtonDiv>
+        <CancleComplete colorNum={changeBackGroundColorNum} />
         <div className="editTitle-part">
           <InputTitle type="text" value={text} onChange={displayText} />
           <RemoveTextButton onClick={removeText}>X</RemoveTextButton>
         </div>
-        <ColorChangeDiv>
-          {colorArray.map((e, index) => {
-            if (colorNum === index) {
-              return (
-                <button
-                  className={`${"checkcolor"} ${e}`}
-                  onClick={() => {
-                    setColorNum(index);
-                  }}
-                />
-              );
-            } else {
-              return (
-                <button
-                  className={` ${e}`}
-                  onClick={() => {
-                    setColorNum(index);
-                  }}
-                />
-              );
-            }
-          })}
-        </ColorChangeDiv>
+        <ColorChange colorNumber={colorNum} />
         <EditStickerShow />
       </div>
     </MainBody>
