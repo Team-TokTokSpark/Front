@@ -26,7 +26,34 @@ export const Title = styled.div`
   margin: 10px auto;
 `;
 
+export const UnableTitle = styled.div`
+  background-color: transparent;
+  border-bottom: solid 1px rgba(87, 87, 87, 0.2);
+  width: 300px;
+  height: 24px;
+  font-weight: 700;
+  line-height: 24px;
+  font-size: 20px;
+  color: rgba(87, 87, 87, 0.2);
+  margin: 10px auto;
+`;
+
 export const TitleInput = styled.input`
+  /* display: flex;
+  align-items: center; */
+  width: 290px;
+  padding: 10px 15px;
+  gap: 5px;
+  border-radius: 10px;
+  background-color: rgba(255, 255, 255, 0.1);
+  margin: 10px auto;
+  border-color: transparent;
+  color: rgba(87, 87, 87, 0.2);
+  font-size: 18px;
+  font-weight: 700;
+`;
+
+export const DateInput = styled.div`
   /* display: flex;
   align-items: center; */
   width: 290px;

@@ -75,3 +75,12 @@ export const ChangeMusicColor = atom<number>({
   key: "ChangeOrMakeMusicPageBackground",
   default: 1,
 });
+
+export const MakePageState = atom({
+  key: "makePageState",
+  default: {
+    type: "playlist",
+    title: "",
+    background: 1,
+  },
+});
