@@ -1,6 +1,13 @@
 import styled from "styled-components";
 import { linearBackGroundColors } from "../Css/variables";
 
+export const BodyWrapper = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+`;
+
 export const MainBody = styled.div`
   width: 100vw;
   height: 100vh;
@@ -80,7 +87,8 @@ export const MainBody = styled.div`
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin: 10px 20px;
+    margin: 10px auto;
+    position: relative;
   }
 
   .title-part {
@@ -103,17 +111,21 @@ export const MainBody = styled.div`
 // `;
 
 export const PlayMusic = styled.div`
-  width: 192px;
-  height: 34px;
-  margin-top: 10px;
+  width: 320px;
+  height: 50px;
+  padding: 5px 0px;
+  margin: 10px auto;
   display: flex;
   justify-content: center;
   align-items: center;
-  background: rgba(234, 234, 234, 0.2);
+  flex-shrink: 0;
+  gap: 10px;
+  background: rgba(234, 234, 234, 0.05);
   color: white;
   z-index: 200;
   border-radius: 20px;
-  padding: 5px 0px 5px 0px;
+  border: 1px solid white;
+  box-shadow: 2px 4px 6px 0px rgba(0, 0, 0, 0.15);
   font-size: 12px;
   font-weight: 700;
   line-height: 14px;
@@ -175,11 +187,11 @@ export const ContainerWrapper = styled.div`
 `;
 
 export const LongContainerWrapper = styled.div`
-  margin: 0px 20px 10px 5%;
+  margin: 10px 20px 10px 5%;
   width: 330px;
   height: 480px;
   display: grid;
-  grid-template-rows: 15%;
+  grid-template-rows: 5%;
   grid-auto-rows: 20%;
   grid-template-columns: repeat(auto-fill, minmax(16%, auto));
   /* gap: 10px 10px; */
@@ -191,7 +203,7 @@ export const LongContainerWrapper = styled.div`
   scrollbar-width: none;
   scrollbar-color: transparent transparent;
 
-  .playMusic {
+  .blackSpace {
     grid-column: auto / span 6;
   }
 

@@ -1,4 +1,4 @@
-import MusicPageShow from "../Components/MusicPageShow";
+import MusicPageShow from "../Components/Playlist/MusicPageShow";
 
 function OthermusicPage() {
   return (
