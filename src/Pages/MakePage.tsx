@@ -17,7 +17,6 @@ import { MakePageState } from "../atom";
 const MakePage = () => {
   const makePage = useRecoilValue(MakePageState);
   const today = new Date();
-  console.log(today);
   const todayInput = `${today.getFullYear()}년 ${
     today.getMonth() + 1
   }월 ${today.getDate()}일`;
