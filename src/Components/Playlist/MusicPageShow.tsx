@@ -1,21 +1,28 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import {
+  BodyWrapper,
   ExportButton,
+  LongContainerWrapper,
+  PlayMusic,
   ShareButton,
   StickerMakeButton,
-} from "../Styles/HomePageStyle";
-import StickerShow from "./Sticker/StickerShow";
-import icons from "../Css/icons";
-import StickerModal from "./Modal/ModalPage";
-import { useRecoilState } from "recoil";
-import { isModalView } from "../atom";
+} from "../../Styles/HomePageStyle";
+import StickerShow from "../Sticker/StickerShow";
+import icons from "../../Css/icons";
+import StickerModal from "../Modal/ModalPage";
+import { useRecoilState, useRecoilValue } from "recoil";
+import { dotsIndexSelect, isModalView } from "../../atom";
+import SwiperDots from "./SwiperDots";
+import PlaylistMusic from "./PlaylistMusic";
+import PlaylistMessage from "./PlaylistMessage";
 
 const MusicPageShow = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const [userId, setUserId] = useState(location.state?.userId);
   const [popupModal, setPopupModal] = useRecoilState(isModalView);
+  const dotsSelect = useRecoilValue(dotsIndexSelect);
 
   const pageName = location.state?.pageName;
 
@@ -36,7 +43,19 @@ const MusicPageShow = () => {
         {pageName} page
         <ShareButton>링크 공유</ShareButton>
       </div>
-      <StickerShow />
+      <BodyWrapper>
+        <PlayMusic>00 Attention-NewJeans</PlayMusic>
+        <SwiperDots />
+        <LongContainerWrapper>
+          {dotsSelect === 1 ? (
+            <StickerShow />
+          ) : dotsSelect === 2 ? (
+            <PlaylistMusic />
+          ) : (
+            <PlaylistMessage />
+          )}
+        </LongContainerWrapper>
+      </BodyWrapper>
       <StickerMakeButton onClick={() => setPopupModal(true)}>
         {icons.plus}
       </StickerMakeButton>

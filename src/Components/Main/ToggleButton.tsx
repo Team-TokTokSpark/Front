@@ -1,32 +1,41 @@
-import React, { useState } from "react";
 import {
   ToggleButtonUnClick,
   ToggleButtonClick,
   ToggleWrapper,
 } from "../../Styles/HomePageMakeStyle";
+import { useRecoilState } from "recoil";
+import { MakePageState } from "../../atom";
 
 const ToggleButton = () => {
-  const [select, SetSelect] = useState("playlist");
+  const [makePage, setMakePage] = useRecoilState(MakePageState);
   return (
     <>
       <ToggleWrapper>
-        {select === "playlist" ? (
+        {makePage.type === "playlist" ? (
           <>
             {" "}
-            <ToggleButtonClick onClick={() => SetSelect("playlist")}>
+            <ToggleButtonClick
+              onClick={() => setMakePage({ ...makePage, type: "playlist" })}
+            >
               플레이리스트
             </ToggleButtonClick>
-            <ToggleButtonUnClick onClick={() => SetSelect("record")}>
+            <ToggleButtonUnClick
+              onClick={() => setMakePage({ ...makePage, type: "record" })}
+            >
               나의 기록
             </ToggleButtonUnClick>
           </>
         ) : (
           <>
             {" "}
-            <ToggleButtonUnClick onClick={() => SetSelect("playlist")}>
+            <ToggleButtonUnClick
+              onClick={() => setMakePage({ ...makePage, type: "playlist" })}
+            >
               플레이리스트
             </ToggleButtonUnClick>
-            <ToggleButtonClick onClick={() => SetSelect("record")}>
+            <ToggleButtonClick
+              onClick={() => setMakePage({ ...makePage, type: "record" })}
+            >
               나의 기록
             </ToggleButtonClick>
           </>

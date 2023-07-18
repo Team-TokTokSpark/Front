@@ -5,12 +5,12 @@ import { RemoveButton } from "../../Styles/EditPageStyle";
 type Props = {
   name: string;
   message: string;
-  stickerNum: string;
+  stickerNum: number;
   even_item: string;
 };
 
 const EditStickerImg = ({ name, message, stickerNum, even_item }: Props) => {
-  if (parseInt(stickerNum) % 2 === 0) {
+  if (stickerNum % 2 === 0) {
     return (
       <>
         <StickerPage

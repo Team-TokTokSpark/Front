@@ -8,7 +8,7 @@ import {
 type Props = {
   name: string;
   message: string;
-  stickerNum: string;
+  stickerNum: number;
   even_item: string;
 };
 
@@ -21,7 +21,7 @@ const StickerImgMake = ({ name, message, stickerNum, even_item }: Props) => {
       setSelect(`${type}`);
     }
   };
-  if (parseInt(stickerNum) % 2 === 0) {
+  if (stickerNum % 2 === 0) {
     return (
       <StickerPage
         onClick={() => handleClick(name)}

@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import MusicPageShow from "../Components/MusicPageShow";
+import MusicPageShow from "../Components/Playlist/MusicPageShow";
 
 function MymusicPage() {
   return (
