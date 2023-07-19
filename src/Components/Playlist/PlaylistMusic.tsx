@@ -8,17 +8,13 @@ const PlaylistMusic = () => {
   return (
     <>
       <div className="blackSpace"></div>
-      {playMusiclist.map((e) => {
+      {playMusiclist.playlistSongs.map((e) => {
         return (
           <MusicPlaylistWrapper className="blankSpace">
-            <img
-              className="albumImg"
-              src="/img/playlistTest.png"
-              alt="albumImg"
-            />
+            <img className="albumImg" src={e.albumImgsrc} alt="albumImg" />
             <BodyWrapper>
-              <div className="title">{e.song.title}</div>
-              <div className="artist">{e.song.singer}</div>
+              <div className="title">{e.title}</div>
+              <div className="artist">{e.artist}</div>
             </BodyWrapper>
           </MusicPlaylistWrapper>
         );

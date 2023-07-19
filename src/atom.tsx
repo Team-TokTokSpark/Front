@@ -91,143 +91,267 @@ export const dotsIndexSelect = atom<number>({
 });
 
 export interface PlaylistProps {
-  userName: string;
-  message: string;
-  imgIndex: number;
-  song: {
-    title: string;
-    singer: string;
-  };
+  userId: number;
+  nickname: string;
+  playlistId: number;
+  playlistName: string;
+  backgroundIdx: number;
+  playlistSongs: Array<playlistSongsProps>;
 }
 
-export const PlaylistInformation = atom<PlaylistProps[]>({
+export interface playlistSongsProps {
+  stickerId: number;
+  title: string;
+  albumImgsrc: string;
+  artist: string;
+  message: string;
+}
+
+export interface ListInfoProps {
+  introduce: string;
+  nickname: string;
+  playlists: Array<mainPlaylistProps>;
+}
+
+export interface mainPlaylistProps {
+  type: string;
+  postIdx: number;
+  playlistName: string;
+  backgroudIdx: number;
+  userIdx: number;
+  imgIdx: number;
+}
+
+export const UserListInfo = atom<ListInfoProps>({
+  key: "userListInfo",
+  default: {
+    introduce: "자기소개 한 줄",
+    nickname: "몰랑이",
+    playlists: [
+      {
+        type: "playlist",
+        postIdx: 1,
+        playlistName: "hello",
+        backgroudIdx: 0,
+        userIdx: 2,
+        imgIdx: 12,
+      },
+      {
+        type: "playlist",
+        postIdx: 2,
+        playlistName: "niceTo",
+        backgroudIdx: 3,
+        userIdx: 1,
+        imgIdx: 8,
+      },
+      {
+        type: "playlist",
+        postIdx: 3,
+        playlistName: "music",
+        backgroudIdx: 2,
+        userIdx: 4,
+        imgIdx: 2,
+      },
+      {
+        type: "playlist",
+        postIdx: 4,
+        playlistName: "music",
+        backgroudIdx: 3,
+        userIdx: 5,
+        imgIdx: 3,
+      },
+      {
+        type: "playlist",
+        postIdx: 5,
+        playlistName: "muzik",
+        backgroudIdx: 1,
+        userIdx: 5,
+        imgIdx: 4,
+      },
+      {
+        type: "playlist",
+        postIdx: 6,
+        playlistName: "왜 많이 만들었지",
+        backgroudIdx: 0,
+        userIdx: 6,
+        imgIdx: 5,
+      },
+      {
+        type: "playlist",
+        postIdx: 7,
+        playlistName: "great",
+        backgroudIdx: 1,
+        userIdx: 8,
+        imgIdx: 6,
+      },
+      {
+        type: "playlist",
+        postIdx: 8,
+        playlistName: "내꺼",
+        backgroudIdx: 2,
+        userIdx: 1,
+        imgIdx: 8,
+      },
+      {
+        type: "playlist",
+        postIdx: 9,
+        playlistName: "샌디의 음악",
+        backgroudIdx: 3,
+        userIdx: 7,
+        imgIdx: 10,
+      },
+      {
+        type: "playlist",
+        postIdx: 10,
+        playlistName: "Nina의 취향",
+        backgroudIdx: 1,
+        userIdx: 4,
+        imgIdx: 1,
+      },
+      {
+        type: "playlist",
+        postIdx: 11,
+        playlistName: "비 올때 듣는",
+        backgroudIdx: 0,
+        userIdx: 11,
+        imgIdx: 3,
+      },
+      {
+        type: "playlist",
+        postIdx: 12,
+        playlistName: "Happy",
+        backgroudIdx: 2,
+        userIdx: 1,
+        imgIdx: 4,
+      },
+      {
+        type: "playlist",
+        postIdx: 13,
+        playlistName: "피곤해",
+        backgroudIdx: 1,
+        userIdx: 11,
+        imgIdx: 11,
+      },
+      {
+        type: "playlist",
+        postIdx: 14,
+        playlistName: "이제 마지막",
+        backgroudIdx: 2,
+        userIdx: 6,
+        imgIdx: 6,
+      },
+    ],
+  },
+});
+
+export const PlaylistInformation = atom<PlaylistProps>({
   key: "playlistInfo",
-  default: [
-    {
-      userName: "my1",
-      message: "이건테스트용",
-      imgIndex: 1,
-      song: {
+  default: {
+    userId: 0,
+    nickname: "",
+    playlistId: 0,
+    playlistName: "",
+    backgroundIdx: -1,
+    playlistSongs: [
+      {
+        stickerId: 1,
         title: "Hype boy",
-        singer: "newJeans",
+        albumImgsrc: "/img/playlistTest.png",
+        artist: "newJeans",
+        message: "이건테스트용",
       },
-    },
-    {
-      userName: "my2",
-      message: "그래서 모든내용이 같음",
-      imgIndex: 2,
-      song: {
+      {
+        stickerId: 2,
         title: "Cookie",
-        singer: "newJeans",
+        albumImgsrc: "/img/playlistTest.png",
+        artist: "newJeans",
+        message: "그래서 모든내용이 같음",
       },
-    },
-    {
-      userName: "nina",
-      message: "나중에 서버에 받으면 달라질거임",
-      imgIndex: 8,
-      song: {
+      {
+        stickerId: 8,
         title: "Attention",
-        singer: "newJeans",
+        albumImgsrc: "/img/playlistTest.png",
+        artist: "newJeans",
+        message: "나중에 서버에 받으면 달라질거임",
       },
-    },
-    {
-      userName: "emily",
-      message: "일일이 쓰는게 어렵다",
-      imgIndex: 7,
-      song: {
+      {
+        stickerId: 7,
         title: "Hype boy",
-        singer: "newJeans",
+        albumImgsrc: "/img/playlistTest.png",
+        artist: "newJeans",
+        message: "일일이 쓰는게 어렵다",
       },
-    },
-    {
-      userName: "other3",
-      message: "이건테스트용",
-      imgIndex: 11,
-      song: {
+      {
+        stickerId: 11,
         title: "Hype boy",
-        singer: "newJeans",
+        albumImgsrc: "/img/playlistTest.png",
+        artist: "newJeans",
+        message: "이건테스트용",
       },
-    },
-    {
-      userName: "brandon",
-      message: "이것도테스트용",
-      imgIndex: 12,
-      song: {
+      {
+        stickerId: 12,
         title: "Hype boy",
-        singer: "newJeans",
+        albumImgsrc: "/img/playlistTest.png",
+        artist: "newJeans",
+        message: "이것도테스트용",
       },
-    },
-    {
-      userName: "emily23",
-      message: "메시지확인",
-      imgIndex: 2,
-      song: {
+
+      {
+        stickerId: 11,
         title: "Hype boy",
-        singer: "newJeans",
+        albumImgsrc: "/img/playlistTest.png",
+        artist: "newJeans",
+        message: "메시지확인",
       },
-    },
-    {
-      userName: "my8",
-      message: "안녕",
-      imgIndex: 1,
-      song: {
+      {
+        stickerId: 1,
         title: "Hype boy",
-        singer: "newJeans",
+        albumImgsrc: "/img/playlistTest.png",
+        artist: "newJeans",
+        message: "안녕",
       },
-    },
-    {
-      userName: "other9",
-      message: "다른사람꺼",
-      imgIndex: 3,
-      song: {
+      {
+        stickerId: 3,
         title: "Hype boy",
-        singer: "newJeans",
+        albumImgsrc: "/img/playlistTest.png",
+        artist: "newJeans",
+        message: "다른사람꺼",
       },
-    },
-    {
-      userName: "my10",
-      message: "힘들군",
-      imgIndex: 5,
-      song: {
+      {
+        stickerId: 5,
         title: "Hype boy",
-        singer: "newJeans",
+        albumImgsrc: "/img/playlistTest.png",
+        artist: "newJeans",
+        message: "힘들군",
       },
-    },
-    {
-      userName: "other11",
-      message: "지금현재는이런상태",
-      imgIndex: 4,
-      song: {
+      {
+        stickerId: 4,
         title: "Hype boy",
-        singer: "newJeans",
+        albumImgsrc: "/img/playlistTest.png",
+        artist: "newJeans",
+        message: "지금현재는이런상태",
       },
-    },
-    {
-      userName: "hailey",
-      message: "이렇게 받아와야함 아니 근ㅔ 이거 엄청 길면 ",
-      imgIndex: 6,
-      song: {
+      {
+        stickerId: 6,
         title: "Hype boy",
-        singer: "newJeans",
+        albumImgsrc: "/img/playlistTest.png",
+        artist: "newJeans",
+        message: "이렇게 받아와야함 아니 근ㅔ 이거 엄청 길면 ",
       },
-    },
-    {
-      userName: "my13",
-      message: "계속해서 이럴예정",
-      imgIndex: 7,
-      song: {
-        title: "Hype boy",
-        singer: "newJeans",
+      {
+        stickerId: 7,
+        title: "Cookie",
+        albumImgsrc: "/img/playlistTest.png",
+        artist: "newJeans",
+        message: "계속해서 이럴예정",
       },
-    },
-    {
-      userName: "my14",
-      message: "흐음...well...",
-      imgIndex: 2,
-      song: {
-        title: "Hype boy",
-        singer: "newJeans",
+      {
+        stickerId: 2,
+        title: "Attention",
+        albumImgsrc: "/img/playlistTest.png",
+        artist: "newJeans",
+        message: "계속해서 이럴예정",
       },
-    },
-  ],
+    ],
+  },
 });

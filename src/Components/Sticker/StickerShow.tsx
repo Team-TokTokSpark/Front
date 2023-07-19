@@ -1,4 +1,3 @@
-import { useState } from "react";
 import StickerImgMake from "./StickerImgMake";
 import { useRecoilValue } from "recoil";
 import { PlaylistInformation } from "../../atom";
@@ -8,14 +7,14 @@ function StickerShow() {
   return (
     <>
       <div className="blackSpace"></div>
-      {sticker.map((e, index) => {
+      {sticker.playlistSongs.map((e, index) => {
         if (index % 5 === 3 || index % 5 === 4) {
           return (
             <>
               <StickerImgMake
-                name={e.userName}
+                name={e.message}
                 message={e.message}
-                stickerNum={e.imgIndex}
+                stickerNum={e.stickerId}
                 even_item="even-item"
               />
             </>
@@ -24,9 +23,9 @@ function StickerShow() {
           return (
             <>
               <StickerImgMake
-                name={e.userName}
+                name={e.message}
                 message={e.message}
-                stickerNum={e.imgIndex}
+                stickerNum={e.stickerId}
                 even_item="item"
               />
             </>

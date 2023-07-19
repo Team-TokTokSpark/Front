@@ -9,13 +9,12 @@ const EditStickerShow = () => {
     <BodyWrapper>
       <LongContainerWrapper>
         <div className="blackSpace"></div>
-        {sticker.map((e, index) => {
+        {sticker.playlistSongs.map((e, index) => {
           if (index % 5 === 3 || index % 5 === 4) {
             return (
               <EditStickerImg
-                name={e.userName}
                 message={e.message}
-                stickerNum={e.imgIndex}
+                stickerNum={e.stickerId}
                 even_item="even-item"
               />
             );
@@ -23,9 +22,8 @@ const EditStickerShow = () => {
             return (
               <>
                 <EditStickerImg
-                  name={e.userName}
                   message={e.message}
-                  stickerNum={e.imgIndex}
+                  stickerNum={e.stickerId}
                   even_item="item"
                 />
               </>
