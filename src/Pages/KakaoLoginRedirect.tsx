@@ -14,11 +14,14 @@ const KakaoLoginRedirect = () => {
 
   const token: any = searchParams.get("Token");
 
-  console.log(token);
-
   const setUser = async (token: string) => {
     const data = await getUserInformation(token);
     setUserInformation(data);
+    if (data.nickname === "" || data.introduce === "") {
+      navigate("/signup");
+    } else {
+      navigate(`/main/${data.userId}`);
+    }
   };
 
   useEffect(() => {
@@ -26,14 +29,7 @@ const KakaoLoginRedirect = () => {
     setUser(token);
   }, []);
 
-  useEffect(() => {
-    console.log("유저정보", userInformation);
-    if (userInformation.nickname === "" || userInformation.introduce === "") {
-      navigate("/signup");
-    } else {
-      navigate(`/main/${userInformation.userId}`);
-    }
-  }, []);
+  useEffect(() => {}, []);
 
   return <></>;
 };
