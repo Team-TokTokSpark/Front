@@ -43,7 +43,9 @@ const FriendsListPage = () => {
       ) : (
         <S.PageContainer>
           <S.FriendsListHeader>
-            <button onClick={() => navigate("/main")}>{icons.back}</button>
+            <button onClick={() => navigate(`/main/${userInformation.userId}`)}>
+              {icons.back}
+            </button>
             <div>친구 목록</div>
           </S.FriendsListHeader>
           <S.InputBox>

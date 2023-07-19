@@ -11,13 +11,14 @@ import { userInformationState, authTokenState } from "../atom";
 
 const SettingPage = () => {
   const navigate = useNavigate();
-  const [abc, setAbc] = useRecoilState(userInformationState);
+  const [userInformation, setUserInformation] =
+    useRecoilState(userInformationState);
   const token = useRecoilValue(authTokenState);
   const [editToggle, setEditToggle] = useState<boolean>(false);
 
   //추후에 바꿔줘야함 임시데이터.
-  const [nickname, setNickname] = useState<string>(abc.nickname);
-  const [introduce, setIntroduce] = useState<string>(abc.introduce);
+  const [nickname, setNickname] = useState<string>(userInformation.nickname);
+  const [introduce, setIntroduce] = useState<string>(userInformation.introduce);
 
   const editToggleHandler = () => {
     setEditToggle((state) => !state);
@@ -25,11 +26,11 @@ const SettingPage = () => {
 
   const profileChangeHandler = async () => {
     try {
-      await putUserProfile(token, nickname, introduce, abc.userId);
+      await putUserProfile(token, nickname, introduce, userInformation.userId);
       setNickname(nickname);
       setIntroduce(introduce);
-      setAbc({
-        userId: abc.userId,
+      setUserInformation({
+        userId: userInformation.userId,
         nickname: nickname,
         introduce: introduce,
       });
@@ -42,7 +43,7 @@ const SettingPage = () => {
   const onWithdrawlUser = async () => {
     try {
       //정말 계정을 탈퇴하시겠습니까? 추가?
-      await WithdrawalUser(token, abc.userId);
+      await WithdrawalUser(token, userInformation.userId);
       navigate("/");
     } catch (error) {
       console.error("계정탈퇴 실패");
@@ -53,7 +54,9 @@ const SettingPage = () => {
     <>
       <S.PageContainer>
         <S.FriendsListHeader>
-          <button onClick={() => navigate("/main")}>{icons.back}</button>
+          <button onClick={() => navigate(`/main/${userInformation.userId}`)}>
+            {icons.back}
+          </button>
           <div>설정</div>
         </S.FriendsListHeader>
         <S.ProfileContainer>
