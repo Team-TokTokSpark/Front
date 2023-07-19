@@ -9,8 +9,10 @@ import type { friendsProps } from "../Constants/interfaces";
 import { getFriendsList } from "../Services/FriendsList/api";
 import { authTokenState, userInformationState } from "../atom";
 import FriendsListItem from "../Components/FriendsListItem";
+import Loading from "../Components/Loading/Loading";
 
 const FriendsListPage = () => {
+  const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
   const [searchTerm, setSearchTerm] = useState("");
   const token = useRecoilValue(authTokenState);
@@ -24,9 +26,11 @@ const FriendsListPage = () => {
   };
 
   const fetchFriendsList = async () => {
+    setLoading(true);
     const FriendsLists = await getFriendsList(userInformation.userId, token);
     setLocalFriendsList(FriendsLists);
     console.log(FriendsLists);
+    setLoading(false);
   };
   useEffect(() => {
     fetchFriendsList();
@@ -34,31 +38,37 @@ const FriendsListPage = () => {
 
   return (
     <>
-      <S.PageContainer>
-        <S.FriendsListHeader>
-          <button onClick={() => navigate("/main")}>{icons.back}</button>
-          <div>친구 목록</div>
-        </S.FriendsListHeader>
-        <S.InputBox>
-          <input
-            type="text"
-            placeholder="검색"
-            value={searchTerm}
-            onChange={handleInputChange}
-          />
-          {icons.search}
-        </S.InputBox>
-        <S.Ul>
-          {filteredData.map((datas: friendsProps) => (
-            <FriendsListItem
-              key={datas.id}
-              datas={datas}
-              userId={userInformation.userId}
-              token={token}
+      {loading ? (
+        <Loading />
+      ) : (
+        <S.PageContainer>
+          <S.FriendsListHeader>
+            <button onClick={() => navigate(`/main/${userInformation.userId}`)}>
+              {icons.back}
+            </button>
+            <div>친구 목록</div>
+          </S.FriendsListHeader>
+          <S.InputBox>
+            <input
+              type="text"
+              placeholder="검색"
+              value={searchTerm}
+              onChange={handleInputChange}
             />
-          ))}
-        </S.Ul>
-      </S.PageContainer>
+            {icons.search}
+          </S.InputBox>
+          <S.Ul>
+            {filteredData.map((datas: friendsProps) => (
+              <FriendsListItem
+                key={datas.id}
+                datas={datas}
+                userId={userInformation.userId}
+                token={token}
+              />
+            ))}
+          </S.Ul>
+        </S.PageContainer>
+      )}
     </>
   );
 };

@@ -3,14 +3,15 @@ import { useNavigate } from "react-router-dom";
 import PageShow from "../Components/Main/PageShow";
 import icons from "../Css/icons";
 import { EditStickerButton, ShareButton } from "../Styles/HomePageStyle";
-import { UserListInfo, userInformationState } from "../atom";
+import { UserListInfo, userInformationState, authTokenState } from "../atom";
 import { useRecoilValue } from "recoil";
 import { Link } from "react-router-dom";
+import { gohome } from "../Components/KakaoLogin/gohome";
 
 function HomePage() {
   const navigate = useNavigate();
   const listInfo = useRecoilValue(UserListInfo);
-
+  const token = useRecoilValue(authTokenState);
   const information = useRecoilValue(userInformationState);
 
   return (
@@ -20,7 +21,11 @@ function HomePage() {
           src="/img/Setting_5.png"
           alt="editing"
           onClick={() => {
-            navigate("/setting");
+            if (gohome(token, information)) {
+              navigate("/setting");
+            } else {
+              navigate("/");
+            }
           }}
         />
       </div>
@@ -35,7 +40,11 @@ function HomePage() {
         {listInfo.nickname}
         <ShareButton
           onClick={() => {
-            navigate("/friendsList");
+            if (gohome(token, information)) {
+              navigate("/friendsList");
+            } else {
+              navigate("/");
+            }
           }}
         >
           친구 목록
@@ -44,7 +53,7 @@ function HomePage() {
       <PageShow listInfo={listInfo.playlists} />
       <div>
         {/* 여기가 변경 될 부분! 현재 userId가 안나와있기 때문! */}
-        {information.userId === null ? (
+        {information.userId !== null ? (
           <Link to="makePage">
             <EditStickerButton>{icons.plus}</EditStickerButton>
           </Link>

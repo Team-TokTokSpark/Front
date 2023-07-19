@@ -31,7 +31,7 @@ const KakaoLoginRedirect = () => {
     if (userInformation.nickname === "" || userInformation.introduce === "") {
       navigate("/signup");
     } else {
-      navigate("/main");
+      navigate(`/main/${userInformation.userId}`);
     }
   }, []);
 

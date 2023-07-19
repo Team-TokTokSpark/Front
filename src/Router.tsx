@@ -32,7 +32,7 @@ const router = createBrowserRouter([
       },
     ],
   },
-  { path: "/oauth2/redirect", element: <KakaoLoginRedirect /> },
+  { path: "oauth2/redirect", element: <KakaoLoginRedirect /> },
   { path: "signup", element: <SignUpPage /> },
   { path: "setting", element: <SettingPage /> },
   { path: "friendsList", element: <FriendsListPage /> },

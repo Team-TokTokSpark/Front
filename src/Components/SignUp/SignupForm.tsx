@@ -35,7 +35,7 @@ const SignupForm = () => {
       nickname: data.nickname,
       introduce: data.introduce,
     });
-    navigate("/main");
+    navigate(`/main/${userInformation.userId}`);
   };
 
   return (
