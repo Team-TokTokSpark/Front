@@ -8,7 +8,7 @@ const PlaylistMessage = () => {
   return (
     <>
       <div className="blackSpace"></div>
-      {Messagelist.map((e) => {
+      {Messagelist.playlistSongs.map((e) => {
         return <MusicMessageWrapper>{e.message}</MusicMessageWrapper>;
       })}
     </>

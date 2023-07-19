@@ -3,16 +3,15 @@ import { useNavigate } from "react-router-dom";
 import PageShow from "../Components/Main/PageShow";
 import icons from "../Css/icons";
 import { EditStickerButton, ShareButton } from "../Styles/HomePageStyle";
-import { userInformationState } from "../atom";
+import { UserListInfo, userInformationState } from "../atom";
 import { useRecoilValue } from "recoil";
 import { Link } from "react-router-dom";
 
 function HomePage() {
   const navigate = useNavigate();
+  const listInfo = useRecoilValue(UserListInfo);
 
   const information = useRecoilValue(userInformationState);
-
-  console.log(information);
 
   return (
     <>
@@ -30,10 +29,10 @@ function HomePage() {
         style={{ fontSize: "14px", fontWeight: "300" }}
       >
         <div className="music_note"> {icons.musicnote}</div>
-        자기소개 한줄~
+        {listInfo.introduce}
       </div>
       <div className="title-part">
-        이름(닉네임)
+        {listInfo.nickname}
         <ShareButton
           onClick={() => {
             navigate("/friendsList");
@@ -42,7 +41,7 @@ function HomePage() {
           친구 목록
         </ShareButton>
       </div>
-      <PageShow />
+      <PageShow listInfo={listInfo.playlists} />
       <div>
         {/* 여기가 변경 될 부분! 현재 userId가 안나와있기 때문! */}
         {information.userId === null ? (
