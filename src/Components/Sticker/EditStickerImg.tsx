@@ -3,13 +3,12 @@ import { BigStickerPage, StickerPage } from "../../Styles/HomePageStyle";
 import { RemoveButton } from "../../Styles/EditPageStyle";
 
 type Props = {
-  name: string;
   message: string;
   stickerNum: number;
   even_item: string;
 };
 
-const EditStickerImg = ({ name, message, stickerNum, even_item }: Props) => {
+const EditStickerImg = ({ message, stickerNum, even_item }: Props) => {
   if (stickerNum % 2 === 0) {
     return (
       <>
