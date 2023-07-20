@@ -8,3 +8,11 @@ export const searchSong = async (token: string) => {
   const data = await response.data;
   console.log(data);
 };
+
+export const searchMusicFunction = async (title: string, token: string) => {
+  const response = await axios.get(`${SERVER_URL}/search/${title}`, {
+    headers: { Authorization: `Bearer ${token}` },
+  });
+  console.log(response);
+  return response;
+};
