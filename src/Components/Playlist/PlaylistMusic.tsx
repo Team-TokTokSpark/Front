@@ -1,7 +1,9 @@
 import { useRecoilValue } from "recoil";
 import { PlaylistInformation } from "../../atom";
-import { MusicPlaylistWrapper } from "../../Styles/PlaylistStyle";
-import { BodyWrapper } from "../../Styles/HomePageStyle";
+import {
+  MusicBoxWrapper,
+  MusicPlaylistWrapper,
+} from "../../Styles/PlaylistStyle";
 
 const PlaylistMusic = () => {
   const playMusiclist = useRecoilValue(PlaylistInformation);
@@ -12,10 +14,10 @@ const PlaylistMusic = () => {
         return (
           <MusicPlaylistWrapper className="blankSpace">
             <img className="albumImg" src={e.albumImgsrc} alt="albumImg" />
-            <BodyWrapper>
+            <MusicBoxWrapper>
               <div className="title">{e.title}</div>
               <div className="artist">{e.artist}</div>
-            </BodyWrapper>
+            </MusicBoxWrapper>
           </MusicPlaylistWrapper>
         );
       })}

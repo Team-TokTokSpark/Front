@@ -59,6 +59,56 @@ export const SongSearchBox = styled.div`
   }
 `;
 
+export const SongSearchListWrapper = styled.div`
+  overflow: scroll;
+  scrollbar-width: none;
+  scrollbar-color: transparent transparent;
+  width: 90%;
+  height: 70%;
+  background-color: transparent;
+  margin: auto;
+`;
+
+export const SongSearchList = styled.button`
+  position: relative;
+  width: 260px;
+  height: 40px;
+  display: flex;
+  padding: 10px;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 10px;
+  border-radius: 5px;
+  background-color: transparent;
+  border-color: transparent;
+  color: white;
+  margin: 0px auto;
+  box-sizing: content-box;
+  .title {
+    font-size: 14px;
+    font-weight: 400;
+  }
+
+  .artist {
+    font-size: 11px;
+    font-weight: 400;
+  }
+
+  img {
+    width: 40px;
+    height: 40px;
+  }
+
+  &.click {
+    background-color: rgba(255, 255, 255, 0.2);
+  }
+
+  svg {
+    position: absolute;
+    left: 88%;
+  }
+`;
+
 export const StickerSelectBox = styled.div`
   position: absolute;
   top: 50%;

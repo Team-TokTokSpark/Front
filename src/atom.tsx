@@ -113,6 +113,13 @@ export interface ListInfoProps {
   playlists: Array<mainPlaylistProps>;
 }
 
+export interface SongProps {
+  artistName: string;
+  title: string;
+  albumName: string;
+  imageUrl: string;
+}
+
 export interface mainPlaylistProps {
   type: string;
   postIdx: number;

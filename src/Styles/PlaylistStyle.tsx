@@ -1,5 +1,12 @@
 import styled from "styled-components";
 
+export const MusicBoxWrapper = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: start;
+  flex-direction: column;
+`;
+
 export const MusicPlaylistWrapper = styled.button`
   display: flex;
   padding: 10px;
