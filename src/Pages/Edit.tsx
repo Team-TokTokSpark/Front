@@ -21,7 +21,14 @@ const EditPage = () => {
   return (
     <MainBody>
       <div className={`pageTheme${backGroundColorNum}`}>
-        <CancleComplete colorNum={changeBackGroundColorNum} />
+        <CancleComplete
+          colorNum={changeBackGroundColorNum}
+          userIdx={-1}
+          type={""}
+          playlistName={""}
+          backgroundIdx={-1}
+          token={""}
+        />
         <div className="editTitle-part">
           <InputTitle type="text" value={text} onChange={displayText} />
           <RemoveTextButton onClick={removeText}>X</RemoveTextButton>

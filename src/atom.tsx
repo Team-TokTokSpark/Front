@@ -122,11 +122,11 @@ export interface SongProps {
 
 export interface mainPlaylistProps {
   type: string;
-  postIdx: number;
+  playlistIdx: number;
   playlistName: string;
-  backgroudIdx: number;
+  backgroundIdx: number;
   userIdx: number;
-  imgIdx: number;
+  imageIdx: number;
 }
 
 export const UserListInfo = atom<ListInfoProps>({
@@ -137,115 +137,11 @@ export const UserListInfo = atom<ListInfoProps>({
     playlists: [
       {
         type: "playlist",
-        postIdx: 1,
+        playlistIdx: 1,
         playlistName: "hello",
-        backgroudIdx: 0,
+        backgroundIdx: 0,
         userIdx: 2,
-        imgIdx: 12,
-      },
-      {
-        type: "playlist",
-        postIdx: 2,
-        playlistName: "niceTo",
-        backgroudIdx: 3,
-        userIdx: 1,
-        imgIdx: 8,
-      },
-      {
-        type: "playlist",
-        postIdx: 3,
-        playlistName: "music",
-        backgroudIdx: 2,
-        userIdx: 4,
-        imgIdx: 2,
-      },
-      {
-        type: "playlist",
-        postIdx: 4,
-        playlistName: "music",
-        backgroudIdx: 3,
-        userIdx: 5,
-        imgIdx: 3,
-      },
-      {
-        type: "playlist",
-        postIdx: 5,
-        playlistName: "muzik",
-        backgroudIdx: 1,
-        userIdx: 5,
-        imgIdx: 4,
-      },
-      {
-        type: "playlist",
-        postIdx: 6,
-        playlistName: "왜 많이 만들었지",
-        backgroudIdx: 0,
-        userIdx: 6,
-        imgIdx: 5,
-      },
-      {
-        type: "playlist",
-        postIdx: 7,
-        playlistName: "great",
-        backgroudIdx: 1,
-        userIdx: 8,
-        imgIdx: 6,
-      },
-      {
-        type: "playlist",
-        postIdx: 8,
-        playlistName: "내꺼",
-        backgroudIdx: 2,
-        userIdx: 1,
-        imgIdx: 8,
-      },
-      {
-        type: "playlist",
-        postIdx: 9,
-        playlistName: "샌디의 음악",
-        backgroudIdx: 3,
-        userIdx: 7,
-        imgIdx: 10,
-      },
-      {
-        type: "playlist",
-        postIdx: 10,
-        playlistName: "Nina의 취향",
-        backgroudIdx: 1,
-        userIdx: 4,
-        imgIdx: 1,
-      },
-      {
-        type: "playlist",
-        postIdx: 11,
-        playlistName: "비 올때 듣는",
-        backgroudIdx: 0,
-        userIdx: 11,
-        imgIdx: 3,
-      },
-      {
-        type: "playlist",
-        postIdx: 12,
-        playlistName: "Happy",
-        backgroudIdx: 2,
-        userIdx: 1,
-        imgIdx: 4,
-      },
-      {
-        type: "playlist",
-        postIdx: 13,
-        playlistName: "피곤해",
-        backgroudIdx: 1,
-        userIdx: 11,
-        imgIdx: 11,
-      },
-      {
-        type: "playlist",
-        postIdx: 14,
-        playlistName: "이제 마지막",
-        backgroudIdx: 2,
-        userIdx: 6,
-        imgIdx: 6,
+        imageIdx: 12,
       },
     ],
   },
