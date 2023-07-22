@@ -5,8 +5,7 @@ import SignUpPage from "./Pages/SignUpPage";
 import NotFoundPage from "./Pages/NotFound";
 import HomePage from "./Pages/HomePage";
 import MusicPage from "./Pages/page";
-import MymusicPage from "./Pages/myMusicPage";
-import OthermusicPage from "./Pages/otherMusicPage";
+import PlayermusicPage from "./Pages/PlayerMusicPage";
 import FriendsListPage from "./Pages/FrinedsListPage";
 import SettingPage from "./Pages/SettingPage";
 import EditPage from "./Pages/Edit";
@@ -41,14 +40,13 @@ const router = createBrowserRouter([
     element: <MusicPage />,
     children: [
       {
-        path: "myMusic/:idx",
-        element: <MymusicPage />,
+        path: ":idx",
+        element: <PlayermusicPage />,
       },
       {
-        path: "myMusic/:idx/edit",
+        path: ":idx/edit",
         element: <EditPage />,
       },
-      { path: "otherMusic/:idx", element: <OthermusicPage /> },
     ],
   },
   { path: "edit", element: <EditPage /> },

@@ -100,10 +100,16 @@ export interface PlaylistProps {
 }
 
 export interface playlistSongsProps {
-  stickerId: number;
+  playlistSongId: number;
+  stickers: Array<stickerProps>;
   title: string;
-  albumImgsrc: string;
+  albumImageUrl: string;
   artist: string;
+}
+
+export interface stickerProps {
+  stickerId: number;
+  imgIdx: number;
   message: string;
 }
 
@@ -122,11 +128,11 @@ export interface SongProps {
 
 export interface mainPlaylistProps {
   type: string;
-  postIdx: number;
+  playlistIdx: number;
   playlistName: string;
-  backgroudIdx: number;
+  backgroundIdx: number;
   userIdx: number;
-  imgIdx: number;
+  imageIdx: number;
 }
 
 export const UserListInfo = atom<ListInfoProps>({
@@ -137,115 +143,11 @@ export const UserListInfo = atom<ListInfoProps>({
     playlists: [
       {
         type: "playlist",
-        postIdx: 1,
+        playlistIdx: 1,
         playlistName: "hello",
-        backgroudIdx: 0,
+        backgroundIdx: 0,
         userIdx: 2,
-        imgIdx: 12,
-      },
-      {
-        type: "playlist",
-        postIdx: 2,
-        playlistName: "niceTo",
-        backgroudIdx: 3,
-        userIdx: 1,
-        imgIdx: 8,
-      },
-      {
-        type: "playlist",
-        postIdx: 3,
-        playlistName: "music",
-        backgroudIdx: 2,
-        userIdx: 4,
-        imgIdx: 2,
-      },
-      {
-        type: "playlist",
-        postIdx: 4,
-        playlistName: "music",
-        backgroudIdx: 3,
-        userIdx: 5,
-        imgIdx: 3,
-      },
-      {
-        type: "playlist",
-        postIdx: 5,
-        playlistName: "muzik",
-        backgroudIdx: 1,
-        userIdx: 5,
-        imgIdx: 4,
-      },
-      {
-        type: "playlist",
-        postIdx: 6,
-        playlistName: "왜 많이 만들었지",
-        backgroudIdx: 0,
-        userIdx: 6,
-        imgIdx: 5,
-      },
-      {
-        type: "playlist",
-        postIdx: 7,
-        playlistName: "great",
-        backgroudIdx: 1,
-        userIdx: 8,
-        imgIdx: 6,
-      },
-      {
-        type: "playlist",
-        postIdx: 8,
-        playlistName: "내꺼",
-        backgroudIdx: 2,
-        userIdx: 1,
-        imgIdx: 8,
-      },
-      {
-        type: "playlist",
-        postIdx: 9,
-        playlistName: "샌디의 음악",
-        backgroudIdx: 3,
-        userIdx: 7,
-        imgIdx: 10,
-      },
-      {
-        type: "playlist",
-        postIdx: 10,
-        playlistName: "Nina의 취향",
-        backgroudIdx: 1,
-        userIdx: 4,
-        imgIdx: 1,
-      },
-      {
-        type: "playlist",
-        postIdx: 11,
-        playlistName: "비 올때 듣는",
-        backgroudIdx: 0,
-        userIdx: 11,
-        imgIdx: 3,
-      },
-      {
-        type: "playlist",
-        postIdx: 12,
-        playlistName: "Happy",
-        backgroudIdx: 2,
-        userIdx: 1,
-        imgIdx: 4,
-      },
-      {
-        type: "playlist",
-        postIdx: 13,
-        playlistName: "피곤해",
-        backgroudIdx: 1,
-        userIdx: 11,
-        imgIdx: 11,
-      },
-      {
-        type: "playlist",
-        postIdx: 14,
-        playlistName: "이제 마지막",
-        backgroudIdx: 2,
-        userIdx: 6,
-        imgIdx: 6,
+        imageIdx: 12,
       },
     ],
   },
@@ -255,109 +157,75 @@ export const PlaylistInformation = atom<PlaylistProps>({
   key: "playlistInfo",
   default: {
     userId: 0,
-    nickname: "",
+    nickname: "몰랑이",
     playlistId: 0,
-    playlistName: "",
+    playlistName: "테스트",
     backgroundIdx: -1,
     playlistSongs: [
       {
-        stickerId: 1,
+        playlistSongId: 1,
+        stickers: [
+          {
+            stickerId: 1,
+            imgIdx: 4,
+            message: "이건 테스트용",
+          },
+        ],
         title: "Hype boy",
-        albumImgsrc: "/img/playlistTest.png",
+        albumImageUrl: "/img/playlistTest.png",
         artist: "newJeans",
-        message: "이건테스트용",
       },
       {
-        stickerId: 2,
+        playlistSongId: 2,
+        stickers: [
+          {
+            stickerId: 2,
+            imgIdx: 7,
+            message: "그래서 모든내용이 같음",
+          },
+        ],
         title: "Cookie",
-        albumImgsrc: "/img/playlistTest.png",
+        albumImageUrl: "/img/playlistTest.png",
         artist: "newJeans",
-        message: "그래서 모든내용이 같음",
       },
       {
-        stickerId: 8,
+        playlistSongId: 3,
+        stickers: [
+          {
+            stickerId: 3,
+            imgIdx: 8,
+            message: "나중에 서버에 받으면 달라질거임",
+          },
+        ],
         title: "Attention",
-        albumImgsrc: "/img/playlistTest.png",
+        albumImageUrl: "/img/playlistTest.png",
         artist: "newJeans",
-        message: "나중에 서버에 받으면 달라질거임",
       },
       {
-        stickerId: 7,
+        playlistSongId: 4,
+        stickers: [
+          {
+            stickerId: 4,
+            imgIdx: 7,
+            message: "일일이 쓰는게 어렵다",
+          },
+        ],
         title: "Hype boy",
-        albumImgsrc: "/img/playlistTest.png",
+        albumImageUrl: "/img/playlistTest.png",
         artist: "newJeans",
-        message: "일일이 쓰는게 어렵다",
       },
       {
-        stickerId: 11,
+        playlistSongId: 5,
+        stickers: [
+          {
+            stickerId: 5,
+            imgIdx: 11,
+            message: "이건테스트용",
+          },
+        ],
         title: "Hype boy",
-        albumImgsrc: "/img/playlistTest.png",
+        albumImageUrl: "/img/playlistTest.png",
         artist: "newJeans",
-        message: "이건테스트용",
-      },
-      {
-        stickerId: 12,
-        title: "Hype boy",
-        albumImgsrc: "/img/playlistTest.png",
-        artist: "newJeans",
-        message: "이것도테스트용",
-      },
-
-      {
-        stickerId: 11,
-        title: "Hype boy",
-        albumImgsrc: "/img/playlistTest.png",
-        artist: "newJeans",
-        message: "메시지확인",
-      },
-      {
-        stickerId: 1,
-        title: "Hype boy",
-        albumImgsrc: "/img/playlistTest.png",
-        artist: "newJeans",
-        message: "안녕",
-      },
-      {
-        stickerId: 3,
-        title: "Hype boy",
-        albumImgsrc: "/img/playlistTest.png",
-        artist: "newJeans",
-        message: "다른사람꺼",
-      },
-      {
-        stickerId: 5,
-        title: "Hype boy",
-        albumImgsrc: "/img/playlistTest.png",
-        artist: "newJeans",
-        message: "힘들군",
-      },
-      {
-        stickerId: 4,
-        title: "Hype boy",
-        albumImgsrc: "/img/playlistTest.png",
-        artist: "newJeans",
-        message: "지금현재는이런상태",
-      },
-      {
-        stickerId: 6,
-        title: "Hype boy",
-        albumImgsrc: "/img/playlistTest.png",
-        artist: "newJeans",
-        message: "이렇게 받아와야함 아니 근ㅔ 이거 엄청 길면 ",
-      },
-      {
-        stickerId: 7,
-        title: "Cookie",
-        albumImgsrc: "/img/playlistTest.png",
-        artist: "newJeans",
-        message: "계속해서 이럴예정",
-      },
-      {
-        stickerId: 2,
-        title: "Attention",
-        albumImgsrc: "/img/playlistTest.png",
-        artist: "newJeans",
-        message: "계속해서 이럴예정",
       },
     ],
   },

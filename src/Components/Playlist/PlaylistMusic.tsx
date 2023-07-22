@@ -13,7 +13,7 @@ const PlaylistMusic = () => {
       {playMusiclist.playlistSongs.map((e) => {
         return (
           <MusicPlaylistWrapper className="blankSpace">
-            <img className="albumImg" src={e.albumImgsrc} alt="albumImg" />
+            <img className="albumImg" src={e.albumImageUrl} alt="albumImg" />
             <MusicBoxWrapper>
               <div className="title">{e.title}</div>
               <div className="artist">{e.artist}</div>

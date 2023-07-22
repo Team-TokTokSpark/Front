@@ -13,55 +13,36 @@ function PageShow({ listInfo }: { listInfo: Array<mainPlaylistProps> }) {
         <div className="blackSpace">
           <div></div>
         </div>
-        {listInfo.map((e) => {
-          if (e.userIdx === 1) {
-            return (
-              <ContainerPage
-                onClick={() => {
-                  navigate(`/page/myMusic/${e.userIdx}+${e.playlistName}`, {
-                    state: {
-                      userId: e.userIdx,
-                      pageName: e.playlistName,
-                    },
-                  });
-                  pageColorNum(e.backgroudIdx);
-                }}
-                className={`containerTheme${e.backgroudIdx}`}
-              >
-                {e.playlistName}
-                <div
-                  className="imgInput"
-                  style={{
-                    backgroundImage: `url(/img/sticker/sticker${e.imgIdx}.png)`,
+        {listInfo === undefined
+          ? null
+          : listInfo.map((e) => {
+              return (
+                <ContainerPage
+                  onClick={() => {
+                    if (e.type === "playlist") {
+                      navigate(`/page/${e.playlistIdx}`, {
+                        state: {
+                          userId: e.userIdx,
+                          playlistIdx: e.playlistIdx,
+                        },
+                      });
+                      pageColorNum(e.backgroundIdx);
+                    } else {
+                      alert("아직 이동을 못해요!");
+                    }
                   }}
-                />
-              </ContainerPage>
-            );
-          } else {
-            return (
-              <ContainerPage
-                onClick={() => {
-                  navigate(`/page/otherMusic/${e.userIdx}+${e.playlistName}`, {
-                    state: {
-                      userId: e.userIdx,
-                      pageName: e.playlistName,
-                    },
-                  });
-                  pageColorNum(e.backgroudIdx);
-                }}
-                className={`containerTheme${e.backgroudIdx}`}
-              >
-                {e.playlistName}
-                <div
-                  className="imgInput"
-                  style={{
-                    backgroundImage: `url(/img/sticker/sticker${e.imgIdx}.png)`,
-                  }}
-                />
-              </ContainerPage>
-            );
-          }
-        })}
+                  className={`containerTheme${e.backgroundIdx}`}
+                >
+                  {e.playlistName}
+                  <div
+                    className="imgInput"
+                    style={{
+                      backgroundImage: `url(/img/sticker/sticker${e.imageIdx}.png)`,
+                    }}
+                  />
+                </ContainerPage>
+              );
+            })}
       </ContainerWrapper>
     </>
   );

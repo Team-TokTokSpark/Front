@@ -4,17 +4,35 @@ import PageShow from "../Components/Main/PageShow";
 import icons from "../Css/icons";
 import { EditStickerButton, ShareButton } from "../Styles/HomePageStyle";
 import { UserListInfo, userInformationState, authTokenState } from "../atom";
-import { useRecoilValue } from "recoil";
+import { useRecoilState, useRecoilValue } from "recoil";
 import { Link } from "react-router-dom";
 import { gohome } from "../Components/KakaoLogin/gohome";
+import { useEffect } from "react";
+import { getMainApi } from "../Services/Main/api";
 
 function HomePage() {
   const navigate = useNavigate();
-  const listInfo = useRecoilValue(UserListInfo);
+  const [listInfo, setListInfo] = useRecoilState(UserListInfo);
   const { idx } = useParams();
+  const stringIdx: string = idx!;
   const information = useRecoilValue(userInformationState);
   const token = useRecoilValue(authTokenState);
-  console.log(information);
+  const getMain = async (info: string, token: string) => {
+    const result = await getMainApi(info, token);
+    setListInfo(result.data);
+  };
+  useEffect(() => {
+    if (token === "") {
+      alert("로그인을 진행해주세요");
+      navigate("/");
+    } else {
+      if (`${information.userId}` === idx) {
+        getMain(information.userId, token);
+      } else {
+        getMain(stringIdx, token);
+      }
+    }
+  }, []);
 
   return (
     <>

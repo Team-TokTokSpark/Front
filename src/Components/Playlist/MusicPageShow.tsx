@@ -12,19 +12,16 @@ import StickerShow from "../Sticker/StickerShow";
 import icons from "../../Css/icons";
 import StickerModal from "../Modal/ModalPage";
 import { useRecoilState, useRecoilValue } from "recoil";
-import { dotsIndexSelect, isModalView } from "../../atom";
+import { PlaylistInformation, dotsIndexSelect, isModalView } from "../../atom";
 import SwiperDots from "./SwiperDots";
 import PlaylistMusic from "./PlaylistMusic";
 import PlaylistMessage from "./PlaylistMessage";
 
 const MusicPageShow = () => {
   const navigate = useNavigate();
-  const location = useLocation();
-  const [userId, setUserId] = useState(location.state?.userId);
   const [popupModal, setPopupModal] = useRecoilState(isModalView);
   const dotsSelect = useRecoilValue(dotsIndexSelect);
-
-  const pageName = location.state?.pageName;
+  const playlistInfo = useRecoilValue(PlaylistInformation);
 
   return (
     <>
@@ -36,11 +33,11 @@ const MusicPageShow = () => {
             navigate(-1);
           }}
         />
-        <div className="user_name">{userId}</div>
+        <div className="user_name">{playlistInfo.nickname}</div>
         님의 보관함
       </div>
       <div className="title-part">
-        {pageName} page
+        {playlistInfo.playlistName} page
         <ShareButton>링크 공유</ShareButton>
       </div>
       <BodyWrapper>
