@@ -16,9 +16,12 @@ export const searchMusicFunction = async (title: string, token: string) => {
   return response;
 };
 
-export const getPlaylistapi = async (token: string) => {
-  const response = await axios.get(``, {
-    headers: { Authorization: `Bearer ${token}` },
-  });
+export const getPlaylistapi = async (token: string, playlistid: number) => {
+  const response = await axios.get(
+    `${SERVER_URL}/playlists/playlist/${playlistid}`,
+    {
+      headers: { Authorization: `Bearer ${token}` },
+    }
+  );
   return response;
 };

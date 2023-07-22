@@ -12,9 +12,9 @@ function StickerShow() {
           return (
             <>
               <StickerImgMake
-                name={e.message}
-                message={e.message}
-                stickerNum={e.stickerId}
+                name={e.stickers[0].message}
+                message={e.stickers[0].message}
+                stickerNum={e.stickers[0].imgIdx}
                 even_item="even-item"
               />
             </>
@@ -23,9 +23,9 @@ function StickerShow() {
           return (
             <>
               <StickerImgMake
-                name={e.message}
-                message={e.message}
-                stickerNum={e.stickerId}
+                name={e.stickers[0].message}
+                message={e.stickers[0].message}
+                stickerNum={e.stickers[0].imgIdx}
                 even_item="item"
               />
             </>
