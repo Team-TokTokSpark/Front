@@ -41,7 +41,7 @@ const MakePage = () => {
         colorNum={-1}
         userIdx={information.userId}
         type={makePage.type}
-        playlistName={text}
+        playlistName={makePage.type === "playlist" ? text : todayInput}
         backgroundIdx={makeBackgroundColor}
         token={token}
       />
@@ -51,7 +51,7 @@ const MakePage = () => {
           <Title>{text}</Title>
           <TitleInput
             placeholder="제목을 입력하세요(10자 내외)"
-            maxLength={10}
+            maxLength={15}
             minLength={2}
             type="text"
             value={text}

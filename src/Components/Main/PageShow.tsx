@@ -18,55 +18,60 @@ function PageShow({ listInfo }: { listInfo: Array<mainPlaylistProps> }) {
         <div className="blackSpace">
           <div></div>
         </div>
-        {listInfo.map((e) => {
-          if (e.userIdx === information.userId) {
-            return (
-              <ContainerPage
-                onClick={() => {
-                  navigate(`/page/myMusic/${e.userIdx}+${e.playlistName}`, {
-                    state: {
-                      userId: e.userIdx,
-                      pageName: e.playlistName,
-                    },
-                  });
-                  pageColorNum(e.backgroundIdx);
-                }}
-                className={`containerTheme${e.backgroundIdx}`}
-              >
-                {e.playlistName}
-                <div
-                  className="imgInput"
-                  style={{
-                    backgroundImage: `url(/img/sticker/sticker${e.imageIdx}.png)`,
-                  }}
-                />
-              </ContainerPage>
-            );
-          } else {
-            return (
-              <ContainerPage
-                onClick={() => {
-                  navigate(`/page/otherMusic/${e.userIdx}+${e.playlistName}`, {
-                    state: {
-                      userId: e.userIdx,
-                      pageName: e.playlistName,
-                    },
-                  });
-                  pageColorNum(e.backgroundIdx);
-                }}
-                className={`containerTheme${e.backgroundIdx}`}
-              >
-                {e.playlistName}
-                <div
-                  className="imgInput"
-                  style={{
-                    backgroundImage: `url(/img/sticker/sticker${e.imageIdx}.png)`,
-                  }}
-                />
-              </ContainerPage>
-            );
-          }
-        })}
+        {listInfo === undefined
+          ? null
+          : listInfo.map((e) => {
+              if (e.userIdx === information.userId) {
+                return (
+                  <ContainerPage
+                    onClick={() => {
+                      navigate(`/page/myMusic/${e.userIdx}+${e.playlistName}`, {
+                        state: {
+                          userId: e.userIdx,
+                          pageName: e.playlistName,
+                        },
+                      });
+                      pageColorNum(e.backgroundIdx);
+                    }}
+                    className={`containerTheme${e.backgroundIdx}`}
+                  >
+                    {e.playlistName}
+                    <div
+                      className="imgInput"
+                      style={{
+                        backgroundImage: `url(/img/sticker/sticker${e.imageIdx}.png)`,
+                      }}
+                    />
+                  </ContainerPage>
+                );
+              } else {
+                return (
+                  <ContainerPage
+                    onClick={() => {
+                      navigate(
+                        `/page/otherMusic/${e.userIdx}+${e.playlistName}`,
+                        {
+                          state: {
+                            userId: e.userIdx,
+                            pageName: e.playlistName,
+                          },
+                        }
+                      );
+                      pageColorNum(e.backgroundIdx);
+                    }}
+                    className={`containerTheme${e.backgroundIdx}`}
+                  >
+                    {e.playlistName}
+                    <div
+                      className="imgInput"
+                      style={{
+                        backgroundImage: `url(/img/sticker/sticker${e.imageIdx}.png)`,
+                      }}
+                    />
+                  </ContainerPage>
+                );
+              }
+            })}
       </ContainerWrapper>
     </>
   );

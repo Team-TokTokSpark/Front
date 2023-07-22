@@ -20,13 +20,17 @@ function HomePage() {
   const getMain = async (info: string, token: string) => {
     const result = await getMainApi(info, token);
     setListInfo(result.data);
-    console.log(result.data);
   };
   useEffect(() => {
-    if (`${information.userId}` === idx) {
-      getMain(information.userId, token);
+    if (token === "") {
+      alert("로그인을 진행해주세요");
+      navigate("/");
     } else {
-      getMain(stringIdx, token);
+      if (`${information.userId}` === idx) {
+        getMain(information.userId, token);
+      } else {
+        getMain(stringIdx, token);
+      }
     }
   }, []);
 

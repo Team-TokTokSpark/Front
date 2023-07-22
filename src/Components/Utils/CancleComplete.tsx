@@ -71,12 +71,7 @@ const CancleComplete = ({
         ) : type === "record" ? (
           <div
             onClick={() => {
-              if (colorNum !== -1) {
-                setBackGroundColorNum(colorNum);
-                navigate(-1);
-              } else {
-                navigate(-1);
-              }
+              makePlaylist(userIdx, type, playlistName, backgroundIdx, token);
             }}
           >
             완료

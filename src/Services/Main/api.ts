@@ -18,7 +18,7 @@ export const MakePlaylistApi = async (
   backgroundIdx: number,
   token: string
 ) => {
-  if (playlistName.length < 3) {
+  if (playlistName.length < 2) {
     return false;
   } else {
     const imageIdx = Math.floor(Math.random() * 12) + 1;
