@@ -48,7 +48,7 @@ export const TitleInput = styled.input`
   background-color: rgba(255, 255, 255, 0.1);
   margin: 10px auto;
   border-color: transparent;
-  color: rgba(87, 87, 87, 0.2);
+  color: white;
   font-size: 18px;
   font-weight: 700;
 `;

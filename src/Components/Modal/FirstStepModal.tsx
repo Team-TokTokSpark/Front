@@ -50,10 +50,10 @@ const FirstStepModal = () => {
         {icons.search}
       </M.SongSearchBox>
       <div style={{ marginTop: "30px" }} />
-      {searchMusic.map((e, index) => {
-        if (click === index) {
-          return (
-            <M.SongSearchListWrapper>
+      <M.SongSearchListWrapper>
+        {searchMusic.map((e, index) => {
+          if (click === index) {
+            return (
               <M.SongSearchList
                 className="click"
                 onClick={() => {
@@ -81,11 +81,9 @@ const FirstStepModal = () => {
                   />
                 </svg>
               </M.SongSearchList>
-            </M.SongSearchListWrapper>
-          );
-        } else {
-          return (
-            <M.SongSearchListWrapper>
+            );
+          } else {
+            return (
               <M.SongSearchList
                 onClick={() => {
                   onClick(index);
@@ -97,10 +95,10 @@ const FirstStepModal = () => {
                   <div className="artist">{e.artistName}</div>
                 </MusicBoxWrapper>
               </M.SongSearchList>
-            </M.SongSearchListWrapper>
-          );
-        }
-      })}
+            );
+          }
+        })}
+      </M.SongSearchListWrapper>
       <M.ButtonBox>
         <button onClick={() => setPopupModal(false)}>취소</button>
         <button onClick={() => setNextPopupModal(true)}>다음</button>

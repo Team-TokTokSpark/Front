@@ -26,6 +26,52 @@ export const ModalPage = styled.div`
   overflow: auto;
 `;
 
+export const MessageModalPage = styled.div`
+  width: 60%;
+  height: 15%;
+  z-index: 400;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 10px;
+  box-shadow: 2px 4px 4px rgba(0, 0, 0, 0.25);
+  background-color: rgba(0, 0, 0, 0.8);
+  justify-content: center;
+  overflow: auto;
+  .text {
+    width: 172px;
+    position: relative;
+    top: 2%;
+    left: 10%;
+    color: white;
+    font-weight: 15px;
+    div {
+      font-weight: 11px;
+    }
+  }
+  .message {
+    position: relative;
+    top: 10%;
+    left: 10%;
+    width: 180px;
+    font-size: 11px;
+    font-weight: 400;
+    color: ${colors.supplementary_green};
+  }
+`;
+
+export const MessageButton = styled.button`
+  all: unset;
+  cursor: pointer;
+  position: relative;
+  top: 10%;
+  left: 80%;
+  svg {
+    font-size: 16px;
+  }
+`;
+
 export const SongSearchBox = styled.div`
   position: relative;
   width: 70vw;

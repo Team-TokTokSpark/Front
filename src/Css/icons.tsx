@@ -6,6 +6,7 @@ import { SlUserUnfollow } from "react-icons/sl";
 import { FiSearch } from "react-icons/fi";
 import { IoIosArrowBack } from "react-icons/io";
 import { CiMusicNote1 } from "react-icons/ci";
+import { GrFormClose } from "react-icons/gr";
 
 const icons = {
   notice: <MdError />,
@@ -16,6 +17,7 @@ const icons = {
   plus: <BsPlusLg />,
   search: <FiSearch />,
   musicnote: <CiMusicNote1 />,
+  close: <GrFormClose />,
 };
 
 export default icons;

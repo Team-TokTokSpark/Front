@@ -57,6 +57,30 @@ export const MainBody = styled.div`
       width: 24px;
     }
   }
+
+  .other-setting-part {
+    display: flex;
+    position: relative;
+    align-items: center;
+    padding-top: 20px;
+    margin: 0px 30px 10px 0px;
+    width: 100%;
+    height: 26px;
+    button {
+      all: unset;
+      cursor: pointer;
+      svg {
+        font-size: 24px;
+        fill: white;
+      }
+    }
+    div {
+      position: absolute;
+      left: 50%;
+      transform: translate(-50%, 0);
+      color: white;
+    }
+  }
   //보관함 메인화면 자기소개 및 음악페이지 닉네임 부분
   .nickname-part {
     margin: 0px 0px 10px 30px;
@@ -91,10 +115,22 @@ export const MainBody = styled.div`
     position: relative;
   }
 
-  .title-part {
-    margin-bottom: 10px;
+  .playlistname {
+    margin: 0px 0px 10px 40px;
     display: flex;
-    justify-content: space-around;
+    justify-content: flex-start;
+    height: 30px;
+    align-items: center;
+    color: white;
+    font-size: 21px;
+    line-height: 24px;
+    font-size: 700;
+  }
+
+  .title-part {
+    margin: 0px 40px 10px;
+    display: flex;
+    justify-content: space-between;
     height: 30px;
     align-items: center;
     color: white;
@@ -132,9 +168,9 @@ export const PlayMusic = styled.div`
 `;
 
 export const ContainerWrapper = styled.div`
-  margin: 30px 20px;
+  margin: 30px auto;
   width: 330px;
-  height: 480px;
+  height: 440px;
   display: grid;
   grid-template-rows: 1%;
   grid-auto-rows: 20%;
@@ -189,7 +225,7 @@ export const ContainerWrapper = styled.div`
 export const LongContainerWrapper = styled.div`
   margin: 10px 20px 10px 5%;
   width: 330px;
-  height: 480px;
+  height: 420px;
   display: grid;
   grid-template-rows: 5%;
   grid-auto-rows: 20%;
@@ -327,14 +363,14 @@ export const StickerMakeButton = styled.button`
   height: 50px;
   border-radius: 50%;
   z-index: 20;
-  background-color: linear-gradient(
-    rgba(255, 220, 220, 0.7) 0%,
-    rgba(241, 255, 203, 0.7) 100%
+  background: linear-gradient(
+    rgba(255, 220, 220, 1) 0%,
+    rgba(241, 255, 203, 1) 100%
   );
   border-color: transparent;
   position: absolute;
-  top: 520px;
-  left: 300px;
+  top: 80%;
+  left: 85%;
   svg {
     width: 30px;
     height: 30px;
@@ -370,8 +406,8 @@ export const EditStickerButton = styled.button`
   background-repeat: no-repeat;
   border-color: rgba(255, 255, 255, 0.8);
   position: absolute;
-  top: 90%;
-  left: 50%;
+  top: 550px;
+  left: 45%;
   svg {
     width: 30px;
     height: 30px;
