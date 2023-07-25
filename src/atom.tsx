@@ -15,6 +15,20 @@ export const isNextModalView = atom({
   default: false,
 });
 
+export const messageModalAtom = atom({
+  key: "messageModal",
+  default: false,
+});
+
+export const MessageModalData = atom({
+  key: "messageModalData",
+  default: {
+    title: "",
+    artist: "",
+    message: "",
+  },
+});
+
 export const modalData = atom({
   key: "modalData",
   default: {

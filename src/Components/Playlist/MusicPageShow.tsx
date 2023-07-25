@@ -2,10 +2,8 @@ import { useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import {
   BodyWrapper,
-  ExportButton,
   LongContainerWrapper,
   PlayMusic,
-  ShareButton,
   StickerMakeButton,
 } from "../../Styles/HomePageStyle";
 import StickerShow from "../Sticker/StickerShow";
@@ -36,10 +34,7 @@ const MusicPageShow = () => {
         <div className="user_name">{playlistInfo.nickname}</div>
         님의 보관함
       </div>
-      <div className="title-part">
-        {playlistInfo.playlistName} page
-        <ShareButton>링크 공유</ShareButton>
-      </div>
+      <div className="playlistname">{playlistInfo.playlistName} page</div>
       <BodyWrapper>
         <PlayMusic>00 Attention-NewJeans</PlayMusic>
         <SwiperDots />
@@ -56,7 +51,6 @@ const MusicPageShow = () => {
       <StickerMakeButton onClick={() => setPopupModal(true)}>
         {icons.plus}
       </StickerMakeButton>
-      <ExportButton>{icons.spotify}</ExportButton>
       {popupModal && <StickerModal />}
     </>
   );
