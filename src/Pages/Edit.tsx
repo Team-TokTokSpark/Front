@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import { useRecoilValue } from "recoil";
-import { ChangeMusicColor, MusicColor } from "../atom";
+import { useRecoilState, useRecoilValue } from "recoil";
+import { ChangeMusicColor, PlaylistInformation } from "../atom";
 import { MainBody } from "../Styles/HomePageStyle";
 import EditStickerShow from "../Components/Sticker/EditStickerShow";
 import { InputTitle, RemoveTextButton } from "../Styles/EditPageStyle";
@@ -8,10 +8,10 @@ import CancleComplete from "../Components/Utils/CancleComplete";
 import ColorChange from "../Components/Utils/ColorChange";
 
 const EditPage = () => {
-  const backGroundColorNum = useRecoilValue(MusicColor);
-  const changeBackGroundColorNum = useRecoilValue(ChangeMusicColor);
-  const [colorNum, setColorNum] = useState(backGroundColorNum);
-  const [text, setText] = useState("일단은 이렇게라도 하자");
+  const [playlist, setPlaylist] = useRecoilState(PlaylistInformation);
+  const [colorNum, setColorNum] = useState(playlist.backgroundIdx);
+  const [text, setText] = useState(playlist.playlistName);
+  const colorChange = useRecoilValue(ChangeMusicColor);
   const displayText = (e: React.ChangeEvent<HTMLInputElement>) => {
     setText(e.target.value);
   };
@@ -20,9 +20,9 @@ const EditPage = () => {
   };
   return (
     <MainBody>
-      <div className={`pageTheme${backGroundColorNum}`}>
+      <div className={`pageTheme${playlist.backgroundIdx}`}>
         <CancleComplete
-          colorNum={changeBackGroundColorNum}
+          colorNum={colorChange}
           userIdx={-1}
           type={""}
           playlistName={""}
