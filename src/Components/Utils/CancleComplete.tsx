@@ -1,9 +1,10 @@
 import React from "react";
 import { EditButtonDiv } from "../../Styles/EditPageStyle";
 import { useNavigate } from "react-router-dom";
-import { useSetRecoilState } from "recoil";
-import { MusicColor } from "../../atom";
+import { useRecoilValue, useSetRecoilState } from "recoil";
+import { MusicColor, userInformationState } from "../../atom";
 import { MakePlaylistApi } from "../../Services/Main/api";
+import { editStickApi } from "../../Services/Edit/api";
 
 type Props = {
   colorNum: number;
@@ -24,6 +25,7 @@ const CancleComplete = ({
   token,
 }: Props) => {
   const setBackGroundColorNum = useSetRecoilState(MusicColor);
+  const information = useRecoilValue(userInformationState);
   const navigate = useNavigate();
   const makePlaylist = async (
     userIdx: number,
@@ -48,6 +50,27 @@ const CancleComplete = ({
       } else {
         alert("에러가 발생했습니다");
       }
+    }
+  };
+  const editPlaylist = async (
+    userIdx: string,
+    postIdx: number,
+    token: string,
+    playlistName: string,
+    backgroundIdx: number
+  ) => {
+    const result = await editStickApi(
+      userIdx,
+      postIdx,
+      token,
+      playlistName,
+      backgroundIdx
+    );
+    if (result.status === 200) {
+      alert("수정이 완료되었습니다");
+      navigate(`/page/${postIdx}`);
+    } else {
+      alert("에러가 발생하였습니다");
     }
   };
   return (
@@ -79,12 +102,13 @@ const CancleComplete = ({
         ) : (
           <div
             onClick={() => {
-              if (colorNum !== -1) {
-                setBackGroundColorNum(colorNum);
-                navigate(-1);
-              } else {
-                navigate(-1);
-              }
+              editPlaylist(
+                information.userId,
+                userIdx,
+                token,
+                playlistName,
+                backgroundIdx
+              );
             }}
           >
             완료

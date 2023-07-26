@@ -33,8 +33,9 @@ export const modalData = atom({
   key: "modalData",
   default: {
     song: {
-      title: "Hype boy",
-      singer: "newJeans",
+      title: "",
+      singer: "",
+      imageUrl: "",
     },
     sticker: "",
     message: "",

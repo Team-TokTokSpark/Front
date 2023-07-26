@@ -7,7 +7,7 @@ import { useEffect } from "react";
 
 function MusicPage() {
   const location = useLocation();
-  const playlistId = location.state?.playlistIdx;
+  const playlistId = location.state?.userId;
   const token = useRecoilValue(authTokenState);
   const [playlist, setPlaylist] = useRecoilState(PlaylistInformation);
   const navigate = useNavigate();
@@ -22,7 +22,7 @@ function MusicPage() {
     } else {
       getPlaylistInfo(token, playlistId);
     }
-  }, [playlist]);
+  }, [playlist.playlistSongs.length]);
   return (
     <MainBody>
       <div className={`pageTheme${playlist.backgroundIdx}`}>
