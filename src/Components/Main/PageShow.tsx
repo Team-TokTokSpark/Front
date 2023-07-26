@@ -28,7 +28,12 @@ function PageShow({ listInfo }: { listInfo: Array<mainPlaylistProps> }) {
                       });
                       pageColorNum(e.backgroundIdx);
                     } else {
-                      alert("아직 이동을 못해요!");
+                      navigate(`/record/${e.playlistIdx}`, {
+                        state: {
+                          userId: e.userIdx,
+                          playlistIdx: e.playlistIdx,
+                        },
+                      });
                     }
                   }}
                   className={`containerTheme${e.backgroundIdx}`}
