@@ -20,3 +20,24 @@ export const editStickApi = async (
   );
   return response;
 };
+
+export const deletePlaylistSongApi = async (
+  playlistid: number,
+  playlistsongid: number,
+  token: string
+) => {
+  const response = await axios.delete(
+    `${SERVER_URL}/playlists/${playlistid}/${playlistsongid}`,
+    {
+      headers: { Authorization: `Bearer ${token}` },
+    }
+  );
+  return response;
+};
+
+export const deletePlaylistApi = async (playlistid: number, token: string) => {
+  const response = await axios.delete(`${SERVER_URL}/playlists/${playlistid}`, {
+    headers: { Authorization: `Bearer ${token}` },
+  });
+  return response;
+};
