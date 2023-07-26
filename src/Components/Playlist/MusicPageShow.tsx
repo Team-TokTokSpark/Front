@@ -9,8 +9,13 @@ import {
 import StickerShow from "../Sticker/StickerShow";
 import icons from "../../Css/icons";
 import StickerModal from "../Modal/ModalPage";
-import { useRecoilState, useRecoilValue } from "recoil";
-import { PlaylistInformation, dotsIndexSelect, isModalView } from "../../atom";
+import { useRecoilState, useRecoilValue, useResetRecoilState } from "recoil";
+import {
+  PlaylistInformation,
+  dotsIndexSelect,
+  isModalView,
+  playlistBoxAtom,
+} from "../../atom";
 import SwiperDots from "./SwiperDots";
 import PlaylistMusic from "./PlaylistMusic";
 import PlaylistMessage from "./PlaylistMessage";
@@ -20,7 +25,8 @@ const MusicPageShow = () => {
   const [popupModal, setPopupModal] = useRecoilState(isModalView);
   const dotsSelect = useRecoilValue(dotsIndexSelect);
   const playlistInfo = useRecoilValue(PlaylistInformation);
-
+  const playlistBoxProp = useRecoilValue(playlistBoxAtom);
+  const resetPlaylistBox = useResetRecoilState(playlistBoxAtom);
   return (
     <>
       <div className="nickname-part">
@@ -28,6 +34,7 @@ const MusicPageShow = () => {
           src="/img/Arrow_Left_5.png"
           alt="backbutton"
           onClick={() => {
+            resetPlaylistBox();
             navigate(-1);
           }}
         />
@@ -36,7 +43,9 @@ const MusicPageShow = () => {
       </div>
       <div className="playlistname">{playlistInfo.playlistName} page</div>
       <BodyWrapper>
-        <PlayMusic>00 Attention-NewJeans</PlayMusic>
+        <PlayMusic>
+          {playlistBoxProp.title}-{playlistBoxProp.artist}
+        </PlayMusic>
         <SwiperDots />
         <LongContainerWrapper>
           {dotsSelect === 1 ? (

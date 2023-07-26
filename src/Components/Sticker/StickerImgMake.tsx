@@ -1,6 +1,10 @@
 import { BigStickerPage, StickerPage } from "../../Styles/HomePageStyle";
 import { useSetRecoilState } from "recoil";
-import { MessageModalData, messageModalAtom } from "../../atom";
+import {
+  MessageModalData,
+  messageModalAtom,
+  playlistBoxAtom,
+} from "../../atom";
 
 type Props = {
   name: string;
@@ -19,11 +23,16 @@ const StickerImgMake = ({
 }: Props) => {
   const setMessageModal = useSetRecoilState(messageModalAtom);
   const setMessageData = useSetRecoilState(MessageModalData);
+  const setPlaylistBoxProp = useSetRecoilState(playlistBoxAtom);
   const handleClick = (title: string, artist: string, message: string) => {
     setMessageData({
       title: title,
       artist: artist,
       message: message,
+    });
+    setPlaylistBoxProp({
+      title: title,
+      artist: artist,
     });
   };
   return (

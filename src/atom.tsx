@@ -150,6 +150,14 @@ export interface mainPlaylistProps {
   imageIdx: number;
 }
 
+export const playlistBoxAtom = atom({
+  key: "playlistBoxAtom",
+  default: {
+    title: "Hype Boy",
+    artist: "New Jeans",
+  },
+});
+
 export const UserListInfo = atom<ListInfoProps>({
   key: "userListInfo",
   default: {
