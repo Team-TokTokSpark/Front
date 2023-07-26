@@ -5,8 +5,14 @@ import {
   isModalView,
   authTokenState,
   SongProps,
+  modalData,
 } from "../../atom";
-import { useRecoilValue, useSetRecoilState } from "recoil";
+import {
+  useRecoilState,
+  useRecoilValue,
+  useResetRecoilState,
+  useSetRecoilState,
+} from "recoil";
 import * as M from "./ModalStyle";
 import icons from "../../Css/icons";
 import { MusicBoxWrapper } from "../../Styles/PlaylistStyle";
@@ -18,6 +24,8 @@ const FirstStepModal = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [searchMusic, setSearchMusic] = useState<Array<SongProps>>([]);
   const [click, setClick] = useState(-1);
+  const [clickSong, setClickSong] = useRecoilState(modalData);
+  const resetSong = useResetRecoilState(modalData);
   const token = useRecoilValue(authTokenState);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -57,7 +65,8 @@ const FirstStepModal = () => {
               <M.SongSearchList
                 className="click"
                 onClick={() => {
-                  onClick(index);
+                  onClick(-1);
+                  resetSong();
                 }}
               >
                 <img src={e.imageUrl} alt="albumImg" />
@@ -87,6 +96,14 @@ const FirstStepModal = () => {
               <M.SongSearchList
                 onClick={() => {
                   onClick(index);
+                  setClickSong((prevModal) => ({
+                    ...prevModal,
+                    song: {
+                      title: e.title,
+                      singer: e.artistName,
+                      imageUrl: e.imageUrl,
+                    },
+                  }));
                 }}
               >
                 <img className="albumImg" src={e.imageUrl} alt="albumImg" />
@@ -101,7 +118,17 @@ const FirstStepModal = () => {
       </M.SongSearchListWrapper>
       <M.ButtonBox>
         <button onClick={() => setPopupModal(false)}>취소</button>
-        <button onClick={() => setNextPopupModal(true)}>다음</button>
+        <button
+          onClick={() => {
+            if (click === -1 || clickSong.song.title === "") {
+              alert("음악을 선택해주세요");
+            } else {
+              setNextPopupModal(true);
+            }
+          }}
+        >
+          다음
+        </button>
       </M.ButtonBox>
     </>
   );

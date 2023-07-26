@@ -25,3 +25,40 @@ export const getPlaylistapi = async (token: string, userid: number) => {
   );
   return response;
 };
+
+export type StickerProps = {
+  playlistId: number;
+  userId: number;
+  token: string;
+  artistName: string;
+  title: string;
+  imageUrl: string;
+  imageIdx: number;
+  message: string;
+};
+
+export const stickerMakeApi = async ({
+  playlistId,
+  userId,
+  token,
+  artistName,
+  title,
+  imageUrl,
+  imageIdx,
+  message,
+}: StickerProps) => {
+  const response = await axios.post(
+    `${SERVER_URL}/playlists/${playlistId}/songs/${userId}`,
+    {
+      artistName,
+      title,
+      imageIdx,
+      imageUrl,
+      message,
+    },
+    {
+      headers: { Authorization: `Bearer ${token}` },
+    }
+  );
+  return response;
+};

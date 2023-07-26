@@ -1,6 +1,11 @@
 import React, { useState } from "react";
 import { useRecoilState, useRecoilValue } from "recoil";
-import { ChangeMusicColor, PlaylistInformation } from "../atom";
+import {
+  ChangeMusicColor,
+  MusicColor,
+  PlaylistInformation,
+  authTokenState,
+} from "../atom";
 import { MainBody } from "../Styles/HomePageStyle";
 import EditStickerShow from "../Components/Sticker/EditStickerShow";
 import { InputTitle, RemoveTextButton } from "../Styles/EditPageStyle";
@@ -9,9 +14,10 @@ import ColorChange from "../Components/Utils/ColorChange";
 
 const EditPage = () => {
   const [playlist, setPlaylist] = useRecoilState(PlaylistInformation);
-  const [colorNum, setColorNum] = useState(playlist.backgroundIdx);
+  const colorNum = playlist.backgroundIdx;
   const [text, setText] = useState(playlist.playlistName);
-  const colorChange = useRecoilValue(ChangeMusicColor);
+  const colorChange = useRecoilValue(MusicColor);
+  const token = useRecoilValue(authTokenState);
   const displayText = (e: React.ChangeEvent<HTMLInputElement>) => {
     setText(e.target.value);
   };
@@ -23,11 +29,11 @@ const EditPage = () => {
       <div className={`pageTheme${playlist.backgroundIdx}`}>
         <CancleComplete
           colorNum={colorChange}
-          userIdx={-1}
+          userIdx={playlist.playlistId}
           type={""}
-          playlistName={""}
-          backgroundIdx={-1}
-          token={""}
+          playlistName={text}
+          backgroundIdx={colorChange}
+          token={token}
         />
         <div className="editTitle-part">
           <InputTitle type="text" value={text} onChange={displayText} />
