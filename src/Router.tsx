@@ -11,6 +11,7 @@ import SettingPage from "./Pages/SettingPage";
 import EditPage from "./Pages/Edit";
 import MakePage from "./Pages/MakePage";
 import MainPage from "./Pages/MainPage";
+import RecordPage from "./Pages/RecordPage";
 
 const router = createBrowserRouter([
   {
@@ -49,6 +50,8 @@ const router = createBrowserRouter([
       },
     ],
   },
+  { path: "record/:idx", element: <RecordPage /> },
+
   { path: "edit", element: <EditPage /> },
   { path: "*", element: <NotFoundPage /> },
 ]);

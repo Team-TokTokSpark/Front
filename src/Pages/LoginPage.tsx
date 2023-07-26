@@ -5,7 +5,6 @@ const LoginPage = () => {
   return (
     <S.LoginContainer>
       <S.MainContainer>
-        <S.Logo src="img/logo/main_logo.png" alt="main_logo" />
         <p>
           <strong>함</strong>께 만드는
           <strong>플</strong>

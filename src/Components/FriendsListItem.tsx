@@ -26,7 +26,7 @@ const FriendsListItem = (props: any) => {
         {/* dummyData 바꿔줘야함 */}
         <div
           onClick={() => {
-            navigate(`/page/otherMusic/${nickname}`);
+            navigate(`/main/${id}`);
           }}
         >
           {nickname}

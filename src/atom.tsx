@@ -49,21 +49,6 @@ export const authTokenState = atom({
   effects_UNSTABLE: [persistAtom],
 });
 
-// export const friendsListSelector = selector({
-//   key: "friendsListSelector",
-//   get: async ({ get }) => {
-//     try {
-//       const friendsList = await getFriendsList();
-//       return friendsList;
-//     } catch (error) {
-//       throw error;
-//     }
-//   },
-//   set: ({ set }, newValue) => {
-//     set(frinedsListState, newValue);
-//   },
-// });
-
 export const userInformationState = atom({
   key: "userInformationState",
   default: {
@@ -251,5 +236,13 @@ export const PlaylistInformation = atom<PlaylistProps>({
         artist: "newJeans",
       },
     ],
+  },
+});
+
+export const recordInformation = atom({
+  key: "recordInformation",
+  default: {
+    introduce: "",
+    nickname: "",
   },
 });

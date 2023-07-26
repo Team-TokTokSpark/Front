@@ -64,7 +64,6 @@ function HomePage() {
       }
     });
   }, [click]);
-
   return (
     <>
       {`${information.userId}` === idx ? (
