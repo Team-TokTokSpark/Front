@@ -1,13 +1,19 @@
 import React, { useState } from "react";
-
+import { recordModalData } from "../../atom";
+import { useSetRecoilState } from "recoil";
 import Sticker from "../Modal/ModalStickerItem";
+
 const RecordStickerList = () => {
   const [selectedSticker, setSelectedSticker] = useState<string>("");
+  const setStickerModal = useSetRecoilState(recordModalData);
   const handleStickerSelection = (sticker: string) => {
     setSelectedSticker(sticker);
+    setStickerModal((prevModalData) => ({
+      ...prevModalData,
+      sticker: sticker,
+    }));
   };
 
-  console.log("선택", selectedSticker);
   const stickerGroups = [
     ["sticker1", "sticker3", "sticker2"],
     ["sticker4", "sticker5", "sticker7"],

@@ -70,7 +70,15 @@ export const RecordProps = styled.div`
     height: 60%;
   }
   textarea::placeholder {
-    color: white;
+    color: rgba(255, 255, 255, 0.5);
+  }
+  p {
+    all: unset;
+    display: block;
+    padding-top: 30px;
+    padding-left: 20px;
+    width: 90%;
+    /* height: 60%; */
   }
 `;
 
@@ -109,6 +117,10 @@ export const BoardItems = styled.div`
         font-size: 25px;
         fill: rgba(255, 255, 255, 0.2);
       }
+    }
+    .stickerShow {
+      width: 100%;
+      height: 60px;
     }
     img {
       width: 100%;
@@ -209,5 +221,82 @@ export const ButtonBox = styled.div`
   }
   button:nth-child(1) {
     color: #d6d6d6;
+  }
+`;
+
+export const SongSearchListWrapper = styled.div`
+  overflow: scroll;
+  scrollbar-width: none;
+  scrollbar-color: transparent transparent;
+  width: 90%;
+  height: 15%;
+  background-color: transparent;
+  margin: auto;
+`;
+
+export const SongSearchList = styled.button`
+  position: relative;
+  width: 260px;
+  height: 40px;
+  display: flex;
+  padding: 10px;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 10px;
+  border-radius: 5px;
+  background-color: transparent;
+  border-color: transparent;
+  color: white;
+  margin: 0px auto;
+  box-sizing: content-box;
+  .title {
+    font-size: 14px;
+    font-weight: 400;
+  }
+
+  .artist {
+    font-size: 11px;
+    font-weight: 400;
+  }
+
+  img {
+    width: 40px;
+    height: 40px;
+  }
+
+  &.click {
+    background-color: rgba(255, 255, 255, 0.2);
+  }
+
+  svg {
+    position: absolute;
+    left: 88%;
+  }
+`;
+
+// ... Other imports and code ...
+
+export const HoverDiv = styled.div`
+  display: flex; /* Use flexbox to center the contents */
+  padding: 0 10px;
+  justify-content: space-around; /* Center horizontally */
+  align-items: center; /* Center vertically */
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 200px;
+  height: 100px;
+  background-color: rgba(0, 0, 0, 0.7);
+  border-radius: 10px;
+  color: white;
+  img {
+    width: 70px;
+    height: 70px;
+  }
+  div {
+    p:nth-child(1) {
+      color: ${colors.supplementary_green};
+    }
   }
 `;

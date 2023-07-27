@@ -1,6 +1,5 @@
-import { atom, selector } from "recoil";
+import { atom } from "recoil";
 import { recoilPersist } from "recoil-persist";
-import { getFriendsList } from "./Services/FriendsList/api";
 
 const { persistAtom } = recoilPersist();
 
@@ -42,6 +41,18 @@ export const modalData = atom({
   },
 });
 //modal 영역 종료
+
+export const recordModalData = atom({
+  key: "recordModalData",
+  default: {
+    song: {
+      title: "",
+      singer: "",
+      imageUrl: "",
+    },
+    sticker: "",
+  },
+});
 
 export const authTokenState = atom({
   key: "authTokenState",
