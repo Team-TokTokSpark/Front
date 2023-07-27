@@ -5,6 +5,7 @@ import { PlaylistInformation } from "../../atom";
 
 const EditStickerShow = () => {
   const sticker = useRecoilValue(PlaylistInformation);
+  const playlistId = sticker.playlistId;
   return (
     <BodyWrapper>
       <LongContainerWrapper>
@@ -13,7 +14,8 @@ const EditStickerShow = () => {
           if (index % 5 === 3 || index % 5 === 4) {
             return (
               <EditStickerImg
-                message={e.stickers[0].message}
+                playlistid={playlistId}
+                playlistSongid={e.playlistSongId}
                 stickerNum={e.stickers[0].imgIdx}
                 even_item="even-item"
               />
@@ -22,7 +24,8 @@ const EditStickerShow = () => {
             return (
               <>
                 <EditStickerImg
-                  message={e.stickers[0].message}
+                  playlistid={playlistId}
+                  playlistSongid={e.playlistSongId}
                   stickerNum={e.stickers[0].imgIdx}
                   even_item="item"
                 />
