@@ -146,18 +146,9 @@ export const playlistBoxAtom = atom({
 export const UserListInfo = atom<ListInfoProps>({
   key: "userListInfo",
   default: {
-    introduce: "자기소개 한 줄",
-    nickname: "몰랑이",
-    playlists: [
-      {
-        type: "playlist",
-        playlistIdx: 1,
-        playlistName: "hello",
-        backgroundIdx: 0,
-        userIdx: 2,
-        imageIdx: 12,
-      },
-    ],
+    introduce: "",
+    nickname: "",
+    playlists: [],
   },
 });
 

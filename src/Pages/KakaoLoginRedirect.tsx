@@ -19,7 +19,7 @@ const KakaoLoginRedirect = () => {
     setUserInformation(data);
 
     console.log("이거봐야해", data);
-    if (data.introduce === null) {
+    if (data.introduce === null || data.introduce === "") {
       navigate("/signup");
     } else {
       navigate(`/main/${data.userId}`);
