@@ -9,6 +9,7 @@ import { gohome } from "../Components/KakaoLogin/gohome";
 import { useEffect, useState } from "react";
 import { getMainApi } from "../Services/Main/api";
 import { FollowToggle, getFriendsList } from "../Services/FriendsList/api";
+import Loading from "../Components/Loading/Loading";
 
 interface Friend {
   id: number;
@@ -25,8 +26,12 @@ function HomePage() {
   const stringIdx: string = idx!;
   const information = useRecoilValue(userInformationState);
   const token = useRecoilValue(authTokenState);
+  const [loading, setLoading] = useState(false);
+
   const getMain = async (info: string, token: string) => {
+    setLoading(true);
     const result = await getMainApi(info, token);
+    setLoading(false);
     setListInfo(result.data);
   };
   const fetchFriendsList = async () => {
@@ -64,7 +69,9 @@ function HomePage() {
       }
     });
   }, [click]);
-  return (
+  return loading ? (
+    <Loading />
+  ) : (
     <>
       {`${information.userId}` === idx ? (
         <div className="setting-part">

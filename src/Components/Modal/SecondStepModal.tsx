@@ -29,6 +29,8 @@ const SecondStepModal = () => {
     setPopupModal(false);
   };
 
+  const stickerNumber: any = modal.sticker.match(/\d+/);
+  console.log(Number(stickerNumber[0]), "dlrj");
   const sendModalData = async () => {
     if (song.title && song.singer && sticker && message) {
       //전송 데이터
@@ -40,7 +42,7 @@ const SecondStepModal = () => {
         artistName: song.singer,
         title: song.title,
         imageUrl: song.imageUrl,
-        imageIdx: 11,
+        imageIdx: Number(stickerNumber),
         message: message,
       });
       if (result.status === 200) {
