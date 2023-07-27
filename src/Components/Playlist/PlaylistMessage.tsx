@@ -5,14 +5,15 @@ import { MusicMessageWrapper } from "../../Styles/PlaylistStyle";
 
 const PlaylistMessage = () => {
   const Messagelist = useRecoilValue(PlaylistInformation);
+
   return (
     <>
       <div className="blackSpace"></div>
-      {Messagelist.playlistSongs.map((e) => {
-        return (
-          <MusicMessageWrapper>{e.stickers[0].message}</MusicMessageWrapper>
-        );
-      })}
+      {Messagelist.playlistSongs.map((e, index) => (
+        <MusicMessageWrapper key={index}>
+          {e.stickers[0].message}
+        </MusicMessageWrapper>
+      ))}
     </>
   );
 };

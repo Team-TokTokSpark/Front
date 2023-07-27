@@ -7,20 +7,19 @@ import {
 
 const PlaylistMusic = () => {
   const playMusiclist = useRecoilValue(PlaylistInformation);
+
   return (
     <>
       <div className="blackSpace"></div>
-      {playMusiclist.playlistSongs.map((e) => {
-        return (
-          <MusicPlaylistWrapper className="blankSpace">
-            <img className="albumImg" src={e.albumImageUrl} alt="albumImg" />
-            <MusicBoxWrapper>
-              <div className="title">{e.title}</div>
-              <div className="artist">{e.artist}</div>
-            </MusicBoxWrapper>
-          </MusicPlaylistWrapper>
-        );
-      })}
+      {playMusiclist.playlistSongs.map((e, index) => (
+        <MusicPlaylistWrapper key={index}>
+          <img className="albumImg" src={e.albumImageUrl} alt="albumImg" />
+          <MusicBoxWrapper>
+            <div className="title">{e.title}</div>
+            <div className="artist">{e.artist}</div>
+          </MusicBoxWrapper>
+        </MusicPlaylistWrapper>
+      ))}
     </>
   );
 };

@@ -12,6 +12,7 @@ const ColorChange = ({ colorNumber }: Props) => {
   const changeColor = useSetRecoilState(MusicColor);
   const MakeBackGroundMusic = useSetRecoilState(ChangeMusicColor);
   const colorArray = ["color0", "color1", "color2", "color3"];
+
   return (
     <>
       <ColorChangeDiv>
@@ -19,6 +20,7 @@ const ColorChange = ({ colorNumber }: Props) => {
           if (colorNum === index) {
             return (
               <button
+                key={index} // Provide a unique key for each child element
                 className={`${"checkcolor"} ${e}`}
                 onClick={() => {
                   setColorNum(index);
@@ -30,6 +32,7 @@ const ColorChange = ({ colorNumber }: Props) => {
           } else {
             return (
               <button
+                key={index} // Provide a unique key for each child element
                 className={` ${e}`}
                 onClick={() => {
                   setColorNum(index);

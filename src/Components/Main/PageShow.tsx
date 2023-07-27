@@ -4,9 +4,9 @@ import { MusicColor, mainPlaylistProps } from "../../atom";
 import { useSetRecoilState } from "recoil";
 
 function PageShow({ listInfo }: { listInfo: Array<mainPlaylistProps> }) {
-  //제목, 이용자, 배경컬러, 스티커랜덤(일단은 지정으로 어차피 넘길 때 랜덤으로 줄 것이기 때문)
   const navigate = useNavigate();
   const pageColorNum = useSetRecoilState(MusicColor);
+
   return (
     <>
       <ContainerWrapper>
@@ -15,39 +15,38 @@ function PageShow({ listInfo }: { listInfo: Array<mainPlaylistProps> }) {
         </div>
         {listInfo === undefined
           ? null
-          : listInfo.map((e) => {
-              return (
-                <ContainerPage
-                  onClick={() => {
-                    if (e.type === "playlist") {
-                      navigate(`/page/${e.playlistIdx}`, {
-                        state: {
-                          userId: e.userIdx,
-                          playlistIdx: e.playlistIdx,
-                        },
-                      });
-                      pageColorNum(e.backgroundIdx);
-                    } else {
-                      navigate(`/record/${e.playlistIdx}`, {
-                        state: {
-                          userId: e.userIdx,
-                          playlistIdx: e.playlistIdx,
-                        },
-                      });
-                    }
+          : listInfo.map((e) => (
+              <ContainerPage
+                key={e.playlistIdx} // Provide a unique key for each element
+                onClick={() => {
+                  if (e.type === "playlist") {
+                    navigate(`/page/${e.playlistIdx}`, {
+                      state: {
+                        userId: e.userIdx,
+                        playlistIdx: e.playlistIdx,
+                      },
+                    });
+                    pageColorNum(e.backgroundIdx);
+                  } else {
+                    navigate(`/record/${e.playlistIdx}`, {
+                      state: {
+                        userId: e.userIdx,
+                        playlistIdx: e.playlistIdx,
+                      },
+                    });
+                  }
+                }}
+                className={`containerTheme${e.backgroundIdx}`}
+              >
+                {e.playlistName}
+                <div
+                  className="imgInput"
+                  style={{
+                    backgroundImage: `url(/img/sticker/sticker${e.imageIdx}.png)`,
                   }}
-                  className={`containerTheme${e.backgroundIdx}`}
-                >
-                  {e.playlistName}
-                  <div
-                    className="imgInput"
-                    style={{
-                      backgroundImage: `url(/img/sticker/sticker${e.imageIdx}.png)`,
-                    }}
-                  />
-                </ContainerPage>
-              );
-            })}
+                />
+              </ContainerPage>
+            ))}
       </ContainerWrapper>
     </>
   );

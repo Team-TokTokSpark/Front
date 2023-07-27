@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { useRecoilState } from "recoil";
 import styled from "styled-components";
 import { dotsIndexSelect } from "../../atom";
@@ -26,25 +26,28 @@ const Dots = styled.div`
 const SwiperDots = () => {
   const dotsNum = [1, 2, 3];
   const [select, setSelect] = useRecoilState(dotsIndexSelect);
+
   return (
     <DotsWrapper>
       {dotsNum.map((e, index) => {
         if (select === dotsNum[index]) {
           return (
             <Dots
+              key={index} // Provide a unique key for each element
               className="click"
               onClick={() => {
                 setSelect(e);
               }}
-            ></Dots>
+            />
           );
         } else {
           return (
             <Dots
+              key={index} // Provide a unique key for each element
               onClick={() => {
                 setSelect(e);
               }}
-            ></Dots>
+            />
           );
         }
       })}
