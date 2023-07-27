@@ -12,6 +12,8 @@ import EditPage from "./Pages/Edit";
 import MakePage from "./Pages/MakePage";
 import MainPage from "./Pages/MainPage";
 import RecordPage from "./Pages/RecordPage";
+import WithDrawlPage from "./Pages/WithDrawlPage";
+import Loading from "./Components/Loading/Loading";
 
 const router = createBrowserRouter([
   {
@@ -34,7 +36,10 @@ const router = createBrowserRouter([
   },
   { path: "oauth2/redirect", element: <KakaoLoginRedirect /> },
   { path: "signup", element: <SignUpPage /> },
-  { path: "setting", element: <SettingPage /> },
+  {
+    path: "setting",
+    element: <SettingPage />,
+  },
   { path: "friendsList", element: <FriendsListPage /> },
   {
     path: "page",
@@ -51,7 +56,10 @@ const router = createBrowserRouter([
     ],
   },
   { path: "record/:idx", element: <RecordPage /> },
-
+  {
+    path: "withdrawl",
+    element: <WithDrawlPage />,
+  },
   { path: "edit", element: <EditPage /> },
   { path: "*", element: <NotFoundPage /> },
 ]);
