@@ -12,6 +12,7 @@ function MusicPage() {
   const playlistId = location.state?.userId;
   const token = useRecoilValue(authTokenState);
   const [playlist, setPlaylist] = useRecoilState(PlaylistInformation);
+  const modalOpen = useRecoilValue(isModalView);
   const navigate = useNavigate();
   const getPlaylistInfo = async (token: string, playlistId: number) => {
     setIsLoading(true);
@@ -26,7 +27,7 @@ function MusicPage() {
     } else {
       getPlaylistInfo(token, playlistId);
     }
-  }, [playlist.playlistSongs.length]);
+  }, [modalOpen]);
   return isLoading ? (
     <Loading />
   ) : (
