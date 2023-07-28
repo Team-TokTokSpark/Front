@@ -1,7 +1,7 @@
 import { Outlet, useLocation, useNavigate } from "react-router-dom";
 import { MainBody } from "../Styles/HomePageStyle";
 import { useRecoilState, useRecoilValue } from "recoil";
-import { PlaylistInformation, authTokenState } from "../atom";
+import { PlaylistInformation, authTokenState, isModalView } from "../atom";
 import { getPlaylistapi } from "../Services/PlayList/api";
 import { useEffect, useState } from "react";
 import Loading from "../Components/Loading/Loading";
@@ -27,7 +27,7 @@ function MusicPage() {
     } else {
       getPlaylistInfo(token, playlistId);
     }
-  }, [modalOpen]);
+  }, []);
   return isLoading ? (
     <Loading />
   ) : (

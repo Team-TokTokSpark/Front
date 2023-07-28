@@ -54,7 +54,6 @@ const SecondStepModal = () => {
         navigate(`/page/${playlist.playlistId}`);
       } else {
         Swal.fire({
-          icon: "error",
           title: "Error",
           text: "오류가 떴습니다 다시 한 번 시도해주세요",
         });
@@ -62,7 +61,6 @@ const SecondStepModal = () => {
     } else {
       Swal.fire({
         icon: "error",
-        title: "Oops...",
         text: "스티커와 메시지를 올바르게 입력 해주세요!",
       });
     }

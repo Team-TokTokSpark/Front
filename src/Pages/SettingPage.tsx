@@ -15,8 +15,6 @@ const SettingPage = () => {
     useRecoilState(userInformationState);
   const token = useRecoilValue(authTokenState);
   const [editToggle, setEditToggle] = useState<boolean>(false);
-
-  //추후에 바꿔줘야함 임시데이터.
   const [nickname, setNickname] = useState<string>(userInformation.nickname);
   const [introduce, setIntroduce] = useState<string>(userInformation.introduce);
 
@@ -37,16 +35,6 @@ const SettingPage = () => {
       setEditToggle((state) => !state);
     } catch (error) {
       console.error("프로필 업데이트 실패:", error);
-    }
-  };
-
-  const onWithdrawlUser = async () => {
-    try {
-      //정말 계정을 탈퇴하시겠습니까? 추가?
-      await WithdrawalUser(token, userInformation.userId);
-      navigate("/");
-    } catch (error) {
-      console.error("계정탈퇴 실패");
     }
   };
 
@@ -98,7 +86,7 @@ const SettingPage = () => {
             <h3>계정 설정</h3>
 
             <KakaoLogoutButton />
-            <button onClick={onWithdrawlUser}>계정 탈퇴</button>
+            <button onClick={() => navigate("/withdrawl")}>계정 탈퇴</button>
           </S.AccountBox>
         </S.ProfileContainer>
       </S.PageContainer>
