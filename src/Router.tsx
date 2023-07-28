@@ -13,7 +13,8 @@ import MakePage from "./Pages/MakePage";
 import MainPage from "./Pages/MainPage";
 import RecordPage from "./Pages/RecordPage";
 import WithDrawlPage from "./Pages/WithDrawlPage";
-import Loading from "./Components/Loading/Loading";
+import WithDrawlSuccessPage from "./Pages/WithDrawlSuccessPage";
+import path from "path";
 
 const router = createBrowserRouter([
   {
@@ -59,6 +60,10 @@ const router = createBrowserRouter([
   {
     path: "withdrawl",
     element: <WithDrawlPage />,
+  },
+  {
+    path: "success",
+    element: <WithDrawlSuccessPage />,
   },
   { path: "edit", element: <EditPage /> },
   { path: "*", element: <NotFoundPage /> },

@@ -5,6 +5,7 @@ import { useRecoilValue, useSetRecoilState } from "recoil";
 import { MusicColor, userInformationState } from "../../atom";
 import { MakePlaylistApi } from "../../Services/Main/api";
 import { editStickApi } from "../../Services/Edit/api";
+import Swal from "sweetalert2";
 
 type Props = {
   colorNum: number;
@@ -45,10 +46,12 @@ const CancleComplete = ({
       alert("조건에 맞게 생성해주세요");
     } else {
       if (result.status === 200) {
-        alert("완료되었습니다");
         navigate(`/main/${userIdx}`);
       } else {
-        alert("에러가 발생했습니다");
+        Swal.fire({
+          title: "Error",
+          text: "오류가 떴습니다 다시 한 번 시도해주세요",
+        });
       }
     }
   };

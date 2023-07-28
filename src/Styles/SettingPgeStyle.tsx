@@ -5,7 +5,7 @@ import { colors, linearBackGroundColors } from "../Css/variables";
 export const PageContainer = styled.div`
   width: 100vw;
   height: 100vh;
-  background: ${linearBackGroundColors.blue_medium_light};
+  background: ${linearBackGroundColors.light_blue};
   color: white;
   h3 {
     color: ${colors.supplementary_green};
@@ -143,5 +143,57 @@ export const AccountBox = styled.div`
     position: relative;
     top: 20%;
     transform: translateY(-20%);
+  }
+`;
+
+export const WithdrawlContainer = styled.div`
+  width: 280px;
+  height: 50vh;
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  p {
+    font-size: 16px;
+    font-weight: 700;
+  }
+  p:nth-child(2) {
+    font-weight: 400;
+    font-size: 10px;
+    margin-bottom: 50px;
+  }
+
+  transform: translate(-50%, -50%);
+  ul {
+    width: 250px;
+    margin: 0 auto;
+    margin-top: 30px;
+    li {
+      font-size: 14px;
+      text-align: left;
+    }
+  }
+  div {
+    width: 280px;
+    text-align: center;
+    margin: 60px auto 0;
+    button {
+      all: unset;
+      text-align: center;
+      position: absolute;
+      left: 50%;
+      width: 140px;
+      height: 50px;
+      font-size: 16px;
+      font-weight: 700;
+      border-radius: 22px;
+      transform: translateX(-50%);
+      background-color: rgba(54, 70, 128, 0.3);
+      color: white;
+    }
+    .success {
+      height: 40px;
+      font-size: 14px;
+      background-color: rgba(255, 255, 255, 0.2);
+    }
   }
 `;
